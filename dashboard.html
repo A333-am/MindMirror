@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MindMirror AI | Dashboard</title>
+
+    <!-- Main shared styles -->
+    <link rel="stylesheet" href="CSS/style.css">
+
+    <!-- Dashboard-only styles -->
+    <link rel="stylesheet" href="CSS/dashboard.css">
+</head>
+
+<body>
+
+    <!-- =========================================
+         NAVIGATION
+    ========================================== -->
+
+    <header class="mm-navbar">
+
+        <a href="dashboard.html" class="mm-brand">
+
+            <img
+                src="Images/logo.png"
+                alt="MindMirror AI"
+                class="mm-logo"
+            >
+
+            <div class="mm-brand-text">
+                <strong>MindMirror</strong>
+                <span>AI Wellness Space</span>
+            </div>
+
+        </a>
+
+
+        <nav class="mm-nav">
+
+            <a href="dashboard.html" class="nav-active">
+                Home
+            </a>
+
+            <a href="mood.html">
+                Mood
+            </a>
+
+            <a href="journal.html">
+                Journal
+            </a>
+
+            <a href="progress.html">
+                Progress
+            </a>
+
+        </nav>
+
+
+        <a href="profile.html" class="mm-profile">
+
+            <span class="profile-icon">
+                👤
+            </span>
+
+            <span>Profile</span>
+
+        </a>
+
+    </header>
+
+
+
+    <!-- =========================================
+         MAIN DASHBOARD
+    ========================================== -->
+
+    <main class="mm-dashboard">
+
+
+        <!-- =====================================
+             HERO
+        ====================================== -->
+
+        <section class="mm-hero">
+
+            <div class="hero-content">
+
+                <span class="hero-label">
+                    YOUR PERSONAL WELLNESS SPACE
+                </span>
+
+                <h1>
+                    A moment for
+                    <span>you.</span>
+                </h1>
+
+                <p>
+                    Take a breath, check in with yourself,
+                    and explore what your mind needs today.
+                </p>
+
+
+                <div class="hero-actions">
+
+                    <a href="mood.html" class="hero-primary">
+                        Check in with yourself
+                        <span>→</span>
+                    </a>
+
+                    <a href="relax.html" class="hero-secondary">
+                        <span>◉</span>
+                        Relax & breathe
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Decorative wellness visual -->
+
+            <div class="hero-visual">
+
+                <div class="hero-glow"></div>
+
+                <div class="hero-orbit orbit-one"></div>
+                <div class="hero-orbit orbit-two"></div>
+
+                <div class="hero-center">
+
+                    <div class="hero-leaf">
+                        🌿
+                    </div>
+
+                    <span>
+                        Pause
+                    </span>
+
+                    <small>
+                        Breathe · Reflect · Grow
+                    </small>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================
+             TODAY'S SNAPSHOT
+        ====================================== -->
+
+        <section class="snapshot-section">
+
+            <div class="section-title">
+
+                <div>
+                    <span class="eyebrow">
+                        TODAY
+                    </span>
+
+                    <h2>
+                        Your wellness snapshot
+                    </h2>
+                </div>
+
+                <span class="date-label" id="todayDate">
+                    Today
+                </span>
+
+            </div>
+
+
+            <div class="snapshot-grid">
+
+
+                <!-- Mood -->
+
+                <div class="snapshot-card mood-snapshot">
+
+                    <div class="snapshot-top">
+
+                        <div class="snapshot-symbol">
+                            😊
+                        </div>
+
+                        <span>
+                            MOOD
+                        </span>
+
+                    </div>
+
+                    <h3 id="dashboardMood">
+                        Not checked in
+                    </h3>
+
+                    <p>
+                        How you're feeling today
+                    </p>
+
+                    <a href="mood.html">
+                        Update mood →
+                    </a>
+
+                </div>
+
+
+                <!-- Progress -->
+
+                <div class="snapshot-card progress-snapshot">
+
+                    <div class="snapshot-top">
+
+                        <div class="snapshot-symbol">
+                            ✦
+                        </div>
+
+                        <span>
+                            PROGRESS
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        Keep going
+                    </h3>
+
+                    <p>
+                        Small steps create meaningful change.
+                    </p>
+
+                    <a href="progress.html">
+                        View progress →
+                    </a>
+
+                </div>
+
+
+                <!-- Reflection -->
+
+                <div class="snapshot-card reflection-snapshot">
+
+                    <div class="snapshot-top">
+
+                        <div class="snapshot-symbol">
+                            ✎
+                        </div>
+
+                        <span>
+                            REFLECTION
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        Make space for your thoughts
+                    </h3>
+
+                    <p>
+                        Write freely without judgment.
+                    </p>
+
+                    <a href="journal.html">
+                        Open journal →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================
+             WELLNESS TOOLS
+        ====================================== -->
+
+        <section class="tools-section">
+
+            <div class="section-title">
+
+                <div>
+
+                    <span class="eyebrow">
+                        MINDMIRROR TOOLS
+                    </span>
+
+                    <h2>
+                        Choose what you need right now
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="tools-grid">
+
+
+                <!-- AI -->
+
+                <a href="therapist.html" class="tool-card ai-tool">
+
+                    <div class="tool-number">
+                        01
+                    </div>
+
+                    <div class="tool-icon">
+                        ✦
+                    </div>
+
+                    <div class="tool-content">
+
+                        <span>
+                            AI SUPPORT
+                        </span>
+
+                        <h3>
+                            AI Wellness Assistant
+                        </h3>
+
+                        <p>
+                            Talk through your thoughts with
+                            your MindMirror AI companion.
+                        </p>
+
+                    </div>
+
+                    <div class="tool-arrow">
+                        →
+                    </div>
+
+                </a>
+
+
+                <!-- Breathing -->
+
+                <a href="relax.html" class="tool-card breathing-tool">
+
+                    <div class="tool-number">
+                        02
+                    </div>
+
+                    <div class="tool-icon">
+                        ◌
+                    </div>
+
+                    <div class="tool-content">
+
+                        <span>
+                            MINDFULNESS
+                        </span>
+
+                        <h3>
+                            Guided Breathing
+                        </h3>
+
+                        <p>
+                            Slow down with guided breathing
+                            and calming exercises.
+                        </p>
+
+                    </div>
+
+                    <div class="tool-arrow">
+                        →
+                    </div>
+
+                </a>
+
+
+                <!-- Journal -->
+
+                <a href="journal.html" class="tool-card journal-tool">
+
+                    <div class="tool-number">
+                        03
+                    </div>
+
+                    <div class="tool-icon">
+                        ✎
+                    </div>
+
+                    <div class="tool-content">
+
+                        <span>
+                            REFLECTION
+                        </span>
+
+                        <h3>
+                            Emotional Journal
+                        </h3>
+
+                        <p>
+                            Put your thoughts into words and
+                            reflect on your day.
+                        </p>
+
+                    </div>
+
+                    <div class="tool-arrow">
+                        →
+                    </div>
+
+                </a>
+
+
+                <!-- Progress -->
+
+                <a href="progress.html" class="tool-card progress-tool">
+
+                    <div class="tool-number">
+                        04
+                    </div>
+
+                    <div class="tool-icon">
+                        ↗
+                    </div>
+
+                    <div class="tool-content">
+
+                        <span>
+                            INSIGHTS
+                        </span>
+
+                        <h3>
+                            Wellness Progress
+                        </h3>
+
+                        <p>
+                            Look back at your mood and
+                            wellness journey.
+                        </p>
+
+                    </div>
+
+                    <div class="tool-arrow">
+                        →
+                    </div>
+
+                </a>
+                <!-- Emergency Support -->
+
+<a href="emergency.html" class="tool-card emergency-tool">
+
+    <div class="tool-number">
+        05
+    </div>
+
+    <div class="tool-icon">
+        🆘
+    </div>
+
+    <div class="tool-content">
+
+        <span>
+            SUPPORT
+        </span>
+
+        <h3>
+            Emergency Support
+        </h3>
+
+        <p>
+            Find immediate guidance and support when you need it.
+        </p>
+
+    </div>
+
+    <div class="tool-arrow">
+        →
+    </div>
+</a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================
+             DAILY MESSAGE
+        ====================================== -->
+
+        <section class="daily-message">
+
+            <div class="message-symbol">
+                “
+            </div>
+
+            <div>
+
+                <span>
+                    TODAY'S REMINDER
+                </span>
+
+                <p>
+                    You don't have to fix everything today.
+                    Just take the next small step.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================
+             FOOTER
+        ====================================== -->
+
+        <footer class="mm-footer">
+
+            <span>
+                MindMirror AI
+            </span>
+
+            <p>
+                Breathe. Reflect. Understand yourself.
+            </p>
+
+        </footer>
+
+    </main>
+
+
+
+    <script src="JS/dashboard.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>MindMirror AI | Mood Check-In</title>
+
+    <link rel="stylesheet" href="CSS/style.css">
+
+</head>
+
+
+<body>
+
+    <!-- ==============================
+         HEADER
+    =============================== -->
+
+    <header class="dashboard-header">
+
+        <div class="brand">
+
+            <img
+                src="Images/logo.png"
+                class="logo"
+                alt="MindMirror AI Logo"
+            >
+
+            <span>MindMirror AI</span>
+
+        </div>
+
+
+        <a href="dashboard.html"
+           class="profile-link">
+
+            ← Dashboard
+
+        </a>
+
+    </header>
+
+
+
+    <!-- ==============================
+         MOOD CHECK
+    =============================== -->
+
+    <main class="mood-main">
+
+        <section class="mood-container">
+
+
+            <div class="mood-heading">
+
+                <span class="mood-label">
+                    DAILY CHECK-IN
+                </span>
+
+                <h1>
+                    How are you feeling today?
+                </h1>
+
+                <p>
+                    Take a moment to notice how you feel.
+                    There is no right or wrong answer.
+                </p>
+
+            </div>
+
+
+
+            <!-- ==========================
+                 MOOD OPTIONS
+            =========================== -->
+
+            <div class="mood-options">
+
+
+                <button
+                    type="button"
+                    class="mood-option"
+                    data-mood="Very Happy"
+                >
+
+                    <span class="mood-emoji">
+                        😄
+                    </span>
+
+                    <span>
+                        Very Happy
+                    </span>
+
+                </button>
+
+
+
+                <button
+                    type="button"
+                    class="mood-option"
+                    data-mood="Happy"
+                >
+
+                    <span class="mood-emoji">
+                        😊
+                    </span>
+
+                    <span>
+                        Happy
+                    </span>
+
+                </button>
+
+
+
+                <button
+                    type="button"
+                    class="mood-option"
+                    data-mood="Okay"
+                >
+
+                    <span class="mood-emoji">
+                        😐
+                    </span>
+
+                    <span>
+                        Okay
+                    </span>
+
+                </button>
+
+
+
+                <button
+                    type="button"
+                    class="mood-option"
+                    data-mood="Sad"
+                >
+
+                    <span class="mood-emoji">
+                        😔
+                    </span>
+
+                    <span>
+                        Sad
+                    </span>
+
+                </button>
+
+
+
+                <button
+                    type="button"
+                    class="mood-option"
+                    data-mood="Very Sad"
+                >
+
+                    <span class="mood-emoji">
+                        😢
+                    </span>
+
+                    <span>
+                        Very Sad
+                    </span>
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- ==========================
+                 SELECTED MOOD
+            =========================== -->
+
+            <div id="selectedMood"
+                 class="selected-mood">
+
+                Select a mood above
+
+            </div>
+
+
+
+            <!-- ==========================
+                 INTENSITY
+            =========================== -->
+
+            <div class="mood-level">
+
+                <label for="moodRange">
+
+                    How strongly are you feeling this mood?
+
+                </label>
+
+
+                <div class="range-row">
+
+                    <span>1</span>
+
+                    <input
+                        type="range"
+                        id="moodRange"
+                        min="1"
+                        max="10"
+                        value="5"
+                    >
+
+                    <span>10</span>
+
+                </div>
+
+
+                <div class="intensity-value">
+
+                    Intensity:
+                    <strong id="rangeValue">
+                        5
+                    </strong>
+
+                    / 10
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==========================
+                 NOTE
+            =========================== -->
+
+            <div class="mood-note">
+
+                <label for="moodNote">
+
+                    What is on your mind?
+
+                </label>
+
+
+                <textarea
+                    id="moodNote"
+                    placeholder="Write a few words about how you feel... (optional)"
+                ></textarea>
+
+            </div>
+
+
+
+            <!-- ==========================
+                 SAVE BUTTON
+            =========================== -->
+
+            <button
+                type="button"
+                id="saveMood"
+                class="save-mood-button"
+            >
+
+                Save My Mood
+
+            </button>
+
+
+
+            <!-- ==========================
+                 MESSAGE
+            =========================== -->
+
+            <p id="moodMessage"
+               class="mood-message">
+            </p>
+
+
+
+            <!-- ==========================
+                 DAILY REMINDER
+            =========================== -->
+
+            <div class="mood-reminder">
+
+                <span>
+                    🌿
+                </span>
+
+                <p>
+                    Checking in with yourself is
+                    already a step toward understanding
+                    your emotions.
+                </p>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+
+
+    <!-- JavaScript -->
+
+    <script src="JS/mood.js"></script>
+
+</body>
+
+</html>
