@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MindMirror AI - AI Therapist</title>
+
+    <link rel="stylesheet" href="CSS/style.css">
+
+</head>
+
+<body>
+
+    <!-- Header -->
+
+    <header class="dashboard-header">
+
+        <div class="brand">
+
+            <img src="Images/logo.png"
+                 class="logo"
+                 alt="MindMirror AI Logo">
+
+            <span>MindMirror AI</span>
+
+        </div>
+
+        <a href="dashboard.html" class="profile-link">
+            ← Dashboard
+        </a>
+
+    </header>
+
+    <!-- Main -->
+
+    <main class="chat-main">
+
+        <section class="chat-container">
+
+            <h1>🌿 Ven — MindMirror Companion</h1>
+            <p class="chat-subtitle">
+    I'm Ven, your MindMirror wellness companion.
+    I'm here to listen, help you reflect, and guide you
+    through simple CBT-based wellness activities.
+</p>
+
+            <!-- Chat Box -->
+
+            <div class="chat-box" id="chatBox">
+
+                <div class="message bot">
+
+                    <div class="avatar">
+                        🌿
+                    </div>
+
+                    <div class="message-text">
+                        Hello! 👋 I'm Ven, your MindMirror companion.
+                        <br><br>
+                        How are you feeling today?
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Quick Suggestions -->
+
+            <div class="quick-options">
+
+                <button class="quick-btn">
+                    😊 I'm Happy
+                </button>
+
+                <button class="quick-btn">
+                    😔 I'm Sad
+                </button>
+
+                <button class="quick-btn">
+                    😣 I'm Stressed
+                </button>
+
+                <button class="quick-btn">
+                    😴 I'm Tired
+                </button>
+
+            </div>
+
+            <!-- Input -->
+
+            <div class="chat-input-area">
+
+                <input
+                    type="text"
+                    id="userInput"
+                    placeholder="Type your message...">
+
+                <button id="voiceBtn"
+                        title="Voice Input">
+
+                    🎤
+
+                </button>
+
+                <button id="sendBtn">
+
+                    ➤
+
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="JS/therapist.js"></script>
+ 
+</body>
+
+</html>

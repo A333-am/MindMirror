@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MindMirror - Relax & Breathe</title>
+
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="main-header">
+        <div class="logo-area">
+            <img src="Images/logo.png" alt="MindMirror Logo">
+            <span>MindMirror AI</span>
+        </div>
+
+        <nav>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="mood.html">Mood</a>
+            <a href="journal.html">Journal</a>
+            <a href="therapist.html">Therapist</a>
+            <a href="progress.html">Progress</a>
+            <a href="relax.html" class="active">Relax</a>
+            <a href="profile.html">Profile</a>
+        </nav>
+    </header>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="relax-container">
+
+        <section class="relax-header">
+            <h1>🌿 Relax & Breathe</h1>
+
+            <p>
+                Take a moment to slow down, breathe gently,
+                and relax your mind.
+            </p>
+        </section>
+
+
+        <!--VEN AVATAR -->
+        <div class="avatar-area" id="venAvatar">
+
+            <div class="avatar-glow"></div>
+
+            <div class="ven-avatar">
+
+                <div class="ven-hair"></div>
+
+                <div class="ven-face">
+                    <div class="ven-eye left"></div>
+                    <div class="ven-eye right"></div>
+
+                    <div class="ven-eyebrow left"></div>
+                    <div class="ven-eyebrow right"></div>
+
+                    <div class="ven-nose"></div>
+                    <div class="ven-mouth"></div>
+                </div>
+
+                <div class="ven-neck"></div>
+
+                <div class="ven-body">
+                    <div class="lotus-symbol">🪷</div>
+                </div>
+
+                <div class="ven-arm left-arm"></div>
+                <div class="ven-arm right-arm"></div>
+
+            </div>
+
+            <div class="ven-message">
+            <strong>Hi! I'm Ven 💜</strong>
+                <span>
+                    Breathe with me.<br>
+                    You are doing great.
+                </span>
+            </div>
+
+        </div>
+
+
+        <!-- BREATHING EXERCISE -->
+        <section class="breathing-card">
+
+            <h2 id="breathingText">Ready</h2>
+
+            <div id="timer"></div>
+
+            <p id="breathingMessage">
+                Press Start Exercise when you're ready.
+            </p>
+
+
+            <!-- CYCLE SELECTION -->
+            <div class="cycle-selection">
+
+                <h3>Choose your session</h3>
+
+                <div class="cycle-buttons">
+
+                    <button type="button" class="cycle-btn active" data-cycles="1">
+                        1 Cycle
+                    </button>
+
+                    <button type="button" class="cycle-btn" data-cycles="3">
+                        3 Cycles
+                    </button>
+
+                    <button type="button" class="cycle-btn" data-cycles="5">
+                        5 Cycles
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- CONTROLS -->
+            <div class="breathing-controls">
+
+                <button id="startBreathing" type="button">
+                    Start Exercise
+                </button>
+
+                <button id="stopBreathing" type="button">
+                    Stop
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- BREATHING INFORMATION -->
+        <section class="breathing-info">
+
+            <div class="breathing-info-card">
+                <h3>🌬️ 4 Seconds</h3>
+                <p>Breathe in slowly through your nose.</p>
+            </div>
+
+            <div class="breathing-info-card">
+                <h3>⏸️ 2 Seconds</h3>
+                <p>Gently hold your breath.</p>
+            </div>
+
+            <div class="breathing-info-card">
+                <h3>🍃 6 Seconds</h3>
+                <p>Slowly breathe out and relax.</p>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="JS/relax.js"></script>
+
+</body>
+</html>

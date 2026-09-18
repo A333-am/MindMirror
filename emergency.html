@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>MindMirror AI - Emergency Support</title>
+
+    <link rel="stylesheet" href="CSS/style.css">
+
+    <style>
+
+        /* ==========================================
+           EMERGENCY SUPPORT PAGE
+        ========================================== */
+
+        .emergency-main {
+            min-height: calc(100vh - 90px);
+            padding: 50px 20px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        .emergency-container {
+            width: 100%;
+            max-width: 850px;
+
+            background: white;
+
+            padding: 45px;
+
+            border-radius: 24px;
+
+            box-shadow:
+                0 15px 40px rgba(0, 0, 0, 0.10);
+
+            text-align: center;
+        }
+
+
+        .emergency-icon {
+            width: 80px;
+            height: 80px;
+
+            margin: 0 auto 20px;
+
+            border-radius: 50%;
+
+            background: #fff0f0;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 40px;
+        }
+
+
+        .emergency-container h1 {
+            color: #b95757;
+
+            font-size: 32px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .emergency-subtitle {
+            color: #666;
+
+            font-size: 16px;
+
+            line-height: 1.7;
+
+            max-width: 650px;
+
+            margin: 0 auto 35px;
+        }
+
+
+        /* Immediate Help */
+
+        .emergency-alert {
+            background: #fff5f5;
+
+            border-left: 5px solid #c95c5c;
+
+            padding: 22px;
+
+            border-radius: 12px;
+
+            text-align: left;
+
+            margin-bottom: 25px;
+        }
+
+
+        .emergency-alert h2 {
+            color: #a94442;
+
+            margin-bottom: 10px;
+
+            font-size: 20px;
+        }
+
+
+        .emergency-alert p {
+            color: #555;
+
+            margin: 0;
+
+            line-height: 1.6;
+        }
+
+
+        /* Support Cards */
+
+        .support-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 20px;
+
+            margin-top: 25px;
+        }
+
+
+        .support-card {
+            background: #faf8fc;
+
+            border: 1px solid #eee;
+
+            border-radius: 16px;
+
+            padding: 25px;
+
+            text-align: left;
+        }
+
+
+        .support-card-icon {
+            font-size: 30px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .support-card h3 {
+            color: #4c51bf;
+
+            margin-bottom: 8px;
+        }
+
+
+        .support-card p {
+            color: #666;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+            margin-bottom: 15px;
+        }
+
+
+        .support-card a {
+            display: inline-block;
+
+            text-decoration: none;
+
+            background: #6c63ff;
+
+            color: white;
+
+            padding: 9px 18px;
+
+            border-radius: 20px;
+
+            font-size: 14px;
+        }
+
+
+        .support-card a:hover {
+            background: #574fd6;
+        }
+
+
+        /* Safety Note */
+
+        .safety-note {
+            margin-top: 30px;
+
+            padding: 18px;
+
+            background: #f4f1fa;
+
+            border-radius: 12px;
+
+            color: #666;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+
+        /* Back Button */
+
+        .back-dashboard {
+            display: inline-block;
+
+            margin-top: 25px;
+
+            padding: 12px 25px;
+
+            background: #6c63ff;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 25px;
+
+            font-weight: 600;
+        }
+
+
+        .back-dashboard:hover {
+            background: #574fd6;
+        }
+
+
+        /* Mobile */
+
+        @media (max-width: 700px) {
+
+            .emergency-container {
+                padding: 30px 20px;
+            }
+
+            .support-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .emergency-container h1 {
+                font-size: 26px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ==========================================
+         HEADER
+    =========================================== -->
+
+    <header class="dashboard-header">
+
+        <div class="brand">
+
+            <img
+                src="Images/logo.png"
+                class="logo"
+                alt="MindMirror AI Logo"
+            >
+
+            <span>
+                MindMirror AI
+            </span>
+
+        </div>
+
+
+        <a
+            href="dashboard.html"
+            class="profile-link"
+        >
+            ← Dashboard
+        </a>
+
+    </header>
+
+
+
+    <!-- ==========================================
+         EMERGENCY SUPPORT
+    =========================================== -->
+
+    <main class="emergency-main">
+
+        <section class="emergency-container">
+
+
+            <!-- Icon -->
+
+            <div class="emergency-icon">
+                🆘
+            </div>
+
+
+            <h1>
+                Emergency Support
+            </h1>
+
+
+            <p class="emergency-subtitle">
+
+                If you are feeling overwhelmed or unsafe,
+                you don't have to face it alone.
+                Please reach out to someone who can help.
+
+            </p>
+
+
+
+            <!-- Immediate Help -->
+
+            <div class="emergency-alert">
+
+                <h2>
+                    🛟 If you need immediate help
+                </h2>
+
+                <p>
+
+                    If you are in immediate danger or feel that
+                    you may hurt yourself or someone else,
+                    contact your local emergency service or
+                    go to the nearest emergency department.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- Support Options -->
+
+            <div class="support-grid">
+
+
+                <!-- Trusted Person -->
+
+                <div class="support-card">
+
+                    <div class="support-card-icon">
+                        💜
+                    </div>
+
+                    <h3>
+                        Talk to Someone You Trust
+                    </h3>
+
+                    <p>
+
+                        Reach out to a family member,
+                        friend, teacher, counselor, or another
+                        trusted person and let them know
+                        how you are feeling.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- Professional Support -->
+
+                <div class="support-card">
+
+                    <div class="support-card-icon">
+                        🧑‍⚕️
+                    </div>
+
+                    <h3>
+                        Professional Support
+                    </h3>
+
+                    <p>
+
+                        A qualified mental-health professional
+                        can provide appropriate assessment,
+                        guidance, and support.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- Emergency Services -->
+
+                <div class="support-card">
+
+                    <div class="support-card-icon">
+                        🚨
+                    </div>
+
+                    <h3>
+                        Emergency Services
+                    </h3>
+
+                    <p>
+
+                        If there is an immediate emergency,
+                        contact your local emergency service
+                        or visit the nearest emergency department.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- Stay Connected -->
+
+                <div class="support-card">
+
+                    <div class="support-card-icon">
+                        🤝
+                    </div>
+
+                    <h3>
+                        Stay Connected
+                    </h3>
+
+                    <p>
+
+                        Try to stay with someone you trust
+                        and avoid being alone if you feel
+                        that you are not safe.
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- Safety Note -->
+
+            <div class="safety-note">
+
+                <strong>Important:</strong>
+
+                MindMirror AI is a wellness support application
+                and is not a replacement for a doctor, therapist,
+                counselor, or emergency service.
+
+                If you are in immediate danger,
+                seek professional emergency help.
+
+            </div>
+
+
+
+            <!-- Back -->
+
+            <a
+                href="dashboard.html"
+                class="back-dashboard"
+            >
+                ← Back to Dashboard
+            </a>
+
+
+        </section>
+
+    </main>
+
+
+</body>
+
+</html>
