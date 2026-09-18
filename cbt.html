@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CBT Thought Reflection - MindMirror</title>
+
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="main-header">
+
+        <div class="logo-area">
+            <img src="Images/logo.png" alt="MindMirror Logo">
+            <span>MindMirror</span>
+        </div>
+
+        <nav>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="profile.html">Profile</a>
+        </nav>
+
+    </header>
+
+
+    <!-- CBT Thought Reflection -->
+    <main class="page-container">
+
+        <div class="cbt-section">
+
+            <h2>🧠 CBT Thought Reflection Exercise</h2>
+
+            <p id="cbt-progress">
+                Step 1 of 6
+            </p>
+
+
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div id="cbt-progress-bar"></div>
+            </div>
+
+
+            <!-- Question -->
+            <p id="cbt-question">
+                What situation is bothering you right now?
+            </p>
+
+
+            <!-- Answer -->
+            <textarea
+                id="cbt-answer"
+                rows="5"
+                placeholder="Write your answer here..."
+            ></textarea>
+
+
+            <!-- Main Buttons -->
+            <div class="cbt-buttons">
+
+                <button onclick="submitCBT()">
+                    Continue CBT Exercise
+                </button>
+
+                <button onclick="resetCBT()">
+                    🔄 Reset CBT Exercise
+                </button>
+
+            </div>
+
+
+            <!-- Saved Session / History -->
+            <div class="cbt-actions">
+
+                <button onclick="viewSavedCBT()">
+                    📖 View Saved Session
+                </button>
+
+                <button onclick="clearSavedCBT()">
+                    🧹 Clear Saved Session
+                </button>
+
+                <button onclick="viewCBTHistory()">
+                    🗂️ CBT History
+                </button>
+
+                <button onclick="clearCBTHistory()">
+                    🗑️ Clear CBT History
+                </button>
+
+            </div>
+
+
+            <!-- Results -->
+            <div id="cbt-result"></div>
+
+            <div id="cbt-summary"></div>
+
+            <div id="emotion-insights"></div>
+
+            <div id="emotion-trend"></div>
+
+
+            <!-- Safety Note -->
+            <p class="safety-note">
+                🌱 MindMirror provides general reflection support and is not
+                a substitute for professional mental-health care.
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <!-- CBT JavaScript -->
+    <script src="JS/cbt.js"></script>
+
+</body>
+</html>

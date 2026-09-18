@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mood Booster - MindMirror</title>
+
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="main-header">
+
+        <div class="logo-area">
+            <img src="Images/logo.png" alt="MindMirror Logo">
+            <span>MindMirror</span>
+        </div>
+
+        <nav>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="profile.html">Profile</a>
+        </nav>
+
+    </header>
+
+
+    <!-- Main Content -->
+    <main class="page-container">
+
+        <div class="cbt-section">
+
+            <h2>✨ Mood Booster Activities</h2>
+
+            <p>
+                Choose a simple activity that may help you feel better
+                and take a positive break.
+            </p>
+
+
+            <h3>🌱 Choose an Activity</h3>
+
+            <div class="mood-booster-options">
+
+                <button onclick="selectMoodBooster('music')">
+                    🎵 Listen to Music
+                </button>
+
+                <button onclick="selectMoodBooster('gratitude')">
+                    💜 Practice Gratitude
+                </button>
+
+                <button onclick="selectMoodBooster('relaxation')">
+                    🧘 Relaxation
+                </button>
+
+                <button onclick="selectMoodBooster('activity')">
+                    🚶 Physical Activity
+                </button>
+
+            </div>
+
+
+            <!-- Activity Result -->
+            <div id="mood-booster-result"></div>
+
+        </div>
+
+    </main>
+
+
+    <!-- Mood Booster JavaScript -->
+    <script src="JS/mood-booster.js"></script>
+
+</body>
+</html>

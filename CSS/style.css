@@ -1,0 +1,486 @@
+/* ================================
+   ROUTINE BUILDER
+   ================================ */
+
+.cbt-section {
+    max-width: 850px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(76, 81, 191, 0.10);
+}
+
+.cbt-section h2 {
+    color: #4c51bf;
+    margin-bottom: 10px;
+}
+
+.cbt-section h3 {
+    color: #403746;
+    margin-top: 25px;
+    margin-bottom: 12px;
+}
+
+.cbt-section p {
+    color: #555;
+    line-height: 1.6;
+}
+
+.cbt-section input[type="text"] {
+    width: 100%;
+    max-width: 500px;
+    padding: 12px 15px;
+    border: 1px solid #d9d9e8;
+    border-radius: 10px;
+    font-size: 15px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.cbt-section input[type="text"]:focus {
+    border-color: #6c63ff;
+    box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.10);
+}
+
+.cbt-section button {
+    padding: 11px 18px;
+    border: none;
+    border-radius: 10px;
+    background: #6c63ff;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.cbt-section button:hover {
+    background: #4c51bf;
+    transform: translateY(-1px);
+}
+
+#routine-list {
+    margin-top: 15px;
+}
+
+#routine-list .cbt-complete {
+    padding: 16px 18px;
+    margin-top: 12px;
+    border-radius: 12px;
+    background: #f5f3ff;
+    border: 1px solid #e3e0ff;
+}
+
+#routine-list label {
+    color: #403746;
+    font-size: 15px;
+}
+
+#routine-list input[type="checkbox"] {
+    margin-right: 8px;
+    accent-color: #6c63ff;
+}
+
+#routine-list button {
+    background: #e57373;
+    padding: 8px 14px;
+    font-size: 13px;
+}
+
+#routine-list button:hover {
+    background: #d95353;
+}
+
+
+/* Mobile */
+@media (max-width: 600px) {
+
+    .cbt-section {
+        margin: 20px 15px;
+        padding: 22px;
+    }
+
+    .cbt-section h2 {
+        font-size: 22px;
+    }
+
+    .cbt-section h3 {
+        font-size: 18px;
+    }
+
+    .cbt-section input[type="text"] {
+        max-width: 100%;
+    }
+}
+
+/* =========================================
+   SLEEP COMPANION
+   ========================================= */
+
+#sleep-result,
+#sleep-reminder-result {
+    margin-top: 15px;
+}
+
+#sleep-result .cbt-complete,
+#sleep-reminder-result .cbt-complete {
+    padding: 16px 18px;
+    margin-top: 12px;
+    border-radius: 12px;
+    background: #f5f3ff;
+    border: 1px solid #e3e0ff;
+}
+
+#sleepReminderTime {
+    width: 100%;
+    max-width: 180px;
+    padding: 11px 12px;
+    border: 1px solid #d9d9e8;
+    border-radius: 10px;
+    font-size: 15px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+#sleepReminderTime:focus {
+    border-color: #6c63ff;
+    box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.10);
+}
+
+
+/* =========================================
+   SELF-CARE REMINDERS
+   ========================================= */
+
+#selfCareInput {
+    width: 100%;
+    max-width: 500px;
+    padding: 12px 15px;
+    border: 1px solid #d9d9e8;
+    border-radius: 10px;
+    font-size: 15px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+#selfCareInput:focus {
+    border-color: #6c63ff;
+    box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.10);
+}
+
+#self-care-list {
+    margin-top: 15px;
+}
+
+#self-care-list .cbt-complete {
+    padding: 16px 18px;
+    margin-top: 12px;
+    border-radius: 12px;
+    background: #f5f3ff;
+    border: 1px solid #e3e0ff;
+}
+
+#self-care-list .cbt-complete p {
+    color: #403746;
+    margin-bottom: 12px;
+}
+
+#self-care-list button {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 9px;
+    background: #e57373;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+#self-care-list button:hover {
+    background: #d95353;
+    transform: translateY(-1px);
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    #selfCareInput {
+        max-width: 100%;
+    }
+
+    #sleepReminderTime {
+        max-width: 180px;
+    }
+}
+
+/* =========================================
+   MOOD BOOSTER ACTIVITIES
+   ========================================= */
+
+.mood-booster-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.mood-booster-options button {
+    width: 100%;
+    min-height: 55px;
+}
+
+#mood-booster-result {
+    margin-top: 20px;
+}
+
+#mood-booster-result .cbt-complete {
+    padding: 18px;
+    border-radius: 12px;
+    background: #f5f3ff;
+    border: 1px solid #e3e0ff;
+}
+
+#mood-booster-result h3 {
+    margin-top: 0;
+    color: #4c51bf;
+}
+
+
+/* =========================================
+   SOCIAL SUPPORT GUIDANCE
+   ========================================= */
+
+.social-support-options {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.social-support-options button {
+    width: 100%;
+    min-height: 55px;
+}
+
+#support-guidance-result {
+    margin-top: 20px;
+}
+
+#support-guidance-result .cbt-complete {
+    padding: 18px;
+    border-radius: 12px;
+    background: #f5f3ff;
+    border: 1px solid #e3e0ff;
+}
+
+#support-guidance-result h3 {
+    margin-top: 0;
+    color: #4c51bf;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    .mood-booster-options {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* =========================================
+   CBT THOUGHT REFLECTION
+   ========================================= */
+
+.cbt-section {
+    max-width: 850px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(76, 81, 191, 0.10);
+}
+
+.cbt-section h2 {
+    color: #4c51bf;
+    margin-bottom: 10px;
+}
+
+.cbt-section h3 {
+    color: #403746;
+    margin-top: 22px;
+    margin-bottom: 10px;
+}
+
+#cbt-progress {
+    color: #6c63ff;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+
+/* Progress Bar */
+
+.progress-container {
+    width: 100%;
+    height: 9px;
+    background: #eeeaf7;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 28px;
+}
+
+#cbt-progress-bar {
+    width: 16.66%;
+    height: 100%;
+    background: #6c63ff;
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+
+/* Question */
+
+#cbt-question {
+    color: #403746;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+
+/* Answer Box */
+
+#cbt-answer {
+    width: 100%;
+    min-height: 140px;
+    padding: 14px;
+    border: 1px solid #d9d9e8;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 15px;
+    line-height: 1.5;
+    resize: vertical;
+    outline: none;
+    box-sizing: border-box;
+}
+
+#cbt-answer:focus {
+    border-color: #6c63ff;
+    box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.10);
+}
+
+
+/* Buttons */
+
+.cbt-buttons,
+.cbt-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.cbt-section button {
+    padding: 11px 18px;
+    border: none;
+    border-radius: 10px;
+    background: #6c63ff;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.cbt-section button:hover {
+    background: #4c51bf;
+    transform: translateY(-1px);
+}
+
+
+/* Results */
+
+#cbt-result,
+#cbt-summary,
+#emotion-insights,
+#emotion-trend {
+    margin-top: 20px;
+}
+
+.cbt-complete {
+    padding: 18px;
+    margin-top: 15px;
+    border-radius: 12px;
+    background: #f5f3ff;
+    border: 1px solid #e3e0ff;
+}
+
+.cbt-complete h3 {
+    color: #4c51bf;
+    margin-top: 0;
+}
+
+.cbt-complete p {
+    color: #403746;
+    line-height: 1.6;
+}
+
+.loading-message {
+    padding: 16px;
+    border-radius: 12px;
+    background: #f5f3ff;
+    color: #4c51bf;
+    font-weight: 600;
+}
+
+
+/* Safety Note */
+
+.safety-note {
+    margin-top: 30px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    background: #faf8ff;
+    color: #666;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .cbt-section {
+        margin: 20px 15px;
+        padding: 22px;
+    }
+
+    .cbt-section h2 {
+        font-size: 22px;
+    }
+
+    #cbt-question {
+        font-size: 16px;
+    }
+
+    .cbt-buttons,
+    .cbt-actions {
+        flex-direction: column;
+    }
+
+    .cbt-section button {
+        width: 100%;
+    }
+}
+

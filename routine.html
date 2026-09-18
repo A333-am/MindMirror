@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Routine Builder - MindMirror</title>
+
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="main-header">
+
+        <div class="logo-area">
+            <img src="Images/logo.png" alt="MindMirror Logo">
+            <span>MindMirror</span>
+        </div>
+
+        <nav>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="profile.html">Profile</a>
+        </nav>
+
+    </header>
+
+
+    <!-- Main Content -->
+    <main class="page-container">
+
+        <div class="cbt-section">
+
+            <h2>📅 Routine Builder</h2>
+
+            <p>
+                Create a simple daily routine and build healthy habits
+                at your own pace.
+            </p>
+
+
+            <!-- Add Routine Activity -->
+            <h3>📝 Add Routine Activity</h3>
+
+            <input
+                type="text"
+                id="routineInput"
+                placeholder="Enter a routine activity"
+            >
+
+            <br><br>
+
+            <button onclick="addRoutineActivity()">
+                ➕ Add Activity
+            </button>
+
+
+            <!-- Routine List -->
+            <h3>🌱 Your Daily Routine</h3>
+
+            <div id="routine-list"></div>
+
+        </div>
+
+    </main>
+
+
+    <!-- Routine JavaScript -->
+    <script src="JS/routine.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Social Support Guidance - MindMirror</title>
+
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="main-header">
+
+        <div class="logo-area">
+            <img src="Images/logo.png" alt="MindMirror Logo">
+            <span>MindMirror</span>
+        </div>
+
+        <nav>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="profile.html">Profile</a>
+        </nav>
+
+    </header>
+
+
+    <!-- Main Content -->
+    <main class="page-container">
+
+        <div class="cbt-section">
+
+            <h2>🤝 Social Support Guidance</h2>
+
+            <p>
+                Connecting with trusted people and professional support
+                can help you feel less alone.
+            </p>
+
+
+            <h3>💜 Choose the Support You Need</h3>
+
+            <div class="social-support-options">
+
+                <button onclick="showSupportGuidance('trusted')">
+                    👨‍👩‍👧 Talk to Someone You Trust
+                </button>
+
+                <button onclick="showSupportGuidance('counselor')">
+                    💬 Talk to a Counselor
+                </button>
+
+                <button onclick="showSupportGuidance('professional')">
+                    🩺 Seek Professional Support
+                </button>
+
+            </div>
+
+
+            <!-- Guidance Result -->
+            <div id="support-guidance-result"></div>
+
+        </div>
+
+    </main>
+
+
+    <!-- Social Support JavaScript -->
+    <script src="JS/social-support.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sleep Companion - MindMirror</title>
+
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="logo-area">
+            <img src="Images/logo.png" alt="MindMirror Logo">
+            <span>MindMirror</span>
+        </div>
+
+        <nav>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="profile.html">Profile</a>
+        </nav>
+    </header>
+
+
+    <!-- Main Content -->
+    <main class="page-container">
+
+        <div class="cbt-section">
+
+            <h2>😴 Sleep Companion</h2>
+
+            <p>
+                Build healthy sleep habits and create a relaxing bedtime routine.
+            </p>
+
+
+            <!-- Sleep Guidance -->
+            <h3>🌙 Sleep Guidance</h3>
+
+            <p>
+                Try to keep a consistent bedtime, reduce screen use before
+                sleeping, and create a calm and comfortable sleep environment.
+            </p>
+
+
+            <!-- Bedtime Routine -->
+            <h3>🛏️ Bedtime Routine</h3>
+
+            <label>
+                <input type="checkbox" id="sleepRoutine1">
+                📱 Stop using screens before bed
+            </label>
+
+            <br><br>
+
+            <label>
+                <input type="checkbox" id="sleepRoutine2">
+                🧘 Do a relaxing activity
+            </label>
+
+            <br><br>
+
+            <label>
+                <input type="checkbox" id="sleepRoutine3">
+                📖 Read or journal
+            </label>
+
+            <br><br>
+
+            <label>
+                <input type="checkbox" id="sleepRoutine4">
+                🛌 Prepare for sleep
+            </label>
+
+            <br><br>
+
+            <button onclick="checkSleepRoutine()">
+                ✅ Complete Sleep Routine
+            </button>
+
+            <div id="sleep-result"></div>
+
+
+            <!-- Sleep Reminder -->
+            <h3>⏰ Sleep Reminder</h3>
+
+            <p>
+                Choose your preferred bedtime reminder.
+            </p>
+
+            <input type="time" id="sleepReminderTime">
+
+            <br><br>
+
+            <button onclick="saveSleepReminder()">
+                💾 Save Sleep Reminder
+            </button>
+
+            <div id="sleep-reminder-result"></div>
+
+        </div>
+
+    </main>
+
+
+    <!-- Sleep JavaScript -->
+    <script src="JS/sleep.js"></script>
+
+</body>
+</html>
