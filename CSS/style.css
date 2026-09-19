@@ -376,7 +376,6 @@ ROUTINE BUILDER
 #cbt-answer:focus {
     border-color: #6c63ff;
     box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.10);
-=======
 /* =========================================================
    MINDMIRROR
    Calm Lavender + Purple Theme
@@ -2504,7 +2503,6 @@ body {
 }
 /* ==========================================
    MINDMIRROR - PROGRESS PAGE
-========================================== */
 
 .progress-main {
     min-height: calc(100vh - 90px);
@@ -2615,7 +2613,6 @@ body {
 }
 /* ==========================================
    MINDMIRROR RELAXATION & BREATHING
-========================================== */
 
 .relax-main {
     min-height: calc(100vh - 85px);
@@ -2657,7 +2654,6 @@ body {
 
 /* ==========================================
    AVATAR
-========================================== */
 
 .avatar-area {
     position: relative;
@@ -2780,7 +2776,6 @@ body {
 
 /* ==========================================
    BREATHING ANIMATION
-========================================== */
 
 .avatar-area.breathe-in .avatar-glow {
     transform: scale(1.15);
@@ -2813,13 +2808,11 @@ body {
 #breathingMessage {
     color: #756d83;
     margin-top: 8px;
->>>>>>> origin/master
 }
 
 
 /* Buttons */
 
-<<<<<<< HEAD
 .cbt-buttons,
 .cbt-actions {
     display: flex;
@@ -2878,7 +2871,6 @@ body {
     border-radius: 12px;
     background: #f5f3ff;
     color: #4c51bf;
-=======
 .breathing-controls {
     margin: 25px 0;
     display: flex;
@@ -2915,7 +2907,6 @@ body {
 
 /* ==========================================
    BREATHING STEPS
-========================================== */
 
 .breathing-info {
     display: flex;
@@ -2972,7 +2963,6 @@ body {
 }
 /* ==========================================
    MINDMIRROR AI - NEW DASHBOARD
-========================================== */
 
 .dashboard {
     min-height: calc(100vh - 85px);
@@ -2983,7 +2973,6 @@ body {
 
 /* ==========================================
    WELCOME
-========================================== */
 
 .welcome-section {
     max-width: 1100px;
@@ -3017,7 +3006,6 @@ body {
 
 /* ==========================================
    DAILY CHECK-IN
-========================================== */
 
 .checkin-section {
     max-width: 1100px;
@@ -3068,7 +3056,6 @@ body {
 
 /* ==========================================
    BUTTON
-========================================== */
 
 .primary-button {
     display: inline-block;
@@ -3095,7 +3082,6 @@ body {
 
 /* ==========================================
    TOOLS HEADING
-========================================== */
 
 .tools-section {
     max-width: 1100px;
@@ -3133,7 +3119,6 @@ body {
 
 /* ==========================================
    FEATURE GRID
-========================================== */
 
 .feature-grid {
     display: grid;
@@ -3147,7 +3132,6 @@ body {
 
 /* ==========================================
    FEATURE CARD
-========================================== */
 
 .feature-card {
     min-height: 250px;
@@ -3187,7 +3171,6 @@ body {
 
 /* ==========================================
    FEATURE ICON
-========================================== */
 
 .feature-icon {
     min-width: 54px;
@@ -3233,7 +3216,6 @@ body {
 
 /* ==========================================
    FEATURE CONTENT
-========================================== */
 
 .feature-content {
     flex: 1;
@@ -3296,7 +3278,6 @@ body {
 
 /* ==========================================
    FOOTER
-========================================== */
 
 .dashboard-footer {
     max-width: 1100px;
@@ -3329,7 +3310,6 @@ body {
 
 /* ==========================================
    RESPONSIVE
-========================================== */
 
 @media (max-width: 900px) {
 
@@ -3378,7 +3358,6 @@ body {
 }
 /* ==========================================
    MINDMIRROR - DASHBOARD ONLY
-========================================== */
 
 .dashboard-main {
     min-height: calc(100vh - 90px);
@@ -3551,12 +3530,10 @@ body {
     text-decoration: none;
 
     font-size: 14px;
->>>>>>> origin/master
     font-weight: 600;
 }
 
 
-<<<<<<< HEAD
 /* Safety Note */
 
 .safety-note {
@@ -3566,7 +3543,6 @@ body {
     background: #faf8ff;
     color: #666;
     font-size: 13px;
-=======
 /* SECTION */
 
 .wellness-section {
@@ -3787,7 +3763,6 @@ body {
 }
 /* =========================================
    MINDMIRROR MOOD CHECK-IN
-========================================= */
 
 .mood-main {
     min-height: calc(100vh - 90px);
@@ -4170,7 +4145,6 @@ body {
 
     font-size: 11px;
 
->>>>>>> origin/master
     line-height: 1.5;
 }
 
@@ -4179,7 +4153,6 @@ body {
 
 @media (max-width: 600px) {
 
-<<<<<<< HEAD
     .cbt-section {
         margin: 20px 15px;
         padding: 22px;
@@ -4203,7 +4176,6 @@ body {
     }
 }
 
-=======
     .mood-container {
         padding: 28px 20px;
     }
@@ -4220,7 +4192,6 @@ body {
 }
 /* ==========================================
    MINDSMIRROR BREATHING EXPERIENCE
-========================================== */
 
 .avatar-area {
     position: relative;
@@ -4390,7 +4361,6 @@ body {
 
 /* ==========================================
    BREATHING STATES
-========================================== */
 
 
 /* Breathe IN */
@@ -4434,7 +4404,6 @@ body {
 
 /* ==========================================
    BREATHING TEXT
-========================================== */
 
 #breathingText {
     font-size: 34px;
@@ -4465,7 +4434,6 @@ body {
 
 /* ==========================================
    CONTROLS
-========================================== */
 
 .breathing-controls {
     display: flex;
@@ -4527,7 +4495,6 @@ body {
 
 /* ==========================================
    BREATHING INFO
-========================================== */
 
 .breathing-info {
     display: flex;
@@ -4587,7 +4554,6 @@ body {
 
 /* ==========================================
    MOBILE
-========================================== */
 
 @media (max-width: 600px) {
 
@@ -4623,7 +4589,6 @@ body {
 }
 /* ==========================================
    VEN - MINDSMIRROR WELLNESS AVATAR
-========================================== */
 
 .avatar-area {
     position: relative;
@@ -4667,7 +4632,6 @@ body {
 
 /* ==========================================
    VEN AVATAR
-========================================== */
 
 .ven-avatar {
     position: relative;
@@ -4952,7 +4916,6 @@ body {
 
 /* ==========================================
    VEN MESSAGE
-========================================== */
 
 .ven-message {
     position: absolute;
@@ -5001,7 +4964,6 @@ body {
 
 /* ==========================================
    BREATHING ANIMATION
-========================================== */
 
 .avatar-area.breathe-in .ven-avatar {
     transform: scale(1.10);
@@ -5032,7 +4994,6 @@ body {
 
 /* ==========================================
    MOBILE
-========================================== */
 
 @media (max-width: 600px) {
 
@@ -5050,7 +5011,6 @@ body {
 }
 /* ==========================================
    PROFILE EDITING
-========================================== */
 
 .profile-field input {
     width: 100%;
@@ -5110,7 +5070,6 @@ body {
 }
 /* =========================================
    PREMIUM LOGIN PAGE
-========================================= */
 
 .login-page {
     margin: 0;
@@ -5461,7 +5420,6 @@ body {
 }
 /* ==========================================
    MINDMIRROR LOGIN PAGE
-========================================== */
 
 .login-page {
     margin: 0;
@@ -5734,7 +5692,6 @@ body {
 }
 /* ================================
    RELAX PAGE - CLEAN LAYOUT
-================================ */
 
 /* Main breathing card */
 .breathing-card {
@@ -5833,7 +5790,6 @@ body {
 
 /* ================================
    BREATHING INFORMATION CARDS
-================================ */
 
 .breathing-info {
     max-width: 1000px;
@@ -5889,7 +5845,6 @@ body {
 }
 /* ================================
    HEADER LOGO FIX
-================================ */
 
 .main-header {
     display: flex;
@@ -6506,4 +6461,3 @@ body {
         width: calc(100% - 30px);
     }
 }
->>>>>>> origin/master
