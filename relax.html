@@ -7,6 +7,7 @@
     <title>MindMirror - Relax & Breathe</title>
 
     <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/features.css">
 </head>
 
 <body>
@@ -15,36 +16,33 @@
     <header class="main-header">
         <div class="logo-area">
             <img src="Images/logo.png" alt="MindMirror Logo">
-            <span>MindMirror AI</span>
+            <span>MindMirror</span>
         </div>
 
         <nav>
-            <a href="dashboard.html">Dashboard</a>
-            <a href="mood.html">Mood</a>
-            <a href="journal.html">Journal</a>
-            <a href="therapist.html">Therapist</a>
-            <a href="progress.html">Progress</a>
-            <a href="relax.html" class="active">Relax</a>
-            <a href="profile.html">Profile</a>
+            <a href="dashboard.html" class="profile-link">
+            ← Dashboard
+        </a>
         </nav>
     </header>
 
 
     <!-- MAIN CONTENT -->
-    <main class="relax-container">
+    <main class="relax-main">
+        <div class="relax-container">
 
-        <section class="relax-header">
-            <h1>🌿 Relax & Breathe</h1>
+            <section class="relax-header">
+                <h1>🌿 Relax & Breathe</h1>
 
-            <p>
-                Take a moment to slow down, breathe gently,
-                and relax your mind.
-            </p>
-        </section>
+                <p>
+                    Take a moment to slow down, breathe gently,
+                    and relax your mind.
+                </p>
+            </section>
 
 
-        <!--VEN AVATAR -->
-        <div class="avatar-area" id="venAvatar">
+            <!--VEN AVATAR -->
+            <div class="avatar-area" id="venAvatar">
 
             <div class="avatar-glow"></div>
 
@@ -96,6 +94,47 @@
                 Press Start Exercise when you're ready.
             </p>
 
+            <!-- BREATHING TYPE SELECTION -->
+<div class="breathing-type-selection">
+
+    <h3>Choose a breathing exercise</h3>
+
+    <div class="breathing-type-buttons">
+
+        <button type="button"
+                class="breathing-type-btn active"
+                data-exercise="deep">
+            🌬️ Deep Breathing
+        </button>
+
+        <button type="button"
+                class="breathing-type-btn"
+                data-exercise="box">
+            ⬜ Box Breathing
+        </button>
+
+        <button type="button"
+                class="breathing-type-btn"
+                data-exercise="478">
+            🌿 4-7-8 Breathing
+        </button>
+
+        <button type="button"
+                class="breathing-type-btn"
+                data-exercise="slow">
+            🍃 Slow Breathing
+        </button>
+
+        <button type="button"
+                class="breathing-type-btn"
+                data-exercise="belly">
+            🫶 Belly Breathing
+        </button>
+
+    </div>
+
+</div>
+            
 
             <!-- CYCLE SELECTION -->
             <div class="cycle-selection">
@@ -137,26 +176,94 @@
         </section>
 
 
-        <!-- BREATHING INFORMATION -->
-        <section class="breathing-info">
+           <!-- BREATHING INFORMATION -->
+<section class="breathing-info">
 
-            <div class="breathing-info-card">
-                <h3>🌬️ 4 Seconds</h3>
-                <p>Breathe in slowly through your nose.</p>
-            </div>
+    <h2 class="breathing-info-title">
+        🌿 Types of Breathing Exercises
+    </h2>
 
-            <div class="breathing-info-card">
-                <h3>⏸️ 2 Seconds</h3>
-                <p>Gently hold your breath.</p>
-            </div>
+    <div class="breathing-info-grid">
 
-            <div class="breathing-info-card">
-                <h3>🍃 6 Seconds</h3>
-                <p>Slowly breathe out and relax.</p>
-            </div>
+        <!-- Deep Breathing -->
+        <div class="breathing-info-card">
+            <h3>🌬️ Deep Breathing</h3>
 
-        </section>
+            <p class="breathing-pattern">
+                Inhale → Exhale Slowly
+            </p>
 
+            <p>
+                Breathe in slowly through your nose.
+                Now breathe out gently.
+            </p>
+        </div>
+
+
+        <!-- Box Breathing -->
+        <div class="breathing-info-card">
+            <h3>⬜ Box Breathing</h3>
+
+            <p class="breathing-pattern">
+                4 – 4 – 4 – 4
+            </p>
+
+            <p>
+                Inhale for 4 seconds → hold for 4 →
+                exhale for 4 → hold for 4.
+            </p>
+        </div>
+
+
+        <!-- 4-7-8 Breathing -->
+        <div class="breathing-info-card">
+            <h3>🌿 4-7-8 Breathing</h3>
+
+            <p class="breathing-pattern">
+                4 – 7 – 8
+            </p>
+
+            <p>
+                Inhale for 4 seconds → hold for 7 →
+                slowly exhale for 8.
+            </p>
+        </div>
+
+
+        <!-- Slow Breathing -->
+        <div class="breathing-info-card">
+            <h3>🍃 Slow Breathing</h3>
+
+            <p class="breathing-pattern">
+                4 – 6
+            </p>
+
+            <p>
+                Breathe in gently for 4 seconds,
+                then breathe out slowly for 6 seconds.
+            </p>
+        </div>
+
+
+        <!-- Belly Breathing -->
+        <div class="breathing-info-card">
+            <h3>🫶 Belly Breathing</h3>
+
+            <p class="breathing-pattern">
+                Diaphragmatic Breathing
+            </p>
+
+            <p>
+                Breathe in gently and allow your
+                belly to expand as you inhale.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+        </div>
     </main>
 
 

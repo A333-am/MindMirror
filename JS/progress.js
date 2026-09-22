@@ -16,13 +16,16 @@ const progressMessage = document.getElementById("progressMessage");
 // LOAD SAVED MOOD
 // ==========================================
 
-const savedMood = localStorage.getItem("mindMirrorMood");
+const savedMood = localStorage.getItem("mindMirrorMood") || localStorage.getItem("selectedMood");
 
 if (savedMood) {
 
     try {
 
-        const moodData = JSON.parse(savedMood);
+        const moodData =
+            JSON.parse(savedMood) && typeof JSON.parse(savedMood) === "object"
+                ? JSON.parse(savedMood)
+                : { mood: savedMood };
 
         // Display mood
         if (moodDisplay) {

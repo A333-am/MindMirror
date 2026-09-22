@@ -1,0 +1,67 @@
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,Helvetica,sans-serif;background:#f8f6f3;color:#241f35;min-height:100vh}
+
+.vr-header{height:74px;padding:0 7%;display:flex;align-items:center;justify-content:space-between;background:#fff;border-bottom:1px solid #e6e0e8;box-shadow:0 3px 12px rgba(60,45,80,.04)}
+.vr-brand{display:flex;align-items:center;gap:12px}
+.vr-brand img{width:52px;height:52px;object-fit:contain;display:block}
+.vr-brand span{display:flex;flex-direction:column;color:#241f35;font-family:Georgia,"Times New Roman",serif;font-size:21px;font-weight:700;line-height:1.1}
+.vr-brand span::after{content:"AI WELLNESS SPACE";margin-top:3px;color:#887e91;font-family:Arial,Helvetica,sans-serif;font-size:9px;font-weight:400;letter-spacing:1.3px;line-height:1}
+.vr-nav{display:flex;align-items:center;gap:25px}
+.vr-nav a{color:#40384a;text-decoration:none;font-size:14px;font-weight:600}
+.vr-nav .profile-link{padding:10px 22px;background:#6d5a98;border:1px solid #6d5a98;border-radius:25px;color:#fff;font-size:14px}
+.vr-nav .profile-link:hover{background:#5d4b85;color:#fff;transform:translateY(-2px)}
+.vr-nav a:hover{color:#6d5a98}
+
+.vr-main{min-height:calc(100vh - 74px);padding:55px 20px 70px}
+.vr-container{width:100%;max-width:900px;margin:0 auto;padding:45px;background:#fff;border:1px solid #e5dfe8;border-radius:24px;box-shadow:0 15px 40px rgba(69,51,78,.08)}
+
+.vr-intro{text-align:center;margin-bottom:45px}
+.vr-label{display:inline-block;color:#8b6c9c;font-size:10px;font-weight:700;letter-spacing:2px}
+.vr-intro h1{margin:9px 0 12px;color:#241f35;font-size:34px;font-weight:700;letter-spacing:-.5px}
+.vr-intro p{max-width:620px;margin:0 auto;color:#756d83;font-size:15px;line-height:1.7}
+
+.environment-section h2,.vr-steps h2{color:#241f35;font-size:23px;font-weight:700;margin-bottom:8px}
+.section-description{color:#756d83;font-size:14px;margin-bottom:22px}
+.environment-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.environment-card{display:flex;align-items:flex-start;gap:15px;padding:21px;background:#fcfbfd;border:1px solid #e7e1eb;border-radius:17px;transition:.2s ease}
+.environment-card:hover{transform:translateY(-3px);border-color:#cfc4dc;box-shadow:0 8px 20px rgba(70,55,85,.07)}
+.environment-icon{width:50px;height:50px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:#f1ecf6;border-radius:14px;font-size:25px}
+.environment-tag{color:#8b6c9c;font-size:9px;font-weight:700;letter-spacing:1.5px}
+.environment-card h3{margin:4px 0 7px;color:#30283d;font-size:17px}
+.environment-card p{color:#776e80;font-size:13px;line-height:1.55}
+
+.vr-access{display:flex;align-items:center;gap:22px;margin-top:35px;padding:25px;background:#f7f3fa;border:1px solid #e4dbea;border-radius:18px}
+.access-icon{width:62px;height:62px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:#ebe3f2;border-radius:17px;font-size:30px}
+.access-content h2{margin:5px 0 7px;color:#30283d;font-size:21px}
+.access-content p{color:#776e80;font-size:14px;line-height:1.6;margin-bottom:15px}
+.vr-button{display:inline-block;padding:11px 20px;background:#6d5a98;color:#fff;border-radius:11px;text-decoration:none;font-size:14px;font-weight:600;transition:.2s ease}
+.vr-button:hover{background:#5d4b85;transform:translateY(-1px)}
+
+.vr-steps{margin-top:42px}
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-top:20px}
+.step-card{padding:19px;background:#faf8fd;border:1px solid #e7e1eb;border-radius:15px}
+.step-number{display:block;color:#8b6c9c;font-size:10px;font-weight:700;letter-spacing:1.5px;margin-bottom:9px}
+.step-card h3{color:#30283d;font-size:15px;margin-bottom:7px}
+.step-card p{color:#776e80;font-size:12px;line-height:1.55}
+
+.vr-note{display:flex;align-items:flex-start;gap:10px;margin-top:30px;padding:15px 17px;background:#faf8ff;border:1px solid #e6dff0;border-radius:12px}
+.vr-note span{font-size:17px}
+.vr-note p{color:#756d83;font-size:12px;line-height:1.6}
+.vr-note strong{color:#50465c}
+
+@media(max-width:800px){
+.vr-header{padding:0 20px}
+.vr-container{padding:32px 25px}
+.environment-grid{grid-template-columns:1fr}
+.steps-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+.vr-header{height:auto;padding:12px 18px;flex-direction:column;gap:10px}
+.vr-nav{gap:18px}
+.vr-main{padding:25px 14px 45px}
+.vr-container{padding:28px 20px;border-radius:19px}
+.vr-intro{margin-bottom:32px}
+.vr-intro h1{font-size:28px}
+.vr-access{flex-direction:column;text-align:center}
+.steps-grid{grid-template-columns:1fr}
+}

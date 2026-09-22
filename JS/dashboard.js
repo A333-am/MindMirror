@@ -16,9 +16,21 @@ document.addEventListener("DOMContentLoaded", function () {
     // Display the user's saved mood
     const dashboardMood = document.getElementById("dashboardMood");
     const savedMood = localStorage.getItem("selectedMood");
+    const savedMoodData = localStorage.getItem("mindMirrorMood");
 
-    if (dashboardMood && savedMood) {
-        dashboardMood.textContent = savedMood;
+    let moodToDisplay = savedMood;
+
+    if (!moodToDisplay && savedMoodData) {
+        try {
+            const parsedMood = JSON.parse(savedMoodData);
+            moodToDisplay = parsedMood.mood || null;
+        } catch (error) {
+            console.error("Unable to read saved mood for dashboard:", error);
+        }
+    }
+
+    if (dashboardMood) {
+        dashboardMood.textContent = moodToDisplay || "Not checked in";
     }
 
 });

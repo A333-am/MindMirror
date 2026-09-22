@@ -7,13 +7,16 @@ const breathingMessage = document.getElementById("breathingMessage");
 
 const avatarArea = document.querySelector(".avatar-area");
 
+const breathingTypeButtons = document.querySelectorAll(".breathing-type-btn");
 const cycleButtons = document.querySelectorAll(".cycle-btn");
 
 let running = false;
 let currentExercise = 0;
 let currentCycle = 0;
 let selectedCycles = null;
+let selectedBreathingType = "deep";
 let exerciseTimeout = null;
+let timerInterval = null;
 let venVoice = null;
 let pendingSpeech = null;
 
@@ -22,31 +25,115 @@ let pendingSpeech = null;
    BREATHING EXERCISE
 ========================================== */
 
-const exercises = [
-    {
-        text: "Breathe In",
-        duration: 4000,
-        className: "breathe-in",
-        message: "Slowly breathe in through your nose.",
-        voice: "Breathe in slowly"
-    },
+const breathingExercises = {
+    deep: [
+        {
+            text: "Breathe In",
+            duration: 4000,
+            className: "breathe-in",
+            message: "Slowly breathe in through your nose.",
+            voice: "Breathe in slowly"
+        },
+        {
+            text: "Breathe Out",
+            duration: 6000,
+            className: "breathe-out",
+            message: "Slowly breathe out and relax.",
+            voice: "Breathe out slowly"
+        }
+    ],
 
-    {
-        text: "Hold",
-        duration: 2000,
-        className: "hold-breath",
-        message: "Gently hold your breath.",
-        voice: ""
-    },
+    box: [
+        {
+            text: "Breathe In",
+            duration: 4000,
+            className: "breathe-in",
+            message: "Slowly breathe in through your nose.",
+            voice: "Breathe in slowly"
+        },
+        {
+            text: "Hold",
+            duration: 4000,
+            className: "hold-breath",
+            message: "Gently hold your breath.",
+            voice: "Hold gently"
+        },
+        {
+            text: "Breathe Out",
+            duration: 4000,
+            className: "breathe-out",
+            message: "Slowly breathe out and relax.",
+            voice: "Breathe out slowly"
+        },
+        {
+            text: "Hold",
+            duration: 4000,
+            className: "hold-breath",
+            message: "Gently hold before the next breath.",
+            voice: "Hold gently"
+        }
+    ],
 
-    {
-        text: "Breathe Out",
-        duration: 6000,
-        className: "breathe-out",
-        message: "Slowly breathe out and relax.",
-        voice: "Breathe out slowly"
-    }
-];
+    "478": [
+        {
+            text: "Breathe In",
+            duration: 4000,
+            className: "breathe-in",
+            message: "Slowly breathe in through your nose.",
+            voice: "Breathe in slowly"
+        },
+        {
+            text: "Hold",
+            duration: 7000,
+            className: "hold-breath",
+            message: "Gently hold your breath for seven seconds.",
+            voice: "Hold your breath gently"
+        },
+        {
+            text: "Breathe Out",
+            duration: 8000,
+            className: "breathe-out",
+            message: "Slowly breathe out and relax.",
+            voice: "Breathe out slowly"
+        }
+    ],
+
+    slow: [
+        {
+            text: "Breathe In",
+            duration: 4000,
+            className: "breathe-in",
+            message: "Slowly breathe in through your nose.",
+            voice: "Breathe in slowly"
+        },
+        {
+            text: "Breathe Out",
+            duration: 6000,
+            className: "breathe-out",
+            message: "Slowly breathe out and relax.",
+            voice: "Breathe out slowly"
+        }
+    ],
+
+    belly: [
+        {
+            text: "Breathe In",
+            duration: 4000,
+            className: "breathe-in",
+            message: "Breathe in gently and let your belly rise.",
+            voice: "Breathe in gently and let your belly rise"
+        },
+        {
+            text: "Breathe Out",
+            duration: 6000,
+            className: "breathe-out",
+            message: "Breathe out slowly and let your belly soften.",
+            voice: "Breathe out slowly and let your belly soften"
+        }
+    ]
+};
+
+let exercises = breathingExercises[selectedBreathingType];
 
 
 /* ==========================================
@@ -101,6 +188,36 @@ function speak(text) {
 
     window.speechSynthesis.speak(speech);
 }
+
+
+/* ==========================================
+   BREATHING TYPE SELECTION
+========================================== */
+
+breathingTypeButtons.forEach(button => {
+
+    button.addEventListener("click", function () {
+
+        if (running) {
+            return;
+        }
+
+        selectedBreathingType = this.dataset.exercise;
+        exercises = breathingExercises[selectedBreathingType] || breathingExercises.deep;
+
+        breathingTypeButtons.forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+        this.classList.add("active");
+
+        breathingText.textContent = this.textContent.trim();
+        breathingMessage.textContent =
+            "Selected breathing exercise. Choose your cycles, then press Start Exercise.";
+
+    });
+
+});
 
 
 /* ==========================================
@@ -242,6 +359,8 @@ function runExercise() {
     void avatarArea.offsetWidth;
     avatarArea.classList.add(exercise.className);
 
+    startPhaseTimer(exercise.duration);
+
     // Voice for breathing instruction
     if (exercise.voice) {
         speak(exercise.voice);
@@ -298,6 +417,29 @@ function runExercise() {
     }, exercise.duration);
 }
 
+
+function startPhaseTimer(duration) {
+
+    clearInterval(timerInterval);
+
+    let secondsRemaining = Math.ceil(duration / 1000);
+    timerDisplay.textContent = secondsRemaining + "s";
+
+    timerInterval = setInterval(function () {
+
+        secondsRemaining--;
+
+        if (secondsRemaining <= 0) {
+            clearInterval(timerInterval);
+            timerDisplay.textContent = "";
+            return;
+        }
+
+        timerDisplay.textContent = secondsRemaining + "s";
+
+    }, 1000);
+}
+
 /* ==========================================
    FINISH EXERCISE
 ========================================== */
@@ -307,6 +449,7 @@ function finishExercise() {
     running = false;
 
     clearTimeout(exerciseTimeout);
+    clearInterval(timerInterval);
 
     if ("speechSynthesis" in window) {
         window.speechSynthesis.cancel();
@@ -350,6 +493,7 @@ stopButton.addEventListener("click", function () {
     running = false;
 
     clearTimeout(exerciseTimeout);
+    clearInterval(timerInterval);
 
     if ("speechSynthesis" in window) {
         window.speechSynthesis.cancel();

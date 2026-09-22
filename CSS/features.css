@@ -1,0 +1,897 @@
+/* =========================================================
+   MINDMIRROR FEATURE PAGES
+   Journal-style design
+   CBT • Self-Care • Sleep • Routine • Mood Booster
+   Social Support • Progress
+========================================================= */
+
+
+/* =========================================================
+   GLOBAL FEATURE PAGE
+========================================================= */
+
+.cbt-section,
+.progress-container {
+    width: 100%;
+    max-width: 720px;
+    margin: 60px auto;
+
+    padding: 42px 40px;
+
+    background: #ffffff;
+
+    border: 1px solid #e4dfe8;
+    border-radius: 22px;
+
+    box-shadow: 0 12px 30px rgba(70, 55, 85, 0.07);
+
+    box-sizing: border-box;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================================================
+   PAGE BACKGROUND
+========================================================= */
+
+.page-container,
+.progress-main {
+    min-height: calc(100vh - 75px);
+
+    padding: 1px 20px 60px;
+
+    background: #f8f6f3;
+
+    box-sizing: border-box;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================================================
+   MAIN HEADINGS
+========================================================= */
+
+.cbt-section h1,
+.cbt-section h2,
+.progress-container h1,
+.progress-container h2 {
+    margin-top: 0;
+
+    color: #241f35 !important;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-weight: 700;
+
+    letter-spacing: -0.4px;
+}
+
+
+/* Main feature heading */
+
+.cbt-section h2 {
+    margin-bottom: 12px;
+
+    font-size: 30px;
+
+    line-height: 1.25;
+}
+
+
+/* Progress heading */
+
+.progress-container h1 {
+    margin-bottom: 10px;
+
+    font-size: 30px;
+}
+
+
+/* Secondary headings */
+
+.cbt-section h3,
+.progress-container h3 {
+    color: #241f35 !important;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 17px;
+
+    font-weight: 600;
+
+    margin-top: 28px;
+
+    margin-bottom: 11px;
+}
+
+
+/* =========================================================
+   NORMAL TEXT
+========================================================= */
+
+.cbt-section > p,
+.progress-container > p {
+    color: #756d83;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
+.cbt-section input[type="text"],
+.cbt-section input[type="time"],
+.cbt-section input[type="date"],
+.cbt-section input[type="number"],
+.cbt-section select,
+.cbt-section textarea,
+.progress-container input,
+.progress-container textarea,
+.progress-container select {
+
+    width: 100%;
+
+    padding: 13px 15px;
+
+    background: #fbfaff;
+
+    border: 1px solid #ddd7e6;
+
+    border-radius: 11px;
+
+    color: #40384a;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 14px;
+
+    outline: none;
+
+    box-sizing: border-box;
+
+    transition: 0.2s ease;
+}
+
+
+/* Textarea */
+
+.cbt-section textarea,
+.progress-container textarea {
+    min-height: 140px;
+
+    resize: vertical;
+
+    line-height: 1.6;
+}
+
+
+/* Placeholder */
+
+.cbt-section input::placeholder,
+.cbt-section textarea::placeholder,
+.progress-container input::placeholder,
+.progress-container textarea::placeholder {
+    color: #aaa2b1;
+}
+
+
+/* Focus */
+
+.cbt-section input:focus,
+.cbt-section textarea:focus,
+.cbt-section select:focus,
+.progress-container input:focus,
+.progress-container textarea:focus,
+.progress-container select:focus {
+
+    border-color: #9b88bd;
+
+    box-shadow: 0 0 0 3px rgba(155, 136, 189, 0.10);
+}
+
+
+/* =========================================================
+   ALL FEATURE BUTTONS
+========================================================= */
+
+.cbt-section button,
+.progress-container button {
+
+    border: none;
+
+    border-radius: 11px;
+
+    padding: 11px 20px;
+
+    background: #6d5a98;
+
+    color: #ffffff;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+.cbt-section button:hover,
+.progress-container button:hover {
+
+    background: #5d4b85;
+
+    transform: translateY(-1px);
+
+}
+
+
+/* =========================================================
+   CBT
+========================================================= */
+
+#cbt-progress {
+
+    color: #6d5a98 !important;
+
+    font-weight: 600;
+
+    margin-bottom: 12px;
+}
+
+
+/* CBT progress bar */
+
+.progress-container {
+    height: auto;
+}
+
+
+.cbt-section .progress-container {
+    width: 100%;
+
+    height: 9px;
+
+    margin: 0 0 28px;
+
+    padding: 0;
+
+    background: #eeeaf5;
+
+    border: none;
+
+    border-radius: 10px;
+
+    box-shadow: none;
+}
+
+
+#cbt-progress-bar {
+
+    height: 100%;
+
+    background: #8b76b5;
+
+    border-radius: 10px;
+
+}
+
+
+/* CBT question */
+
+#cbt-question {
+
+    color: #241f35 !important;
+
+    font-size: 18px;
+
+    font-weight: 600;
+
+    line-height: 1.5;
+
+    margin-bottom: 12px;
+}
+
+
+/* CBT buttons */
+
+.cbt-buttons,
+.cbt-actions {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 18px;
+}
+
+
+/* =========================================================
+   RESULT / SAVED CARDS
+========================================================= */
+
+#cbt-result,
+#cbt-summary,
+#emotion-insights,
+#emotion-trend,
+#sleep-result,
+#sleep-reminder-result,
+#mood-booster-result,
+#support-guidance-result,
+#routine-list,
+#self-care-list {
+
+    margin-top: 20px;
+}
+
+
+.cbt-complete {
+
+    padding: 18px;
+
+    margin-top: 14px;
+
+    background: #faf8fd;
+
+    border: 1px solid #e6e0eb;
+
+    border-radius: 13px;
+
+    box-shadow: 0 4px 12px rgba(70, 55, 85, 0.04);
+}
+
+
+.cbt-complete h3 {
+
+    color: #241f35 !important;
+
+    margin-top: 0;
+}
+
+
+.cbt-complete p {
+
+    color: #51485d;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   SELF-CARE
+========================================================= */
+
+#selfCareInput {
+
+    max-width: 570px;
+}
+
+
+/* =========================================================
+   SLEEP
+========================================================= */
+
+#sleepReminderTime {
+
+    max-width: 180px;
+}
+
+
+/* =========================================================
+   ROUTINE
+========================================================= */
+
+#routine-list label {
+
+    color: #51485d;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 14px;
+}
+
+
+#routine-list input[type="checkbox"] {
+
+    accent-color: #6d5a98;
+
+    margin-right: 8px;
+}
+
+
+/* =========================================================
+   MOOD BOOSTER
+========================================================= */
+
+.mood-booster-options {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 14px;
+
+    margin-top: 15px;
+}
+
+
+.mood-booster-options button {
+
+    width: 100%;
+
+    min-height: 55px;
+
+    background: #6d5a98;
+}
+
+
+.mood-booster-options button:hover {
+
+    background: #5d4b85;
+}
+
+
+#mood-booster-result .cbt-complete h3 {
+
+    color: #241f35 !important;
+}
+
+
+/* =========================================================
+   SOCIAL SUPPORT
+========================================================= */
+
+.social-support-options {
+
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+
+    margin-top: 15px;
+}
+
+
+.social-support-options button {
+
+    width: 100%;
+
+    min-height: 55px;
+
+}
+
+
+/* =========================================================
+   SAFETY NOTE
+========================================================= */
+
+.safety-note {
+
+    margin-top: 30px;
+
+    padding: 14px 16px;
+
+    background: #faf8fd;
+
+    border: 1px solid #e6e0eb;
+
+    border-radius: 11px;
+
+    color: #756d83 !important;
+
+    font-size: 13px !important;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   PROGRESS PAGE
+========================================================= */
+
+.progress-main {
+
+    display: block;
+}
+
+
+.progress-container {
+
+    max-width: 720px;
+
+    text-align: left;
+}
+
+
+.progress-container > h1 {
+
+    text-align: center;
+}
+
+
+.progress-container > p {
+
+    text-align: center;
+
+    margin-bottom: 30px;
+}
+
+
+/* Progress cards */
+
+.progress-container .progress-card {
+
+    padding: 22px;
+
+    margin-top: 18px;
+
+    background: #faf8fd;
+
+    border: 1px solid #e6e0eb;
+
+    border-radius: 14px;
+
+    box-shadow: 0 4px 12px rgba(70, 55, 85, 0.04);
+}
+
+
+.progress-container .progress-card h2 {
+
+    margin-top: 0;
+
+    margin-bottom: 15px;
+
+    color: #241f35 !important;
+
+    font-size: 19px;
+}
+
+
+.progress-container .progress-card p {
+
+    color: #51485d;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+.progress-container .progress-card strong {
+
+    color: #6d5a98;
+}
+
+
+/* Progress message */
+
+#progressMessage {
+
+    margin-top: 22px;
+
+    color: #6d5a98 !important;
+
+    text-align: center;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   HEADER — JOURNAL STYLE
+========================================================= */
+
+.main-header,
+.dashboard-header {
+
+    background: #ffffff !important;
+
+    border-bottom: 1px solid #e7e2ea;
+
+    box-shadow: 0 3px 12px rgba(70, 55, 85, 0.03);
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* Header text */
+
+.main-header .logo-area span,
+.dashboard-header .brand span {
+
+    color: #241f35 !important;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 21px;
+    font-weight: 700;
+
+    line-height: 1.1;
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+.main-header .logo-area span::after,
+.dashboard-header .brand span::after {
+
+    content: "AI WELLNESS SPACE";
+
+    margin-top: 3px;
+
+    color: #887e91 !important;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 9px;
+
+    font-weight: 400;
+
+    letter-spacing: 1.3px;
+
+    line-height: 1;
+}
+
+
+/* Header navigation */
+
+.main-header nav a,
+.dashboard-header a {
+
+    color: #40384a !important;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+
+.main-header nav a:hover,
+.dashboard-header a:hover {
+
+    color: #6d5a98 !important;
+
+}
+
+
+/* Dashboard button */
+
+.dashboard-header .profile-link {
+
+    background: #6d5a98;
+
+    color: #ffffff !important;
+
+    padding: 11px 20px;
+
+    border-radius: 22px;
+
+    text-decoration: none;
+
+    font-weight: 600;
+}
+
+
+.main-header nav a.profile-link {
+
+    color: #ffffff !important;
+
+}
+
+
+.dashboard-header .profile-link:hover {
+
+    background: #5d4b85;
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .page-container,
+    .progress-main {
+
+        padding: 1px 15px 40px;
+    }
+
+
+    .cbt-section,
+    .progress-container {
+
+        margin: 35px auto;
+
+        padding: 28px 22px;
+
+        border-radius: 18px;
+    }
+
+
+    .cbt-section h2,
+    .progress-container h1 {
+
+        font-size: 25px;
+    }
+
+
+    .cbt-buttons,
+    .cbt-actions {
+
+        flex-direction: column;
+    }
+
+
+    .cbt-section button,
+    .progress-container button {
+
+        width: 100%;
+    }
+
+
+    .mood-booster-options {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .main-header {
+
+        padding: 10px 18px;
+    }
+
+}
+
+
+.main-header nav a.profile-link:hover {
+
+    color: #ffffff !important;
+
+}
+/* ==========================================
+   BREATHING EXERCISE INFORMATION
+========================================== */
+
+.breathing-info {
+    width: 100%;
+    max-width: 1000px;
+    margin: 35px auto 50px;
+}
+
+.breathing-info-title {
+    text-align: center;
+    color: #241f35;
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 22px;
+}
+
+.breathing-info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.breathing-info-card {
+    background: #ffffff;
+    border: 1px solid #e5dff0;
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 8px 24px rgba(70, 55, 90, 0.07);
+    transition: 0.25s ease;
+}
+
+.breathing-info-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(70, 55, 90, 0.11);
+}
+
+.breathing-info-card h3 {
+    color: #241f35;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 10px;
+}
+
+.breathing-info-card p {
+    color: #756d83;
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 6px 0 0;
+}
+
+.breathing-info-card .breathing-pattern {
+    color: #7357a8;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+    .breathing-info {
+        padding: 0 18px;
+    }
+
+    .breathing-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .breathing-info-title {
+        font-size: 22px;
+    }
+}
+/* BREATHING TYPE SELECTION */
+
+.breathing-type-selection {
+    margin: 25px 0;
+    text-align: center;
+}
+
+.breathing-type-selection h3 {
+    margin-bottom: 15px;
+    color: #4b3f72;
+    font-size: 18px;
+}
+
+.breathing-type-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.breathing-type-btn {
+    padding: 11px 16px;
+    border: 1px solid #d8cfee;
+    border-radius: 12px;
+    background: #fff;
+    color: #51456f;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.breathing-type-btn:hover {
+    background: #f3efff;
+    transform: translateY(-2px);
+}
+
+.breathing-type-btn.active {
+    background: #7357a8;
+    color: #fff;
+    border-color: #7357a8;
+    box-shadow: 0 5px 12px rgba(115, 87, 168, 0.2);
+}
+
+@media (max-width: 600px) {
+    .breathing-type-btn {
+        width: 100%;
+    }
+}

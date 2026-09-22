@@ -71,6 +71,7 @@ if (saveMood) {
 
         // Save data in browser
         localStorage.setItem("mindMirrorMood", JSON.stringify(moodData));
+        localStorage.setItem("selectedMood", currentMood);
 
         // Show success message
         moodMessage.innerHTML =
