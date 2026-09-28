@@ -1,548 +1,915 @@
-const startButton = document.getElementById("startBreathing");
-const stopButton = document.getElementById("stopBreathing");
+/* ==========================================================
+   MINDMIRROR - RELAX & BREATHE
+========================================================== */
 
-const breathingText = document.getElementById("breathingText");
-const timerDisplay = document.getElementById("timer");
-const breathingMessage = document.getElementById("breathingMessage");
 
-const avatarArea = document.querySelector(".avatar-area");
+/* ==========================================================
+   ELEMENTS
+========================================================== */
 
-const breathingTypeButtons = document.querySelectorAll(".breathing-type-btn");
-const cycleButtons = document.querySelectorAll(".cycle-btn");
+const startButton =
+    document.getElementById("startBreathing");
+
+const stopButton =
+    document.getElementById("stopBreathing");
+
+const breathingText =
+    document.getElementById("breathingText");
+
+const breathingMessage =
+    document.getElementById("breathingMessage");
+
+const timerDisplay =
+    document.getElementById("timer");
+
+const phaseLabel =
+    document.getElementById("phaseLabel");
+
+const cycleText =
+    document.getElementById("cycleText");
+
+const breathingCircle =
+    document.getElementById("breathingCircle");
+
+const venAvatar =
+    document.getElementById("venAvatar");
+
+const breathingTypeButtons =
+    document.querySelectorAll(
+        ".breathing-type-btn"
+    );
+
+
+/* ==========================================================
+   VARIABLES
+========================================================== */
 
 let running = false;
-let currentExercise = 0;
+
+let currentPhase = 0;
+
 let currentCycle = 0;
-let selectedCycles = null;
-let selectedBreathingType = "deep";
-let exerciseTimeout = null;
+
+let selectedBreathingType = "box";
+
+let currentBreathingExercise = null;
+
 let timerInterval = null;
-let venVoice = null;
-let pendingSpeech = null;
+
+let phaseTimeout = null;
+
+let selectedVoice = null;
 
 
-/* ==========================================
-   BREATHING EXERCISE
-========================================== */
+/* ==========================================================
+   BREATHING DATA
+========================================================== */
 
 const breathingExercises = {
-    deep: [
-        {
-            text: "Breathe In",
-            duration: 4000,
-            className: "breathe-in",
-            message: "Slowly breathe in through your nose.",
-            voice: "Breathe in slowly"
-        },
-        {
-            text: "Breathe Out",
-            duration: 6000,
-            className: "breathe-out",
-            message: "Slowly breathe out and relax.",
-            voice: "Breathe out slowly"
-        }
-    ],
 
-    box: [
-        {
-            text: "Breathe In",
-            duration: 4000,
-            className: "breathe-in",
-            message: "Slowly breathe in through your nose.",
-            voice: "Breathe in slowly"
-        },
-        {
-            text: "Hold",
-            duration: 4000,
-            className: "hold-breath",
-            message: "Gently hold your breath.",
-            voice: "Hold gently"
-        },
-        {
-            text: "Breathe Out",
-            duration: 4000,
-            className: "breathe-out",
-            message: "Slowly breathe out and relax.",
-            voice: "Breathe out slowly"
-        },
-        {
-            text: "Hold",
-            duration: 4000,
-            className: "hold-breath",
-            message: "Gently hold before the next breath.",
-            voice: "Hold gently"
-        }
-    ],
+    box: {
 
-    "478": [
-        {
-            text: "Breathe In",
-            duration: 4000,
-            className: "breathe-in",
-            message: "Slowly breathe in through your nose.",
-            voice: "Breathe in slowly"
-        },
-        {
-            text: "Hold",
-            duration: 7000,
-            className: "hold-breath",
-            message: "Gently hold your breath for seven seconds.",
-            voice: "Hold your breath gently"
-        },
-        {
-            text: "Breathe Out",
-            duration: 8000,
-            className: "breathe-out",
-            message: "Slowly breathe out and relax.",
-            voice: "Breathe out slowly"
-        }
-    ],
+        exercise_name: "Box Breathing",
 
-    slow: [
-        {
-            text: "Breathe In",
-            duration: 4000,
-            className: "breathe-in",
-            message: "Slowly breathe in through your nose.",
-            voice: "Breathe in slowly"
-        },
-        {
-            text: "Breathe Out",
-            duration: 6000,
-            className: "breathe-out",
-            message: "Slowly breathe out and relax.",
-            voice: "Breathe out slowly"
-        }
-    ],
+        cycle: [
 
-    belly: [
-        {
-            text: "Breathe In",
-            duration: 4000,
-            className: "breathe-in",
-            message: "Breathe in gently and let your belly rise.",
-            voice: "Breathe in gently and let your belly rise"
-        },
-        {
-            text: "Breathe Out",
-            duration: 6000,
-            className: "breathe-out",
-            message: "Breathe out slowly and let your belly soften.",
-            voice: "Breathe out slowly and let your belly soften"
-        }
-    ]
+            {
+                duration: 4,
+                phase: "Inhale"
+            },
+
+            {
+                duration: 4,
+                phase: "Hold"
+            },
+
+            {
+                duration: 4,
+                phase: "Exhale"
+            },
+
+            {
+                duration: 4,
+                phase: "Hold"
+            }
+
+        ],
+
+        cycles: 3,
+
+        total_duration: 48
+    },
+
+
+    slow: {
+
+        exercise_name: "Slow Breathing",
+
+        cycle: [
+
+            {
+                duration: 4,
+                phase: "Inhale"
+            },
+
+            {
+                duration: 2,
+                phase: "Hold"
+            },
+
+            {
+                duration: 6,
+                phase: "Exhale"
+            }
+
+        ],
+
+        cycles: 3,
+
+        total_duration: 36
+    },
+
+
+    deep: {
+
+        exercise_name: "Deep Breathing",
+
+        cycle: [
+
+            {
+                duration: 6,
+                phase: "Deep Inhale"
+            },
+
+            {
+                duration: 2,
+                phase: "Hold"
+            },
+
+            {
+                duration: 8,
+                phase: "Slow Exhale"
+            }
+
+        ],
+
+        cycles: 3,
+
+        total_duration: 48
+    }
+
 };
 
-let exercises = breathingExercises[selectedBreathingType];
+
+/* ==========================================================
+   DEFAULT EXERCISE
+========================================================== */
+
+currentBreathingExercise =
+    breathingExercises.box;
 
 
-/* ==========================================
-   GENTLE VOICE
-========================================== */
+/* ==========================================================
+   VOICE INITIALIZATION
+========================================================== */
 
-function speak(text) {
+function loadVoices() {
 
-    if (!("speechSynthesis" in window) || !text) {
+    if (!("speechSynthesis" in window)) {
         return;
     }
 
-    const voices = window.speechSynthesis.getVoices();
+    const voices =
+        window.speechSynthesis.getVoices();
 
     if (!voices.length) {
-        pendingSpeech = null;
-        window.speechSynthesis.cancel();
-        window.speechSynthesis.resume();
-
-        const fallbackSpeech = new SpeechSynthesisUtterance(text);
-        fallbackSpeech.lang = "en-US";
-        fallbackSpeech.rate = 0.65;
-        fallbackSpeech.pitch = 0.9;
-        fallbackSpeech.volume = 1;
-
-        window.speechSynthesis.speak(fallbackSpeech);
         return;
     }
 
-    if (!venVoice) {
-        venVoice = voices.find(voice =>
-            voice.lang.startsWith("en") &&
-            (
-                voice.name.toLowerCase().includes("female") ||
-                voice.name.toLowerCase().includes("samantha") ||
-                voice.name.toLowerCase().includes("zira")
-            )
-        ) || voices.find(voice => voice.lang.startsWith("en")) || voices[0];
+
+    selectedVoice =
+        voices.find(
+            voice =>
+                voice.lang === "en-US"
+        );
+
+
+    if (!selectedVoice) {
+
+        selectedVoice =
+            voices.find(
+                voice =>
+                    voice.lang.startsWith("en")
+            );
+
     }
 
-    window.speechSynthesis.cancel();
-    window.speechSynthesis.resume();
 
-    const speech = new SpeechSynthesisUtterance(text);
+    if (!selectedVoice) {
 
-    speech.lang = "en-US";
-    speech.rate = 0.65;
-    speech.pitch = 0.9;
-    speech.volume = 1;
+        selectedVoice =
+            voices[0];
 
-    speech.voice = venVoice;
+    }
 
-    window.speechSynthesis.speak(speech);
 }
 
 
-/* ==========================================
-   BREATHING TYPE SELECTION
-========================================== */
+if ("speechSynthesis" in window) {
 
-breathingTypeButtons.forEach(button => {
+    loadVoices();
 
-    button.addEventListener("click", function () {
+    window.speechSynthesis.onvoiceschanged =
+        loadVoices;
 
-        if (running) {
-            return;
-        }
-
-        selectedBreathingType = this.dataset.exercise;
-        exercises = breathingExercises[selectedBreathingType] || breathingExercises.deep;
-
-        breathingTypeButtons.forEach(btn => {
-            btn.classList.remove("active");
-        });
-
-        this.classList.add("active");
-
-        breathingText.textContent = this.textContent.trim();
-        breathingMessage.textContent =
-            "Selected breathing exercise. Choose your cycles, then press Start Exercise.";
-
-    });
-
-});
+}
 
 
-/* ==========================================
-   VEN ASKS FOR CYCLES
-========================================== */
+/* ==========================================================
+   SPEAK
+========================================================== */
 
-window.addEventListener("load", function () {
+function speak(text) {
 
-    breathingText.textContent = "Choose Your Session";
+    if (
+        !("speechSynthesis" in window) ||
+        !text
+    ) {
+        return;
+    }
 
-    breathingMessage.textContent =
-        "Hi! I'm Ven 💜 How many breathing cycles would you like to do? Please choose 1, 3, or 5.";
 
-    speak(
-        "Hi! I'm Ven, how many breathing cycles would you like to do? Please choose one, three, or five cycles."
+    window.speechSynthesis.cancel();
+
+
+    const speech =
+        new SpeechSynthesisUtterance(text);
+
+
+    speech.lang = "en-US";
+
+    speech.rate = 0.78;
+
+    speech.pitch = 1.0;
+
+    speech.volume = 1;
+
+
+    if (selectedVoice) {
+
+        speech.voice =
+            selectedVoice;
+
+    }
+
+
+    window.speechSynthesis.speak(
+        speech
     );
 
-});
+}
 
 
-/* ==========================================
-   CYCLE SELECTION
-========================================== */
+/* ==========================================================
+   PHASE MESSAGE
+========================================================== */
 
-cycleButtons.forEach(button => {
+function getPhaseMessage(phase) {
 
-    button.addEventListener("click", function () {
+    switch (phase) {
 
-        if (running) {
-            return;
-        }
+        case "Inhale":
 
-        selectedCycles = parseInt(this.dataset.cycles);
+            return "Breathe in slowly.";
 
-        /* Remove active from all buttons */
-        cycleButtons.forEach(btn => {
-            btn.classList.remove("active");
-        });
+        case "Hold":
 
-        /* Activate selected button */
-        this.classList.add("active");
+            return "Hold gently.";
 
-        /* Show selected session */
-        breathingText.textContent =
-            selectedCycles + " Cycle" +
-            (selectedCycles > 1 ? "s" : "") +
-            " Selected";
+        case "Exhale":
 
-        breathingMessage.textContent =
-            "Great choice! Press Start Exercise when you're ready.";
+            return "Breathe out slowly.";
 
-        speak(
-            "Great choice. You selected " +
-            selectedCycles +
-            " cycle" +
-            (selectedCycles > 1 ? "s." : ".") +
-            " Press Start Exercise when you're ready."
+        case "Deep Inhale":
+
+            return "Take a deep breath in.";
+
+        case "Slow Exhale":
+
+            return "Slowly breathe out.";
+
+        default:
+
+            return "Breathe gently.";
+
+    }
+
+}
+
+
+/* ==========================================================
+   SHORT VOICE MESSAGE
+========================================================== */
+
+function getVoiceMessage(phase) {
+
+    switch (phase) {
+
+        case "Inhale":
+
+            return "Inhale.";
+
+        case "Hold":
+
+            return "Hold.";
+
+        case "Exhale":
+
+            return "Exhale.";
+
+        case "Deep Inhale":
+
+            return "Deep inhale.";
+
+        case "Slow Exhale":
+
+            return "Slow exhale.";
+
+        default:
+
+            return phase + ".";
+
+    }
+
+}
+
+
+/* ==========================================================
+   EXERCISE SELECTION
+========================================================== */
+
+breathingTypeButtons.forEach(
+    button => {
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                /* Do not change exercise
+                   while running */
+
+                if (running) {
+                    return;
+                }
+
+
+                selectedBreathingType =
+                    this.dataset.exercise;
+
+
+                currentBreathingExercise =
+                    breathingExercises[
+                        selectedBreathingType
+                    ];
+
+
+                if (!currentBreathingExercise) {
+
+                    console.error(
+                        "Exercise not found:",
+                        selectedBreathingType
+                    );
+
+                    return;
+                }
+
+
+                /* Active button */
+
+                breathingTypeButtons.forEach(
+                    btn => {
+
+                        btn.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
+
+
+                this.classList.add(
+                    "active"
+                );
+
+
+                /* Reset */
+
+                currentPhase = 0;
+
+                currentCycle = 0;
+
+
+                /* Update screen */
+
+                breathingText.textContent =
+                    currentBreathingExercise.exercise_name;
+
+
+                breathingMessage.textContent =
+                    "Press Start Exercise when you're ready.";
+
+
+                timerDisplay.textContent =
+                    "—";
+
+
+                phaseLabel.textContent =
+                    "Ready";
+
+
+                cycleText.textContent =
+                    "Cycle 0 of " +
+                    currentBreathingExercise.cycles;
+
+
+                resetBreathingAnimation();
+
+            }
         );
 
-    });
+    }
+);
 
-});
 
-
-/* ==========================================
+/* ==========================================================
    START EXERCISE
-========================================== */
+========================================================== */
 
-startButton.addEventListener("click", function () {
-
-    if (running) {
-        return;
-    }
-
-    /* Make sure user selected cycles */
-    if (selectedCycles === null) {
-
-        breathingText.textContent = "Choose Your Session";
-
-        breathingMessage.textContent =
-            "Please choose 1, 3, or 5 cycles first.";
-
-        speak(
-            "Please choose one, three, or five breathing cycles first."
-        );
-
-        return;
-    }
-
-    running = true;
-
-    currentExercise = 0;
-    currentCycle = 1;
-
-    startButton.textContent = "Exercise Running...";
-
-    breathingText.textContent = "Get Comfortable";
-
-    breathingMessage.textContent =
-        "Relax your shoulders and follow my voice.";
-
-    timerDisplay.textContent = "";
-
-    speak(
-        "Let's begin. Relax and follow my voice."
-    );
-
-    setTimeout(() => {
+startButton.addEventListener(
+    "click",
+    function () {
 
         if (running) {
-            runExercise();
+            return;
         }
 
-    }, 1800);
 
-});
+        running = true;
 
 
-/* ==========================================
-   RUN BREATHING STEP
-========================================== */
-function runExercise() {
-    if (!running) return;
+        currentPhase = 0;
 
-    clearTimeout(exerciseTimeout);
+        currentCycle = 1;
 
-    const exercise = exercises[currentExercise];
 
-    breathingText.textContent = exercise.text;
-    breathingMessage.textContent = exercise.message;
-    timerDisplay.textContent = "";
+        startButton.disabled = true;
 
-    avatarArea.classList.remove(
+        stopButton.disabled = false;
+
+
+        breathingTypeButtons.forEach(
+            button => {
+
+                button.disabled = true;
+
+            }
+        );
+
+
+        cycleText.textContent =
+            "Cycle 1 of " +
+            currentBreathingExercise.cycles;
+
+
+        runBreathingPhase();
+
+    }
+);
+
+
+/* ==========================================================
+   RUN BREATHING PHASE
+========================================================== */
+
+function runBreathingPhase() {
+
+    if (!running) {
+        return;
+    }
+
+
+    clearInterval(timerInterval);
+
+    clearTimeout(phaseTimeout);
+
+
+    const phase =
+        currentBreathingExercise.cycle[
+            currentPhase
+        ];
+
+
+    if (!phase) {
+
+        finishExercise();
+
+        return;
+
+    }
+
+
+    /* ----------------------------------------------
+       TEXT
+    ---------------------------------------------- */
+
+    phaseLabel.textContent =
+        phase.phase;
+
+
+    breathingMessage.textContent =
+        getPhaseMessage(
+            phase.phase
+        );
+
+
+    /* ----------------------------------------------
+       VOICE
+    ---------------------------------------------- */
+
+    speak(
+        getVoiceMessage(
+            phase.phase
+        )
+    );
+
+
+    /* ----------------------------------------------
+       ANIMATION
+    ---------------------------------------------- */
+
+    updateBreathingAnimation(
+        phase.phase
+    );
+
+
+    /* ----------------------------------------------
+       TIMER
+    ---------------------------------------------- */
+
+    startPhaseTimer(
+        phase.duration
+    );
+
+
+    /* ----------------------------------------------
+       NEXT PHASE
+    ---------------------------------------------- */
+
+    phaseTimeout =
+        setTimeout(
+            function () {
+
+                if (!running) {
+                    return;
+                }
+
+
+                currentPhase++;
+
+
+                /* End of cycle */
+
+                if (
+                    currentPhase >=
+                    currentBreathingExercise.cycle.length
+                ) {
+
+                    currentPhase = 0;
+
+                    currentCycle++;
+
+
+                    /* All cycles complete */
+
+                    if (
+                        currentCycle >
+                        currentBreathingExercise.cycles
+                    ) {
+
+                        finishExercise();
+
+                        return;
+
+                    }
+
+
+                    /* Next cycle */
+
+                    cycleText.textContent =
+                        "Cycle " +
+                        currentCycle +
+                        " of " +
+                        currentBreathingExercise.cycles;
+
+
+                    runBreathingPhase();
+
+
+                    return;
+
+                }
+
+
+                /* Next phase */
+
+                runBreathingPhase();
+
+            },
+            phase.duration * 1000
+        );
+
+}
+
+
+/* ==========================================================
+   PHASE TIMER
+========================================================== */
+
+function startPhaseTimer(seconds) {
+
+    clearInterval(timerInterval);
+
+
+    let remaining =
+        seconds;
+
+
+    timerDisplay.textContent =
+        remaining + "s";
+
+
+    timerInterval =
+        setInterval(
+            function () {
+
+                if (!running) {
+
+                    clearInterval(
+                        timerInterval
+                    );
+
+                    return;
+
+                }
+
+
+                remaining--;
+
+
+                if (remaining <= 0) {
+
+                    clearInterval(
+                        timerInterval
+                    );
+
+                    timerDisplay.textContent =
+                        "";
+
+                    return;
+
+                }
+
+
+                timerDisplay.textContent =
+                    remaining + "s";
+
+            },
+            1000
+        );
+
+}
+
+
+/* ==========================================================
+   BREATHING ANIMATION
+========================================================== */
+
+function updateBreathingAnimation(phase) {
+
+    breathingCircle.classList.remove(
         "breathe-in",
         "breathe-out",
         "hold-breath"
     );
 
-    void avatarArea.offsetWidth;
-    avatarArea.classList.add(exercise.className);
 
-    startPhaseTimer(exercise.duration);
+    /* Restart CSS animation */
 
-    // Voice for breathing instruction
-    if (exercise.voice) {
-        speak(exercise.voice);
+    void breathingCircle.offsetWidth;
+
+
+    const phaseText =
+        phase.toLowerCase();
+
+
+    if (
+        phaseText.includes("inhale")
+    ) {
+
+        breathingCircle.classList.add(
+            "breathe-in"
+        );
+
     }
 
-    exerciseTimeout = setTimeout(function () {
 
-        if (!running) return;
+    else if (
+        phaseText.includes("exhale")
+    ) {
 
-        currentExercise++;
+        breathingCircle.classList.add(
+            "breathe-out"
+        );
 
-        // One complete breathing cycle finished
-        if (currentExercise >= exercises.length) {
+    }
 
-            currentExercise = 0;
 
-            // All selected cycles finished
-            if (currentCycle >= selectedCycles) {
-                finishExercise();
-                return;
-            }
+    else if (
+        phaseText.includes("hold")
+    ) {
 
-            // Start next cycle
-            currentCycle++;
+        breathingCircle.classList.add(
+            "hold-breath"
+        );
 
-            breathingText.textContent =
-                "Cycle " + currentCycle + " of " + selectedCycles;
+    }
 
-            breathingMessage.textContent =
-                "Get ready for the next cycle.";
-
-            speak(
-                "Now starting cycle " +
-                currentCycle +
-                " of " +
-                selectedCycles
-            );
-
-            // Wait before starting breathing again
-            exerciseTimeout = setTimeout(function () {
-
-                if (!running) return;
-
-                runExercise();
-
-            }, 2500);
-
-            return;
-        }
-
-        // Move to the next breathing phase
-        runExercise();
-
-    }, exercise.duration);
 }
 
 
-function startPhaseTimer(duration) {
+/* ==========================================================
+   RESET ANIMATION
+========================================================== */
 
-    clearInterval(timerInterval);
+function resetBreathingAnimation() {
 
-    let secondsRemaining = Math.ceil(duration / 1000);
-    timerDisplay.textContent = secondsRemaining + "s";
+    breathingCircle.classList.remove(
+        "breathe-in",
+        "breathe-out",
+        "hold-breath"
+    );
 
-    timerInterval = setInterval(function () {
-
-        secondsRemaining--;
-
-        if (secondsRemaining <= 0) {
-            clearInterval(timerInterval);
-            timerDisplay.textContent = "";
-            return;
-        }
-
-        timerDisplay.textContent = secondsRemaining + "s";
-
-    }, 1000);
 }
 
-/* ==========================================
+
+/* ==========================================================
    FINISH EXERCISE
-========================================== */
+========================================================== */
 
 function finishExercise() {
 
     running = false;
 
-    clearTimeout(exerciseTimeout);
+
     clearInterval(timerInterval);
 
+    clearTimeout(phaseTimeout);
+
+
+    timerInterval = null;
+
+    phaseTimeout = null;
+
+
     if ("speechSynthesis" in window) {
+
         window.speechSynthesis.cancel();
+
     }
 
-    avatarArea.classList.remove(
-        "breathe-in",
-        "breathe-out",
-        "hold-breath"
-    );
 
-    breathingText.textContent = "Well Done! 💜";
+    resetBreathingAnimation();
 
-    timerDisplay.textContent = "";
+
+    phaseLabel.textContent =
+        "Complete";
+
+
+    timerDisplay.textContent =
+        "✓";
+
+
+    breathingText.textContent =
+        "Well Done! 💜";
+
 
     breathingMessage.textContent =
         "You completed " +
-        selectedCycles +
-        " breathing cycle" +
-        (selectedCycles > 1 ? "s." : ".");
-
-    startButton.textContent = "Start Exercise";
-
-    speak(
-        "Well done. You completed " +
-        selectedCycles +
-        " breathing cycle" +
-        (selectedCycles > 1 ? "s." : ".") +
-        " Take a moment to relax."
-    );
-
-}
+        currentBreathingExercise.exercise_name +
+        " for " +
+        currentBreathingExercise.cycles +
+        " cycles.";
 
 
-/* ==========================================
-   STOP EXERCISE
-========================================== */
-
-stopButton.addEventListener("click", function () {
-
-    running = false;
-
-    clearTimeout(exerciseTimeout);
-    clearInterval(timerInterval);
-
-    if ("speechSynthesis" in window) {
-        window.speechSynthesis.cancel();
-    }
-
-    breathingText.textContent = "Choose Your Session";
-
-    timerDisplay.textContent = "";
-
-    breathingMessage.textContent =
-        "Hi! I'm Ven 💜 Please choose 1, 3, or 5 cycles.";
-
-    avatarArea.classList.remove(
-        "breathe-in",
-        "breathe-out",
-        "hold-breath"
-    );
-
-    startButton.textContent = "Start Exercise";
-
-    /* Reset cycle selection */
-
-    selectedCycles = null;
-    currentCycle = 0;
-    currentExercise = 0;
-
-    cycleButtons.forEach(btn => {
-        btn.classList.remove("active");
-    });
-
-    speak(
-        "Please choose one, three, or five breathing cycles when you're ready."
-    );
-
-});
+    cycleText.textContent =
+        "Exercise Complete";
 
 
-/* ==========================================
-   LOAD VOICES
-========================================== */
+    startButton.disabled = false;
 
-if ("speechSynthesis" in window) {
+    stopButton.disabled = true;
 
-    window.speechSynthesis.onvoiceschanged = function () {
-        if (pendingSpeech) {
-            const text = pendingSpeech;
-            pendingSpeech = null;
-            speak(text);
+
+    breathingTypeButtons.forEach(
+        button => {
+
+            button.disabled = false;
+
         }
-    };
+    );
+
+
+    speak(
+        "Well done. Your breathing exercise is complete."
+    );
 
 }
+
+
+/* ==========================================================
+   STOP EXERCISE
+========================================================== */
+
+stopButton.addEventListener(
+    "click",
+    function () {
+
+        running = false;
+
+
+        clearInterval(
+            timerInterval
+        );
+
+
+        clearTimeout(
+            phaseTimeout
+        );
+
+
+        timerInterval = null;
+
+        phaseTimeout = null;
+
+
+        if ("speechSynthesis" in window) {
+
+            window.speechSynthesis.cancel();
+
+        }
+
+
+        currentPhase = 0;
+
+        currentCycle = 0;
+
+
+        resetBreathingAnimation();
+
+
+        breathingText.textContent =
+            currentBreathingExercise.exercise_name;
+
+
+        breathingMessage.textContent =
+            "Exercise stopped. You can start again whenever you're ready.";
+
+
+        phaseLabel.textContent =
+            "Ready";
+
+
+        timerDisplay.textContent =
+            "—";
+
+
+        cycleText.textContent =
+            "Cycle 0 of " +
+            currentBreathingExercise.cycles;
+
+
+        startButton.disabled = false;
+
+        stopButton.disabled = true;
+
+
+        breathingTypeButtons.forEach(
+            button => {
+
+                button.disabled = false;
+
+            }
+        );
+
+    }
+);

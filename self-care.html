@@ -1,73 +1,303 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Self-Care Reminders - MindMirror</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="CSS/style.css">
-    <link rel="stylesheet" href="CSS/features.css">
+    <title>Self-Care - MindMirror</title>
+
+    <link rel="stylesheet" href="CSS/self-care.css">
 </head>
 
 <body>
 
-    <!-- Header -->
-    <header class="main-header">
+    <!-- HEADER -->
+    <header class="header">
 
-        <div class="logo-area">
+        <div class="brand">
+
             <img src="Images/logo.png" alt="MindMirror Logo">
-            <span>MindMirror</span>
+
+            <div class="brand-text">
+
+                <div class="brand-name">
+                    MindMirror
+                </div>
+
+                <div class="brand-subtitle">
+                    AI WELLNESS SPACE
+                </div>
+
+            </div>
+
         </div>
 
-        <nav>
-            <a href="dashboard.html" class="profile-link">← Dashboard</a>
-        </nav>
+        <button
+            type="button"
+            class="dashboard-btn"
+            id="dashboardBtn">
+            ← Dashboard
+        </button>
 
     </header>
 
 
-    <!-- Main Content -->
-<main class="page-container self-care-page">
-        <div class="cbt-section">
+    <!-- MAIN -->
+    <main class="page-container">
 
-            <h2>🌱 Self-Care Reminders</h2>
+        <!-- CENTERED PAGE INTRO -->
+        <section class="page-intro">
 
-            <p>
-                Add simple reminders to take care of yourself throughout the day.
+            <p class="eyebrow">
+                WELLNESS CARE
             </p>
 
+            <h1>
+                Self-Care
+            </h1>
 
-            <!-- Add Reminder -->
-            <h3>📝 Add a Self-Care Reminder</h3>
+            <p class="intro-text">
+                Take a little time for yourself. Small acts of care can make a difference.
+            </p>
 
-            <input
-                type="text"
-                id="selfCareInput"
-                placeholder="Enter a self-care activity"
-            >
+        </section>
 
-            <br><br>
 
-            <button onclick="addSelfCareReminder()">
-                ➕ Add Reminder
+        <!-- DAILY KINDNESS MESSAGE -->
+        <section class="kindness-card">
+
+            <div class="kindness-icon">
+                🌿
+            </div>
+
+            <div class="kindness-content">
+
+                <p class="kindness-label">
+                    TODAY'S SELF-CARE MESSAGE
+                </p>
+
+                <h2 id="dailyMessage">
+                    Be kind to yourself. You're doing the best you can.
+                </h2>
+
+            </div>
+
+        </section>
+
+
+        <!-- CREATE REMINDER -->
+        <section class="reminder-card">
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    🌱
+                </div>
+
+                <div>
+                    <h2>
+                        Create a Self-Care Reminder
+                    </h2>
+
+                    <p>
+                        Choose an activity and set a gentle reminder.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <form id="selfCareForm">
+
+                <!-- TYPE -->
+                <div class="form-group">
+
+                    <label for="selfCareType">
+                        Self-Care Type
+                    </label>
+
+                    <select id="selfCareType" required>
+
+                        <option value="">
+                            Select a type
+                        </option>
+
+                        <option value="Mental">
+                            🧠 Mental
+                        </option>
+
+                        <option value="Physical">
+                            🏃 Physical
+                        </option>
+
+                        <option value="Emotional">
+                            💗 Emotional
+                        </option>
+
+                        <option value="Social">
+                            👥 Social
+                        </option>
+
+                        <option value="Personal">
+                            ✨ Personal
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- DATE + TIME -->
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="reminderDate">
+                            Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="reminderDate"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="reminderTime">
+                            Time
+                        </label>
+
+                        <input
+                            type="time"
+                            id="reminderTime"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <!-- MESSAGE -->
+                <div class="form-group">
+
+                    <label for="reminderMessage">
+                        Reminder
+                    </label>
+
+                    <input
+                        type="text"
+                        id="reminderMessage"
+                        placeholder="Example: Practice breathing exercise"
+                        maxlength="120"
+                        required>
+
+                </div>
+
+
+                <!-- ADD -->
+                <div class="form-actions">
+
+                    <button
+                        type="submit"
+                        class="add-btn">
+
+                        + Add Reminder
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <!-- REMINDERS -->
+        <section class="reminders-card">
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    🔔
+                </div>
+
+                <div>
+                    <h2>
+                        My Self-Care Reminders
+                    </h2>
+
+                    <p>
+                        Your scheduled self-care activities.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div
+                id="reminderList"
+                class="reminder-list">
+
+            </div>
+
+        </section>
+
+
+        <!-- NOTIFICATION AT THE END -->
+        <section class="notification-card">
+
+            <div class="notification-content">
+
+                <div class="notification-icon">
+                    🔔
+                </div>
+
+                <div>
+
+                    <h3>
+                        Enable Self-Care Notifications
+                    </h3>
+
+                    <p id="notificationStatus">
+                        Allow notifications to receive your reminder alerts.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="notificationBtn"
+                class="notification-btn">
+
+                Enable Notifications
+
             </button>
 
-
-            <!-- Reminder List -->
-            <h3>💚 Your Self-Care Reminders</h3>
-
-            <div id="self-care-list"></div>
-
-        </div>
+        </section>
 
     </main>
 
 
-    <!-- Self-Care JavaScript -->
+    <!-- TOAST -->
+    <div
+        id="toast"
+        class="toast"
+        role="status">
+
+        Reminder added successfully.
+
+    </div>
+
+
     <script src="JS/self-care.js"></script>
 
 </body>
+
 </html>

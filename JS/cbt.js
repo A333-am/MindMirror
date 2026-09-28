@@ -1,806 +1,926 @@
-let cbtStep = 1;
-let originalThought = "";
+/* =========================================================
+   MINDMIRROR CBT SUPPORT
+   ========================================================= */
 
-let cbtSession = {
-    situation: "",
-    thought: "",
-    emotion: "",
-    evidenceFor: "",
-    evidenceAgainst: "",
-    balancedThought: ""
+
+/* =========================================================
+   CBT QUESTIONS
+   ========================================================= */
+
+const questions = [
+
+    {
+        icon: "💭",
+        title: "What is bothering you right now?",
+        helper:
+            "Tell us what is currently making you uncomfortable, worried, tired or stressed."
+    },
+
+    {
+        icon: "🧠",
+        title: "What thought is going through your mind about this situation?",
+        helper:
+            "Write the main thought that keeps coming back to your mind."
+    },
+
+    {
+        icon: "💜",
+        title: "How does this thought make you feel?",
+        helper:
+            "Describe the emotions or feelings you experience."
+    },
+
+    {
+        icon: "🔍",
+        title: "What makes you believe this thought is true?",
+        helper:
+            "Think about the experiences or evidence that support this thought."
+    },
+
+    {
+        icon: "🌱",
+        title: "Is there anything that might suggest a different way of looking at this situation?",
+        helper:
+            "Try to consider another possible explanation or perspective."
+    },
+
+    {
+        icon: "🌿",
+        title: "What is one small thing you can do right now to help yourself?",
+        helper:
+            "Choose one simple and realistic action that could help you feel a little better."
+    }
+
+];
+
+
+/* =========================================================
+   STATE
+   ========================================================= */
+
+let currentQuestion = 0;
+
+let answers =
+    Array(questions.length).fill("");
+
+const totalQuestions =
+    questions.length;
+
+
+/* =========================================================
+   DOM ELEMENTS
+   ========================================================= */
+
+const questionCard =
+    document.getElementById("questionCard");
+
+const questionIcon =
+    document.getElementById("questionIcon");
+
+const questionTitle =
+    document.getElementById("questionTitle");
+
+const questionHelper =
+    document.getElementById("questionHelper");
+
+const answerInput =
+    document.getElementById("answerInput");
+
+const characterCount =
+    document.getElementById("characterCount");
+
+const progressText =
+    document.getElementById("progressText");
+
+const progressPercentage =
+    document.getElementById("progressPercentage");
+
+const progressFill =
+    document.getElementById("progressFill");
+
+const questionProgress =
+    document.getElementById("questionProgress");
+
+const questionNavigation =
+    document.getElementById("questionNavigation");
+
+const backBtn =
+    document.getElementById("backBtn");
+
+const nextBtn =
+    document.getElementById("nextBtn");
+
+const message =
+    document.getElementById("message");
+
+const analysisCard =
+    document.getElementById("analysisCard");
+
+const resultSection =
+    document.getElementById("resultSection");
+
+const userThought =
+    document.getElementById("userThought");
+
+const cbtResponse =
+    document.getElementById("cbtResponse");
+
+const activityIcon =
+    document.getElementById("activityIcon");
+
+const activityTitle =
+    document.getElementById("activityTitle");
+
+const activityDescription =
+    document.getElementById("activityDescription");
+
+const startActivityBtn =
+    document.getElementById("startActivityBtn");
+
+const restartBtn =
+    document.getElementById("restartBtn");
+
+const sessionRecordedText =
+    document.getElementById("sessionRecordedText");
+
+const historyList =
+    document.getElementById("historyList");
+
+const emptyHistory =
+    document.getElementById("emptyHistory");
+
+
+/* =========================================================
+   CBT ANALYSIS PATTERNS
+   ========================================================= */
+
+const analysisPatterns = [
+
+    {
+        keywords: [
+            "tired",
+            "exhausted",
+            "no energy",
+            "fatigue"
+        ],
+
+        icon: "🧘",
+
+        title: "Slow Breathing",
+
+        description:
+            "Try the slow-breathing exercise for a few minutes to pause and refocus.",
+
+        response:
+            "It sounds like you're carrying a lot of tiredness right now. When we feel exhausted, it can be easy to judge ourselves for not doing enough. Let's separate what was actually within your control from what wasn't.",
+
+        activityType: "breathing"
+    },
+
+
+    {
+        keywords: [
+            "worried",
+            "worry",
+            "anxious",
+            "anxiety",
+            "nervous"
+        ],
+
+        icon: "🌬️",
+
+        title: "Guided Breathing",
+
+        description:
+            "Take a few slow breaths and give your mind a moment to settle.",
+
+        response:
+            "It sounds like your mind is spending a lot of energy thinking about what might happen. Let's pause and focus on what you can control right now.",
+
+        activityType: "breathing"
+    },
+
+
+    {
+        keywords: [
+            "sad",
+            "lonely",
+            "alone",
+            "hopeless"
+        ],
+
+        icon: "🌱",
+
+        title: "Small Positive Step",
+
+        description:
+            "Take one small, manageable step that can give you a moment of comfort.",
+
+        response:
+            "It sounds like you're going through a difficult emotional moment. You don't have to solve everything immediately. One small supportive action can be enough for now.",
+
+        activityType: "breathing"
+    },
+
+
+    {
+        keywords: [
+            "stress",
+            "stressed",
+            "pressure",
+            "overwhelmed"
+        ],
+
+        icon: "🌬️",
+
+        title: "Thought Break",
+
+        description:
+            "Pause for a moment and use slow breathing to create some mental space.",
+
+        response:
+            "It sounds like you're carrying several things at once. When everything feels urgent, taking a short pause can help you step back and decide what needs attention first.",
+
+        activityType: "breathing"
+    },
+
+
+    {
+        keywords: [
+            "angry",
+            "anger",
+            "frustrated",
+            "frustration"
+        ],
+
+        icon: "🌿",
+
+        title: "Pause & Breathe",
+
+        description:
+            "Take a few slow breaths before reacting to the situation.",
+
+        response:
+            "It sounds like this situation has created a strong emotional reaction. Giving yourself a short pause before responding can help you understand what you actually need.",
+
+        activityType: "breathing"
+    },
+
+
+    {
+        keywords: [
+            "failure",
+            "worthless",
+            "useless",
+            "not good enough",
+            "i can't"
+        ],
+
+        icon: "🧠",
+
+        title: "Thought Reframing",
+
+        description:
+            "Take a moment to challenge the negative thought and consider another perspective.",
+
+        response:
+            "It sounds like you're being very hard on yourself. One difficult experience does not define your ability or your worth. Try looking at the situation with the same kindness you would offer someone else.",
+
+        activityType: "breathing"
+    }
+
+];
+
+
+/* =========================================================
+   DEFAULT ANALYSIS
+   ========================================================= */
+
+const defaultAnalysis = {
+
+    icon: "🧘",
+
+    title: "Mindful Pause",
+
+    description:
+        "Take a few slow breaths and give yourself a quiet moment to reset.",
+
+    response:
+        "Thank you for reflecting on your thoughts. Sometimes putting our thoughts into words can help us understand them more clearly. Try taking a short pause and focusing on one small step you can manage right now.",
+
+    activityType: "breathing"
+
 };
 
 
-async function submitCBT() {
+/* =========================================================
+   LOAD QUESTION
+   ========================================================= */
 
-    const answer =
-        document.getElementById("cbt-answer").value.trim();
+function loadQuestion() {
 
+    const question =
+        questions[currentQuestion];
 
-    if (!answer) {
-        alert("Please enter an answer first.");
-        return;
+    questionIcon.textContent =
+        question.icon;
+
+    questionTitle.textContent =
+        question.title;
+
+    questionHelper.textContent =
+        question.helper;
+
+    answerInput.value =
+        answers[currentQuestion];
+
+    characterCount.textContent =
+        answerInput.value.length;
+
+    updateProgress();
+
+    clearMessage();
+
+    backBtn.disabled =
+        currentQuestion === 0;
+
+    if (
+        currentQuestion ===
+        totalQuestions - 1
+    ) {
+
+        nextBtn.textContent =
+            "Analyse My Answers →";
+
+    } else {
+
+        nextBtn.textContent =
+            "Next →";
     }
 
-
-    if (cbtStep === 1) {
-        cbtSession.situation = answer;
-    }
-
-    if (cbtStep === 2) {
-        cbtSession.thought = answer;
-        originalThought = answer;
-    }
-
-    if (cbtStep === 3) {
-        cbtSession.emotion = answer;
-    }
-
-    if (cbtStep === 4) {
-        cbtSession.evidenceFor = answer;
-    }
-
-    if (cbtStep === 5) {
-        cbtSession.evidenceAgainst = answer;
-    }
-
-
-    document.getElementById("cbt-result").innerHTML =
-        "<div class='loading-message'>" +
-        "MindMirror is thinking... 🌱" +
-        "</div>";
-
-
-    try {
-
-        const response = fetch("/cbt-exercise", {
-
-            method: "POST",
-
-            headers: {
-                "Content-Type": "application/json"
-            },
-
-            body: JSON.stringify({
-                step: cbtStep,
-                answer: answer
-            })
-
-        });
-
-
-        const data = await response.json();
-
-
-        if (!response.ok) {
-            throw new Error(
-                data.error || "Something went wrong."
-            );
-        }
-
-
-        document.getElementById("cbt-question").textContent =
-            data.question;
-
-
-        document.getElementById("cbt-answer").value = "";
-
-
-        cbtStep = data.step;
-
-
-        document.getElementById("cbt-progress").textContent =
-            "Step " + cbtStep + " of 6";
-
-
-        document.getElementById("cbt-progress-bar").style.width =
-            (cbtStep / 6 * 100) + "%";
-
-
-        if (data.balanced_thought) {
-
-            cbtSession.balancedThought =
-                data.balanced_thought;
-
-            cbtSession.date =
-                new Date().toLocaleString();
-
-
-            document.getElementById("cbt-summary").innerHTML =
-
-                "<div class='cbt-complete'>" +
-
-                "<h3>📋 Your CBT Reflection Summary</h3>" +
-
-                "<p><strong>Situation:</strong> " +
-                cbtSession.situation +
-                "</p>" +
-
-                "<p><strong>💭 Original Thought:</strong> " +
-                cbtSession.thought +
-                "</p>" +
-
-                "<p><strong>❤️ Emotion:</strong> " +
-                cbtSession.emotion +
-                "</p>" +
-
-                "<p><strong>🔍 Evidence For:</strong> " +
-                cbtSession.evidenceFor +
-                "</p>" +
-
-                "<p><strong>⚖️ Evidence Against:</strong> " +
-                cbtSession.evidenceAgainst +
-                "</p>" +
-
-                "<p><strong>🌱 Balanced Thought:</strong> " +
-                cbtSession.balancedThought +
-                "</p>" +
-
-                "</div>";
-
-
-            let cbtHistory =
-                JSON.parse(
-                    localStorage.getItem("mindmirrorCBTHistory")
-                ) || [];
-
-
-            cbtHistory.push(cbtSession);
-
-
-            localStorage.setItem(
-                "mindmirrorCBTHistory",
-                JSON.stringify(cbtHistory)
-            );
-
-
-            localStorage.setItem(
-                "mindmirrorCBTSession",
-                JSON.stringify(cbtSession)
-            );
-
-
-            updateCBTSummary();
-            updateEmotionInsights();
-            updateEmotionTrend();
-
-
-            document.getElementById("cbt-result").innerHTML =
-
-                "<div class='cbt-complete'>" +
-
-                "<h3>🌱 CBT Exercise Complete!</h3>" +
-
-                "<p>You took a moment to reflect on your thoughts " +
-                "and consider a more balanced perspective.</p>" +
-
-                "<h3>💭 Your Original Thought</h3>" +
-
-                "<p>" +
-                originalThought +
-                "</p>" +
-
-                "<h3>🌱 Your Balanced Thought</h3>" +
-
-                "<p>" +
-                data.balanced_thought +
-                "</p>" +
-
-                "<p>" +
-                data.message +
-                "</p>" +
-
-                "<button onclick='resetCBT()'>" +
-                "🔄 Start Again" +
-                "</button>" +
-
-                "</div>";
-
-
-        } else {
-
-            document.getElementById("cbt-result").innerHTML =
-                "<p>Step " +
-                cbtStep +
-                " of 6</p>";
-
-        }
-
-
-    } catch (error) {
-
-        document.getElementById("cbt-result").innerHTML =
-
-            "<div class='loading-message'>" +
-
-            "Sorry, MindMirror could not process this response " +
-            "right now. Please try again. 🌱" +
-
-            "</div>";
-    }
 }
 
 
-function resetCBT() {
+/* =========================================================
+   UPDATE PROGRESS
+   ========================================================= */
 
-    cbtStep = 1;
+function updateProgress() {
 
-    originalThought = "";
+    const questionNumber =
+        currentQuestion + 1;
 
-
-    cbtSession = {
-        situation: "",
-        thought: "",
-        emotion: "",
-        evidenceFor: "",
-        evidenceAgainst: "",
-        balancedThought: ""
-    };
-
-
-    document.getElementById("cbt-question").textContent =
-        "What situation is bothering you right now?";
-
-
-    document.getElementById("cbt-answer").value = "";
-
-
-    document.getElementById("cbt-result").innerHTML = "";
-
-
-    document.getElementById("cbt-summary").innerHTML = "";
-
-
-    document.getElementById("emotion-insights").innerHTML = "";
-
-
-    document.getElementById("emotion-trend").innerHTML = "";
-
-
-    document.getElementById("cbt-progress").textContent =
-        "Step 1 of 6";
-
-
-    document.getElementById("cbt-progress-bar").style.width =
-        "16.66%";
-}
-
-
-function viewSavedCBT() {
-
-    const savedSession =
-        localStorage.getItem("mindmirrorCBTSession");
-
-
-    if (!savedSession) {
-
-        alert(
-            "No saved CBT session found yet. 🌱"
+    const percentage =
+        Math.round(
+            (questionNumber / totalQuestions) * 100
         );
 
-        return;
-    }
+    progressText.textContent =
+        `Question ${questionNumber} of ${totalQuestions}`;
 
+    progressPercentage.textContent =
+        `${percentage}%`;
 
-    const session =
-        JSON.parse(savedSession);
-
-
-    document.getElementById("cbt-result").innerHTML =
-
-        "<div class='cbt-complete'>" +
-
-        "<h3>📖 Saved CBT Session</h3>" +
-
-        "<h3>Situation</h3>" +
-        "<p>" +
-        session.situation +
-        "</p>" +
-
-        "<h3>💭 Original Thought</h3>" +
-        "<p>" +
-        session.thought +
-        "</p>" +
-
-        "<h3>❤️ Emotion</h3>" +
-        "<p>" +
-        session.emotion +
-        "</p>" +
-
-        "<h3>🔍 Evidence For</h3>" +
-        "<p>" +
-        session.evidenceFor +
-        "</p>" +
-
-        "<h3>⚖️ Evidence Against</h3>" +
-        "<p>" +
-        session.evidenceAgainst +
-        "</p>" +
-
-        "<h3>🌱 Balanced Thought</h3>" +
-        "<p>" +
-        session.balancedThought +
-        "</p>" +
-
-        "</div>";
+    progressFill.style.width =
+        `${percentage}%`;
 }
 
 
-function clearSavedCBT() {
+/* =========================================================
+   CHARACTER COUNT
+   ========================================================= */
 
-    const savedSession =
-        localStorage.getItem("mindmirrorCBTSession");
+answerInput.addEventListener(
+    "input",
+    () => {
 
+        characterCount.textContent =
+            answerInput.value.length;
 
-    if (!savedSession) {
+        clearMessage();
 
-        alert(
-            "There is no saved CBT session to clear. 🌱"
-        );
-
-        return;
     }
+);
 
 
-    const confirmed = confirm(
-        "Are you sure you want to clear the saved CBT session?"
-    );
+/* =========================================================
+   NEXT BUTTON
+   ========================================================= */
 
+nextBtn.addEventListener(
+    "click",
+    () => {
 
-    if (!confirmed) {
-        return;
-    }
+        const answer =
+            answerInput.value.trim();
 
+        if (!answer) {
 
-    localStorage.removeItem(
-        "mindmirrorCBTSession"
-    );
+            showMessage(
+                "Please write an answer before continuing.",
+                "error"
+            );
 
+            answerInput.focus();
 
-    alert(
-        "Saved CBT session has been cleared. 🌱"
-    );
-
-
-    document.getElementById("cbt-result").innerHTML =
-
-        "<div class='cbt-complete'>" +
-
-        "<h3>🧹 Saved Session Cleared</h3>" +
-
-        "<p>Your saved CBT session has been cleared successfully.</p>" +
-
-        "</div>";
-}
-
-
-function updateCBTSummary() {
-
-    const history =
-        JSON.parse(
-            localStorage.getItem("mindmirrorCBTHistory")
-        ) || [];
-
-
-    const summary =
-        document.getElementById("cbt-summary");
-
-
-    if (!summary) return;
-
-
-    if (history.length === 0) {
-
-        summary.innerHTML = "";
-
-        return;
-    }
-
-
-    let totalIntensity = 0;
-    let count = 0;
-
-
-    history.forEach(function(session) {
-
-        const match = session.emotion
-            ? session.emotion.match(/\d+/)
-            : null;
-
-
-        if (match) {
-
-            totalIntensity +=
-                Number(match[0]);
-
-            count++;
-        }
-    });
-
-
-    const average =
-        count > 0
-            ? (totalIntensity / count).toFixed(1)
-            : "N/A";
-
-
-    const latest =
-        history[history.length - 1];
-
-
-    summary.innerHTML =
-
-        "<div class='cbt-complete'>" +
-
-        "<h3>📊 CBT Progress Summary</h3>" +
-
-        "<p><strong>🧠 Sessions Completed:</strong> " +
-        history.length +
-        "</p>" +
-
-        "<p><strong>📅 Latest Session:</strong> " +
-        (latest.date || "Date not available") +
-        "</p>" +
-
-        "<p><strong>❤️ Average Emotion Intensity:</strong> " +
-        average +
-        (average !== "N/A" ? " / 10" : "") +
-        "</p>" +
-
-        "</div>";
-}
-
-
-function updateEmotionInsights() {
-
-    const history =
-        JSON.parse(
-            localStorage.getItem("mindmirrorCBTHistory")
-        ) || [];
-
-
-    const insights =
-        document.getElementById("emotion-insights");
-
-
-    if (!insights) return;
-
-
-    if (history.length === 0) {
-
-        insights.innerHTML = "";
-
-        return;
-    }
-
-
-    const emotionCounts = {};
-
-
-    history.forEach(function(session) {
-
-        if (!session.emotion) {
             return;
         }
 
-
-        const emotionText =
-            session.emotion.toLowerCase();
-
-
-        const emotions = [
-            "anxiety",
-            "sadness",
-            "anger",
-            "stress",
-            "happiness",
-            "fear"
-        ];
+        answers[currentQuestion] =
+            answer;
 
 
-        emotions.forEach(function(emotion) {
+        if (
+            currentQuestion <
+            totalQuestions - 1
+        ) {
 
-            if (emotionText.includes(emotion)) {
+            currentQuestion++;
 
-                emotionCounts[emotion] =
-                    (emotionCounts[emotion] || 0) + 1;
-            }
-        });
+            loadQuestion();
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        } else {
+
+            analyseAnswers();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   BACK BUTTON
+   ========================================================= */
+
+backBtn.addEventListener(
+    "click",
+    () => {
+
+        if (currentQuestion === 0) {
+            return;
+        }
+
+        answers[currentQuestion] =
+            answerInput.value.trim();
+
+        currentQuestion--;
+
+        loadQuestion();
+
+    }
+);
+
+
+/* =========================================================
+   ANALYSE ANSWERS
+   ========================================================= */
+
+function analyseAnswers() {
+
+    answers[currentQuestion] =
+        answerInput.value.trim();
+
+
+    questionCard.classList.add(
+        "hidden"
+    );
+
+    questionProgress.classList.add(
+        "hidden"
+    );
+
+    questionNavigation.classList.add(
+        "hidden"
+    );
+
+    analysisCard.classList.remove(
+        "hidden"
+    );
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
     });
 
 
-    let insightsHTML =
+    setTimeout(
+        () => {
 
-        "<div class='cbt-complete'>" +
+            const analysis =
+                getCBTAnalysis();
 
-        "<h3>📈 Emotion Insights</h3>";
+            showResult(analysis);
+
+        },
+        1800
+    );
+
+}
+
+
+/* =========================================================
+   GET CBT ANALYSIS
+   ========================================================= */
+
+function getCBTAnalysis() {
+
+    const combinedAnswers =
+        answers
+            .join(" ")
+            .toLowerCase();
+
+
+    for (
+        const pattern
+        of analysisPatterns
+    ) {
+
+        const found =
+            pattern.keywords.some(
+                keyword =>
+                    combinedAnswers.includes(
+                        keyword
+                    )
+            );
+
+        if (found) {
+            return pattern;
+        }
+
+    }
+
+    return defaultAnalysis;
+}
+
+
+/* =========================================================
+   SHOW RESULT
+   ========================================================= */
+
+function showResult(analysis) {
+
+    analysisCard.classList.add(
+        "hidden"
+    );
+
+    resultSection.classList.remove(
+        "hidden"
+    );
+
+
+    const mainThought =
+        answers[1]?.trim() ||
+        answers[0]?.trim() ||
+        "Your reflection";
+
+
+    userThought.textContent =
+        mainThought;
+
+    cbtResponse.textContent =
+        analysis.response;
+
+    activityIcon.textContent =
+        analysis.icon;
+
+    activityTitle.textContent =
+        analysis.title;
+
+    activityDescription.textContent =
+        analysis.description;
+
+
+    setupActivityButton(
+        analysis.activityType
+    );
+
+
+    /*
+     * Record the CBT session date and time
+     * when the CBT analysis is completed.
+     */
+
+    recordCBTSession();
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =========================================================
+   ACTIVITY BUTTON
+   ========================================================= */
+
+function setupActivityButton(
+    activityType
+) {
+
+    const newButton =
+        startActivityBtn.cloneNode(true);
+
+    startActivityBtn.parentNode.replaceChild(
+        newButton,
+        startActivityBtn
+    );
 
 
     if (
-        Object.keys(emotionCounts).length === 0
+        activityType ===
+        "breathing"
     ) {
 
-        insightsHTML +=
-            "<p>Not enough emotion data yet. 🌱</p>";
+        newButton.textContent =
+            "Start Breathing Exercise";
+
+        newButton.addEventListener(
+            "click",
+            () => {
+
+                window.location.href =
+                    "relax.html";
+
+            }
+        );
 
     } else {
 
-        insightsHTML +=
-            "<p><strong>Most frequent emotions:</strong></p>";
+        newButton.textContent =
+            "Start Relaxation";
 
+        newButton.addEventListener(
+            "click",
+            () => {
 
-        Object.keys(emotionCounts).forEach(
-            function(emotion) {
+                window.location.href =
+                    "relax.html";
 
-                insightsHTML +=
-
-                    "<p>❤️ " +
-
-                    emotion.charAt(0).toUpperCase() +
-                    emotion.slice(1) +
-
-                    ": " +
-
-                    emotionCounts[emotion] +
-
-                    " session(s)</p>";
             }
         );
+
     }
 
-
-    insightsHTML += "</div>";
-
-
-    insights.innerHTML =
-        insightsHTML;
 }
 
 
-function updateEmotionTrend() {
+/* =========================================================
+   RECORD CBT SESSION
+   ========================================================= */
 
-    const history =
+function recordCBTSession() {
+
+    const now =
+        new Date();
+
+
+    const session = {
+
+        date:
+            now.toLocaleDateString(
+                "en-IN",
+                {
+                    day: "2-digit",
+                    month: "long",
+                    year: "numeric"
+                }
+            ),
+
+        time:
+            now.toLocaleTimeString(
+                "en-IN",
+                {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    hour12: true
+                }
+            ),
+
+        timestamp:
+            now.toISOString()
+
+    };
+
+
+    let history =
         JSON.parse(
-            localStorage.getItem("mindmirrorCBTHistory")
+            localStorage.getItem(
+                "mindMirrorCBTHistory"
+            )
         ) || [];
 
 
-    const trend =
-        document.getElementById("emotion-trend");
+    history.unshift(session);
 
 
-    if (!trend) return;
+    localStorage.setItem(
+        "mindMirrorCBTHistory",
+        JSON.stringify(history)
+    );
 
 
-    const intensities = [];
+    sessionRecordedText.textContent =
+        `Session recorded on ${session.date} at ${session.time}.`;
 
 
-    history.forEach(function(session) {
+    renderCBTHistory();
 
-        const match = session.emotion
-            ? session.emotion.match(/\d+/)
-            : null;
+}
 
 
-        if (match) {
+/* =========================================================
+   RENDER CBT HISTORY
+   ========================================================= */
 
-            const value =
-                Number(match[0]);
+function renderCBTHistory() {
+
+    const history =
+        JSON.parse(
+            localStorage.getItem(
+                "mindMirrorCBTHistory"
+            )
+        ) || [];
 
 
-            if (
-                value >= 0 &&
-                value <= 10
-            ) {
+    historyList.innerHTML = "";
 
-                intensities.push(value);
-            }
+
+    if (history.length === 0) {
+
+        emptyHistory.classList.remove(
+            "hidden"
+        );
+
+        return;
+
+    }
+
+
+    emptyHistory.classList.add(
+        "hidden"
+    );
+
+
+    history.forEach(
+        session => {
+
+            const historyItem =
+                document.createElement(
+                    "div"
+                );
+
+            historyItem.className =
+                "history-item";
+
+
+            historyItem.innerHTML = `
+
+                <div class="history-left">
+
+                    <div class="history-icon">
+                        🧠
+                    </div>
+
+                    <div>
+
+                        <div class="history-title">
+                            CBT Session
+                        </div>
+
+                        <div class="history-date">
+                            ${escapeHTML(session.date)}
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="history-time">
+                    ${escapeHTML(session.time)}
+                </div>
+
+            `;
+
+
+            historyList.appendChild(
+                historyItem
+            );
+
         }
-    });
+    );
 
-
-    if (intensities.length < 2) {
-
-        trend.innerHTML = "";
-
-        return;
-    }
-
-
-    const first =
-        intensities[0];
-
-
-    const latest =
-        intensities[intensities.length - 1];
-
-
-    const difference =
-        latest - first;
-
-
-    let label;
-    let icon;
-
-
-    if (difference <= -1) {
-
-        label = "decreased";
-        icon = "📉";
-
-    } else if (difference >= 1) {
-
-        label = "increased";
-        icon = "📈";
-
-    } else {
-
-        label = "stayed about the same";
-        icon = "➡️";
-    }
-
-
-    trend.innerHTML =
-
-        "<div class='cbt-complete'>" +
-
-        "<h3>📊 Emotion Intensity Trend</h3>" +
-
-        "<p>" +
-        icon +
-        " Your reported emotion intensity has " +
-        label +
-        " across your recorded sessions.</p>" +
-
-        "<p><strong>First recorded intensity:</strong> " +
-        first +
-        " / 10</p>" +
-
-        "<p><strong>Latest recorded intensity:</strong> " +
-        latest +
-        " / 10</p>" +
-
-        "</div>";
 }
 
 
-function viewCBTHistory() {
+/* =========================================================
+   ESCAPE HTML
+   ========================================================= */
 
-    const history =
-        JSON.parse(
-            localStorage.getItem("mindmirrorCBTHistory")
-        ) || [];
+function escapeHTML(value) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent =
+        value;
+
+    return div.innerHTML;
+}
 
 
-    if (history.length === 0) {
+/* =========================================================
+   RESTART CBT
+   ========================================================= */
 
-        alert(
-            "No CBT history found yet. 🌱"
+restartBtn.addEventListener(
+    "click",
+    () => {
+
+        currentQuestion = 0;
+
+        answers =
+            Array(totalQuestions).fill("");
+
+        resultSection.classList.add(
+            "hidden"
         );
 
-        return;
-    }
-
-
-    let historyHTML =
-
-        "<div class='cbt-complete'>" +
-
-        "<h3>🗂️ CBT History</h3>" +
-
-        "<p><strong>Total Sessions:</strong> " +
-        history.length +
-        "</p>";
-
-
-    history.forEach(function(session, index) {
-
-        historyHTML +=
-
-            "<hr>" +
-
-            "<h3>Session " +
-            (index + 1) +
-            "</h3>" +
-
-            "<p><strong>📅 Date:</strong> " +
-            (session.date || "Date not available") +
-            "</p>" +
-
-            "<p><strong>Situation:</strong> " +
-            session.situation +
-            "</p>" +
-
-            "<p><strong>Original Thought:</strong> " +
-            session.thought +
-            "</p>" +
-
-            "<p><strong>Emotion:</strong> " +
-            session.emotion +
-            "</p>" +
-
-            "<p><strong>Evidence For:</strong> " +
-            session.evidenceFor +
-            "</p>" +
-
-            "<p><strong>Evidence Against:</strong> " +
-            session.evidenceAgainst +
-            "</p>" +
-
-            "<p><strong>Balanced Thought:</strong> " +
-            session.balancedThought +
-            "</p>";
-    });
-
-
-    historyHTML += "</div>";
-
-
-    document.getElementById("cbt-result").innerHTML =
-        historyHTML;
-}
-
-
-function clearCBTHistory() {
-
-    const history =
-        JSON.parse(
-            localStorage.getItem("mindmirrorCBTHistory")
-        ) || [];
-
-
-    if (history.length === 0) {
-
-        alert(
-            "There is no CBT history to clear."
+        questionCard.classList.remove(
+            "hidden"
         );
 
-        return;
+        questionProgress.classList.remove(
+            "hidden"
+        );
+
+        questionNavigation.classList.remove(
+            "hidden"
+        );
+
+        loadQuestion();
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
     }
+);
 
 
-    const confirmed = confirm(
-        "Are you sure you want to clear all CBT history?"
-    );
+/* =========================================================
+   MESSAGE FUNCTIONS
+   ========================================================= */
 
+function showMessage(
+    text,
+    type
+) {
 
-    if (!confirmed) {
-        return;
-    }
+    message.textContent =
+        text;
 
+    message.className =
+        `message ${type}`;
 
-    localStorage.removeItem(
-        "mindmirrorCBTHistory"
-    );
-
-
-    alert(
-        "CBT history has been cleared."
-    );
-
-
-    document.getElementById("cbt-result").innerHTML =
-
-        "<div class='cbt-complete'>" +
-
-        "<h3>🗑️ CBT History Cleared</h3>" +
-
-        "<p>Your saved CBT history has been cleared successfully.</p>" +
-
-        "</div>";
-
-
-    updateCBTSummary();
-    updateEmotionInsights();
-    updateEmotionTrend();
 }
 
 
-/* Load saved CBT information */
-document.addEventListener("DOMContentLoaded", function () {
+function clearMessage() {
 
-    updateCBTSummary();
-    updateEmotionInsights();
-    updateEmotionTrend();
+    message.textContent =
+        "";
 
-});
+    message.className =
+        "message";
+
+}
+
+
+/* =========================================================
+   DASHBOARD
+   ========================================================= */
+
+function goToDashboard() {
+
+    window.location.href =
+        "dashboard.html";
+
+}
+
+
+/* =========================================================
+   INITIAL LOAD
+   ========================================================= */
+
+loadQuestion();
+
+renderCBTHistory();

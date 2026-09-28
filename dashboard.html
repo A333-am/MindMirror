@@ -7,10 +7,7 @@
 
     <title>MindMirror AI | Dashboard</title>
 
-    <!-- Main shared styles -->
     <link rel="stylesheet" href="CSS/style.css">
-
-    <!-- Dashboard-only styles -->
     <link rel="stylesheet" href="CSS/dashboard.css">
 </head>
 
@@ -44,16 +41,17 @@
                 Home
             </a>
 
-            <a href="mood.html">
-                Mood
+            <a href="vr.html">
+                VR Relaxation
+
             </a>
 
-            <a href="journal.html">
-                Journal
+            <a href="cbt.html">
+               Thought Reflection
             </a>
 
-            <a href="progress.html">
-                Progress
+            <a href="therapist.html">
+                AI Assistant
             </a>
 
         </nav>
@@ -70,7 +68,6 @@
         </a>
 
     </header>
-
 
 
     <!-- =========================================
@@ -102,7 +99,6 @@
                     and explore what your mind needs today.
                 </p>
 
-
                 <div class="hero-actions">
 
                     <a href="mood.html" class="hero-primary">
@@ -119,8 +115,6 @@
 
             </div>
 
-
-            <!-- Decorative wellness visual -->
 
             <div class="hero-visual">
 
@@ -160,6 +154,7 @@
             <div class="section-title">
 
                 <div>
+
                     <span class="eyebrow">
                         TODAY
                     </span>
@@ -167,6 +162,7 @@
                     <h2>
                         Your wellness snapshot
                     </h2>
+
                 </div>
 
                 <span class="date-label" id="todayDate">
@@ -179,7 +175,9 @@
             <div class="snapshot-grid">
 
 
-                <!-- Mood -->
+                <!-- ==============================
+                     MOOD
+                =============================== -->
 
                 <div class="snapshot-card mood-snapshot">
 
@@ -195,13 +193,16 @@
 
                     </div>
 
+
                     <h3 id="dashboardMood">
                         Not checked in
                     </h3>
 
-                    <p>
+
+                    <p id="dashboardMoodDetails">
                         How you're feeling today
                     </p>
+
 
                     <a href="mood.html">
                         Update mood →
@@ -210,7 +211,10 @@
                 </div>
 
 
-                <!-- Progress -->
+
+                <!-- ==============================
+                     PROGRESS
+                =============================== -->
 
                 <div class="snapshot-card progress-snapshot">
 
@@ -226,13 +230,16 @@
 
                     </div>
 
+
                     <h3>
                         Keep going
                     </h3>
 
+
                     <p>
                         Small steps create meaningful change.
                     </p>
+
 
                     <a href="progress.html">
                         View progress →
@@ -241,7 +248,10 @@
                 </div>
 
 
-                <!-- Reflection -->
+
+                <!-- ==============================
+                     REFLECTION
+                =============================== -->
 
                 <div class="snapshot-card reflection-snapshot">
 
@@ -257,13 +267,16 @@
 
                     </div>
 
+
                     <h3>
                         Make space for your thoughts
                     </h3>
 
+
                     <p>
                         Write freely without judgment.
                     </p>
+
 
                     <a href="journal.html">
                         Open journal →
@@ -303,7 +316,7 @@
             <div class="tools-grid">
 
 
-                <!-- AI -->
+                <!-- 01 AI -->
 
                 <a href="therapist.html" class="tool-card ai-tool">
 
@@ -339,7 +352,8 @@
                 </a>
 
 
-                <!-- Breathing -->
+
+                <!-- 02 BREATHING -->
 
                 <a href="relax.html" class="tool-card breathing-tool">
 
@@ -375,7 +389,8 @@
                 </a>
 
 
-                <!-- Journal -->
+
+                <!-- 03 JOURNAL -->
 
                 <a href="journal.html" class="tool-card journal-tool">
 
@@ -411,7 +426,8 @@
                 </a>
 
 
-                <!-- Progress -->
+
+                <!-- 04 PROGRESS -->
 
                 <a href="progress.html" class="tool-card progress-tool">
 
@@ -445,12 +461,10 @@
                     </div>
 
                 </a>
-                           
-
-                <!-- ADD MEMBER 2 CODE BELOW THIS LINE -->
 
 
-                <!-- CBT Thought Reflection -->
+
+                <!-- 05 CBT -->
 
                 <a href="cbt.html" class="tool-card">
 
@@ -486,7 +500,8 @@
                 </a>
 
 
-                <!-- Sleep Companion -->
+
+                <!-- 06 SLEEP -->
 
                 <a href="sleep.html" class="tool-card">
 
@@ -522,7 +537,8 @@
                 </a>
 
 
-                <!-- Self-Care Reminders -->
+
+                <!-- 07 SELF CARE -->
 
                 <a href="self-care.html" class="tool-card">
 
@@ -558,7 +574,8 @@
                 </a>
 
 
-                <!-- Routine Builder -->
+
+                <!-- 08 ROUTINE -->
 
                 <a href="routine.html" class="tool-card">
 
@@ -594,7 +611,8 @@
                 </a>
 
 
-                <!-- Mood Booster -->
+
+                <!-- 09 MOOD BOOSTER -->
 
                 <a href="mood-booster.html" class="tool-card">
 
@@ -630,7 +648,8 @@
                 </a>
 
 
-                <!-- Social Support -->
+
+                <!-- 10 SOCIAL SUPPORT -->
 
                 <a href="social-support.html" class="tool-card">
 
@@ -666,21 +685,48 @@
                 </a>
 
 
-            </div>
-            <!-- VR Wellness -->
-            <a href="vr.html" class="tool-card">
-    <div class="tool-number">11</div>
-    <div class="tool-icon">🥽</div>
-    <div class="tool-content">
-        <span>VR WELLNESS</span>
-        <h3>VR Relaxation</h3>
-        <p>Enter a calming immersive environment for relaxation and mindfulness.</p>
-    </div>
-    <div class="tool-arrow">→</div>
-</a>
-                <!-- Emergency Support -->
 
-                <a href="emergency.html" class="tool-card emergency-tool">
+                <!-- 11 VR -->
+
+                <a href="vr.html" class="tool-card vr-tool">
+
+                    <div class="tool-number">
+                        11
+                    </div>
+
+                    <div class="tool-icon">
+                        🥽
+                    </div>
+
+                    <div class="tool-content">
+
+                        <span>
+                            VR WELLNESS
+                        </span>
+
+                        <h3>
+                            VR Relaxation
+                        </h3>
+
+                        <p>
+                            Enter a calming immersive environment
+                            for relaxation and mindfulness.
+                        </p>
+
+                    </div>
+
+                    <div class="tool-arrow">
+                        →
+                    </div>
+
+                </a>
+
+
+
+                <!-- 12 EMERGENCY -->
+
+                <a href="emergency.html"
+                   class="tool-card emergency-tool">
 
                     <div class="tool-number">
                         12
@@ -701,7 +747,8 @@
                         </h3>
 
                         <p>
-                            Find immediate guidance and support when you need it.
+                            Find immediate guidance and support
+                            when you need it.
                         </p>
 
                     </div>
@@ -713,33 +760,36 @@
                 </a>
 
 
-
-        <!-- =====================================
-             DAILY MESSAGE
-        ====================================== -->
-
-        <section class="daily-message">
-
-            <div class="message-symbol">
-                “
-            </div>
-
-            <div>
-
-                <span>
-                    TODAY'S REMINDER
-                </span>
-
-                <p>
-                    You don't have to fix everything today.
-                    Just take the next small step.
-                </p>
-
             </div>
 
         </section>
+<!-- =====================================
+     DAILY MESSAGE
+====================================== -->
+
+<section class="daily-message">
+
+    <div class="message-symbol">
+        “
+    </div>
+
+    <div>
+
+        <span>
+            TODAY'S REMINDER
+        </span>
+
+        <p id="dailyReminder">
+            You don't have to fix everything today.
+            Just take the next small step.
+        </p>
+
+    </div>
+
+</section>
 
 
+       
 
         <!-- =====================================
              FOOTER

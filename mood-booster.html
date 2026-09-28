@@ -4,75 +4,282 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Mood Booster - MindMirror</title>
+    <title>MindMirror | Mood Booster</title>
 
-    <link rel="stylesheet" href="CSS/style.css">
-    <link rel="stylesheet" href="CSS/features.css">
+    <link rel="stylesheet" href="CSS/mood-booster.css">
 </head>
 
 <body>
 
-    <!-- Header -->
-    <header class="main-header">
+<header class="main-header">
 
-        <div class="logo-area">
-            <img src="Images/logo.png" alt="MindMirror Logo">
-            <span>MindMirror</span>
+    <div class="brand">
+        <img src="Images/logo.png" alt="MindMirror Logo">
+
+        <div class="brand-text">
+            <div class="brand-name">MindMirror</div>
+            <div class="brand-subtitle">AI WELLNESS SPACE</div>
+        </div>
+    </div>
+
+    <a href="dashboard.html" class="dashboard-btn">
+        ← Dashboard
+    </a>
+
+</header>
+
+
+<main class="mood-booster-page">
+
+    <section class="page-intro">
+
+        <span class="eyebrow">POSITIVE ENGAGEMENT</span>
+
+        <h1>Mood Booster</h1>
+
+        <p>
+            Choose an activity that feels comfortable for you.
+            Explore, create, relax, learn, connect and have fun.
+        </p>
+
+    </section>
+
+
+    <!-- PROGRESS -->
+
+    <section class="progress-card">
+
+        <div class="progress-info">
+
+            <div>
+                <span class="progress-label">
+                    Your Mood Booster Progress
+                </span>
+
+                <strong>
+                    <span id="completedCount">0</span> / 25 completed
+                </strong>
+            </div>
+
+            <div
+                class="progress-percent"
+                id="progressPercent"
+            >
+                0%
+            </div>
+
         </div>
 
-        <nav>
-            <a href="dashboard.html" class="profile-link">← Dashboard</a>
-        </nav>
+        <div class="progress-bar">
+            <div id="progressFill"></div>
+        </div>
 
-    </header>
-
-
-    <!-- Main Content -->
-    <main class="page-container">
-
-        <div class="cbt-section">
-
-            <h2>✨ Mood Booster Activities</h2>
-
-            <p>
-                Choose a simple activity that may help you feel better
-                and take a positive break.
-            </p>
+    </section>
 
 
-            <h3>🌱 Choose an Activity</h3>
+    <!-- CATEGORY FILTER -->
 
-            <div class="mood-booster-options">
+    <section class="filter-section">
 
-                <button onclick="selectMoodBooster('music')">
-                    🎵 Listen to Music
+        <button class="filter-btn active" data-category="All">
+            All
+        </button>
+
+        <button class="filter-btn" data-category="Fitness">
+            Fitness
+        </button>
+
+        <button class="filter-btn" data-category="Music">
+            Music
+        </button>
+
+        <button class="filter-btn" data-category="Creative">
+            Creative
+        </button>
+
+        <button class="filter-btn" data-category="Relaxation">
+            Relaxation
+        </button>
+
+        <button class="filter-btn" data-category="Games">
+            Games
+        </button>
+
+        <button class="filter-btn" data-category="Social">
+            Social
+        </button>
+
+        <button class="filter-btn" data-category="Learning">
+            Learning
+        </button>
+
+        <button class="filter-btn" data-category="Nature">
+            Nature
+        </button>
+
+        <button class="filter-btn" data-category="Cooking">
+            Cooking
+        </button>
+
+        <button class="filter-btn" data-category="Personal">
+            Personal
+        </button>
+
+    </section>
+
+
+    <!-- ACTIVITY CARDS -->
+
+    <section class="activities-section">
+
+        <div
+            id="activityGrid"
+            class="activity-grid"
+        ></div>
+
+    </section>
+
+
+    <!-- INTERACTIVE ACTIVITY -->
+
+    <section
+        id="activityPanel"
+        class="activity-panel hidden"
+        aria-live="polite"
+    >
+
+        <div class="activity-panel-header">
+
+            <div
+                class="selected-icon"
+                id="selectedIcon"
+            >
+                🌟
+            </div>
+
+            <div class="selected-heading">
+
+                <span
+                    class="selected-category"
+                    id="selectedCategory"
+                >
+                    Activity
+                </span>
+
+                <h2 id="selectedTitle">
+                    Activity
+                </h2>
+
+                <p id="selectedDescription">
+                    Choose an activity to begin.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- DYNAMIC INTERACTIVE AREA -->
+
+        <div
+            id="interactiveArea"
+            class="interactive-area"
+        ></div>
+
+
+        <!-- REFLECTION -->
+
+        <div
+            id="reflectionArea"
+            class="reflection-area hidden"
+        >
+
+            <h3>
+                How do you feel after this activity?
+            </h3>
+
+            <div class="feeling-options">
+
+                <button
+                    type="button"
+                    data-feeling="Better"
+                >
+                    😊 Better
                 </button>
 
-                <button onclick="selectMoodBooster('gratitude')">
-                    💜 Practice Gratitude
+                <button
+                    type="button"
+                    data-feeling="About the same"
+                >
+                    😌 About the same
                 </button>
 
-                <button onclick="selectMoodBooster('relaxation')">
-                    🧘 Relaxation
-                </button>
-
-                <button onclick="selectMoodBooster('activity')">
-                    🚶 Physical Activity
+                <button
+                    type="button"
+                    data-feeling="Still low"
+                >
+                    💜 Still low
                 </button>
 
             </div>
 
+        </div>
 
-            <!-- Activity Result -->
-            <div id="mood-booster-result"></div>
+
+        <!-- ACTIONS -->
+
+        <div class="activity-actions">
+
+            <button
+                type="button"
+                id="completeBtn"
+                class="primary-btn"
+                disabled
+            >
+                ✓ Mark as Completed
+            </button>
+
+            <button
+                type="button"
+                id="closeBtn"
+                class="secondary-btn"
+            >
+                Close
+            </button>
 
         </div>
 
-    </main>
+        <p
+            id="activityMessage"
+            class="activity-message"
+        ></p>
+
+    </section>
 
 
-    <!-- Mood Booster JavaScript -->
-    <script src="JS/mood-booster.js"></script>
+    <!-- MOTIVATION -->
+
+    <section class="motivation-card">
+
+        <div class="motivation-icon">
+            ✨
+        </div>
+
+        <div>
+            <h3>Small steps matter</h3>
+
+            <p>
+                You don't have to do everything at once.
+                One small positive activity is enough for today.
+            </p>
+        </div>
+
+    </section>
+
+</main>
+
+
+<script src="JS/mood-booster.js"></script>
 
 </body>
 </html>

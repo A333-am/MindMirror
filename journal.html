@@ -5,87 +5,329 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <title>MindMirror AI - Journal</title>
+    <title>Journal | MindMirror</title>
 
-    <link rel="stylesheet" href="CSS/style.css">
-    <link rel="stylesheet" href="CSS/features.css">
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="CSS/journal.css"
+    >
 
 </head>
 
+
 <body>
-<header class="dashboard-header">
-
-    <div class="brand">
-
-        <img src="Images/logo.png"
-             class="logo"
-             alt="MindMirror AI Logo">
-
-        <span>MindMirror</span>
-
-    </div>
-
-    <a href="dashboard.html" class="profile-link">
-         ← Dashboard
-    </a>
-
-</header>
 
 
-<main class="journal-main">
+    <!-- ================= HEADER ================= -->
 
-    <section class="journal-container">
+    <header class="top-header">
 
-        <h1>My Emotional Journal</h1>
+        <div class="brand-area">
 
-        <p>
-            Write about your thoughts, feelings, or experiences.
-        </p>
+            <img
+                src="Images/logo.png"
+                alt="MindMirror Logo"
+                class="brand-logo"
+            >
 
+            <div class="brand-text">
 
-        <div class="journal-field">
+                <div class="brand-name">
+                    MindMirror
+                </div>
 
-            <label for="journalTitle">
-                Entry Title
-            </label>
+                <div class="brand-subtitle">
+                    AI WELLNESS SPACE
+                </div>
 
-            <input
-                type="text"
-                id="journalTitle"
-                placeholder="Give your entry a title">
+            </div>
 
         </div>
 
 
-        <div class="journal-field">
-
-            <label for="journalEntry">
-                Your Thoughts
-            </label>
-
-            <textarea
-                id="journalEntry"
-                placeholder="Write your thoughts and feelings here...">
-            </textarea>
-
-        </div>
-
-
-        <button id="saveJournal">
-            Save Entry
+        <button
+            type="button"
+            class="dashboard-btn"
+            id="dashboardBtn"
+        >
+            ← Dashboard
         </button>
 
-        <p id="journalMessage"></p>
-
-    </section>
-
-</main>
+    </header>
 
 
-<script src="JS/journal.js"></script>
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="journal-page">
+
+
+        <!-- ================= PAGE HEADING ================= -->
+
+        <section class="page-heading">
+
+            <p class="page-eyebrow">
+                EMOTIONAL REFLECTION
+            </p>
+
+            <h1>
+                Your Safe Space to Write
+            </h1>
+
+            <p>
+                Take a quiet moment to put your thoughts into words.
+            </p>
+
+            <div
+                class="current-date"
+                id="currentDate"
+            ></div>
+
+        </section>
+
+
+
+        <!-- ================= JOURNAL CARD ================= -->
+
+        <section class="journal-card">
+
+
+            <!-- ================= TITLE ================= -->
+
+            <div class="title-section">
+
+                <label
+                    for="journalTitle"
+                    class="section-label"
+                >
+                    Title
+                </label>
+
+                <input
+                    type="text"
+                    id="journalTitle"
+                    class="title-input"
+                    maxlength="120"
+                    placeholder="Give this moment a title..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+
+            <!-- ================= THOUGHTS ================= -->
+
+            <div class="thoughts-section">
+
+                <div class="writing-header">
+
+                    <label
+                        for="journalText"
+                        class="section-label"
+                    >
+                        Your thoughts
+                    </label>
+
+                    <span id="wordCount">
+                        0 words
+                    </span>
+
+                </div>
+
+
+                <textarea
+                    id="journalText"
+                    class="thoughts-input"
+                    maxlength="5000"
+                    placeholder="Write whatever is on your mind..."
+                    aria-label="Your thoughts"
+                ></textarea>
+
+
+                <div class="writing-footer">
+
+                    <span id="characterCount">
+                        0 / 5000
+                    </span>
+
+                    <span id="readingTime">
+                        About 0 min read
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ================= MEMORY SECTION ================= -->
+
+            <div class="memory-section">
+
+
+                <div class="memory-header">
+
+                    <div>
+
+                        <h2>
+                            Memories
+                        </h2>
+
+                        <p>
+                            Add photos that remind you of this moment.
+                        </p>
+
+                    </div>
+
+                    <span
+                        class="memory-count"
+                        id="memoryCount"
+                    >
+                        0 / 6
+                    </span>
+
+                </div>
+
+
+
+                <!-- ================= IMAGE PREVIEW ================= -->
+
+                <div
+                    class="memory-grid"
+                    id="memoryGrid"
+                >
+                </div>
+
+
+
+                <!-- ================= ADD MEMORY ================= -->
+
+                <div class="memory-add-row">
+
+                    <label
+                        for="imageInput"
+                        class="add-memory-button"
+                        id="addMemoryButton"
+                        aria-label="Add memory photo"
+                        title="Add memory photo"
+                    >
+
+                        <span class="plus-symbol">
+                            +
+                        </span>
+
+                    </label>
+
+
+                    <div class="add-memory-text">
+
+                        <strong>
+                            Add a memory
+                        </strong>
+
+                        <span>
+                            JPG, PNG or WEBP · Up to 6 photos
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <input
+                    type="file"
+                    id="imageInput"
+                    accept="image/jpeg,image/png,image/webp"
+                    multiple
+                    hidden
+                >
+
+
+            </div>
+
+
+
+            <!-- ================= MESSAGE ================= -->
+
+            <div
+                class="journal-message"
+                id="journalMessage"
+                role="alert"
+                aria-live="polite"
+            ></div>
+
+
+
+            <!-- ================= ACTIONS ================= -->
+
+            <div class="journal-actions">
+
+                <button
+                    type="button"
+                    class="secondary-btn"
+                    id="clearBtn"
+                >
+                    Clear
+                </button>
+
+
+                <button
+                    type="button"
+                    class="primary-btn"
+                    id="saveJournalBtn"
+                >
+                    Save Journal
+                </button>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ================= PRIVACY ================= -->
+
+        <div class="privacy-note">
+
+            <span>
+                🔒
+            </span>
+
+            <p>
+                Your thoughts are personal. When backend storage
+                is connected, your journal will be linked to your
+                authenticated account.
+            </p>
+
+        </div>
+
+
+    </main>
+
+
+    <script src="JS/journal.js"></script>
+
 </body>
 
 </html>
