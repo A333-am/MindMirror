@@ -1,6 +1,5 @@
 /* =========================================================
-   MindMirror – VR Environment
-   Corrected & Consistent Styling
+   MindMirror - VR Relaxation
    ========================================================= */
 
 * {
@@ -9,56 +8,72 @@
     box-sizing: border-box;
 }
 
-/* -------------------- VARIABLES -------------------- */
+
+/* =========================================================
+   VARIABLES
+   ========================================================= */
 
 :root {
+
     --background: #FAF8F5;
+
     --white: #FFFFFF;
 
     --primary: #7357A8;
+
     --primary-hover: #62468F;
 
-    --dark-purple: #4B3F72;
-    --secondary-purple: #51456F;
+    --heading: #4B3F72;
 
-    --soft-lavender: #F3EFFB;
-    --very-light-lavender: #F8F5FC;
+    --supporting: #51456F;
+
+    --soft-bg: #F3EFFB;
+
+    --very-soft: #F8F5FC;
 
     --border: #E6DEF3;
 
     --text: #33303A;
+
     --muted: #77727F;
-
-    --success: #4F8A68;
-
-    --shadow: 0 10px 30px rgba(75, 63, 114, 0.08);
 }
 
 
-/* -------------------- GLOBAL -------------------- */
+/* =========================================================
+   BODY
+   ========================================================= */
 
 html {
     scroll-behavior: smooth;
 }
 
 body {
-    font-family: "Poppins", Arial, sans-serif;
-    background: var(--background);
-    color: var(--text);
-    min-height: 100vh;
-    line-height: 1.5;
+
+    font-family:
+        "Poppins",
+        Arial,
+        sans-serif;
+
+    background:
+        var(--background);
+
+    color:
+        var(--text);
+
+    min-height:
+        100vh;
+
+    line-height:
+        1.5;
 }
 
 button,
-input,
-textarea,
-select,
-option {
-    font-family: "Poppins", Arial, sans-serif;
-}
-
 a {
-    font-family: "Poppins", Arial, sans-serif;
+
+    font-family:
+        "Poppins",
+        Arial,
+        sans-serif;
 }
 
 
@@ -67,136 +82,171 @@ a {
    ========================================================= */
 
 .vr-header {
-    min-height: 86px;
-    padding: 0 40px;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    min-height:
+        70px;
 
-    background: var(--white);
-    border-bottom: 1px solid var(--border);
+    padding:
+        0 32px;
 
-    box-shadow: 0 3px 12px rgba(75, 63, 114, 0.04);
+    display:
+        flex;
 
-    position: relative;
-    z-index: 10;
-}
+    align-items:
+        center;
 
+    justify-content:
+        space-between;
 
-/* -------------------- BRAND -------------------- */
+    background:
+        var(--white);
 
-.vr-brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+    border-bottom:
+        1px solid var(--border);
 
-    text-decoration: none;
-}
+    box-shadow:
+        0 3px 12px rgba(75, 63, 114, 0.04);
 
-.vr-brand img {
-    width: 43px;
-    height: 43px;
+    position:
+        relative;
 
-    object-fit: contain;
-    display: block;
-
-    flex-shrink: 0;
-}
-
-.vr-brand span {
-    display: flex;
-    flex-direction: column;
-
-    color: var(--dark-purple);
-
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 20px;
-    font-weight: 700;
-
-    line-height: 1.1;
-}
-
-.vr-brand span::after {
-    content: "AI WELLNESS SPACE";
-
-    margin-top: 4px;
-
-    color: var(--muted);
-
-    font-family: "Poppins", Arial, sans-serif;
-    font-size: 9px;
-    font-weight: 500;
-
-    letter-spacing: 1.5px;
-    line-height: 1.1;
+    z-index:
+        20;
 }
 
 
 /* =========================================================
-   NAVIGATION
+   BRAND
    ========================================================= */
 
-.vr-nav {
-    display: flex;
-    align-items: center;
-    gap: 16px;
+.vr-brand {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    text-decoration:
+        none;
 }
 
-.vr-nav a {
-    color: var(--secondary-purple);
+.vr-brand img {
 
-    text-decoration: none;
+    width:
+        38px;
 
-    font-size: 14px;
-    font-weight: 600;
+    height:
+        38px;
+
+    object-fit:
+        contain;
+}
+
+.brand-text {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    line-height:
+        1;
+}
+
+.brand-name {
+
+    color:
+        var(--heading);
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        20px;
+
+    font-weight:
+        700;
+}
+
+.brand-subtitle {
+
+    margin-top:
+        4px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        7px;
+
+    font-weight:
+        600;
+
+    letter-spacing:
+        1.4px;
+}
+
+
+/* =========================================================
+   NAV
+   ========================================================= */
+
+.profile-link {
+
+    min-width:
+        125px;
+
+    height:
+        40px;
+
+    padding:
+        0 18px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    background:
+        var(--primary);
+
+    color:
+        var(--white);
+
+    border-radius:
+        22px;
+
+    text-decoration:
+        none;
+
+    font-size:
+        12px;
+
+    font-weight:
+        600;
 
     transition:
-        color 0.2s ease,
-        background 0.2s ease,
-        transform 0.2s ease;
+        0.2s ease;
 }
 
-.vr-nav a:hover {
-    color: var(--primary);
-}
+.profile-link:hover {
 
+    background:
+        var(--primary-hover);
 
-/* -------------------- PROFILE BUTTON -------------------- */
-
-.vr-nav .profile-link {
-    min-width: 145px;
-    height: 48px;
-
-    padding: 0 22px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: var(--primary);
-    border: 1px solid var(--primary);
-
-    border-radius: 25px;
-
-    color: var(--white);
-
-    font-size: 14px;
-    font-weight: 600;
-
-    transition:
-        background 0.2s ease,
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-.vr-nav .profile-link:hover {
-    background: var(--primary-hover);
-    color: var(--white);
-
-    transform: translateY(-1px);
-
-    box-shadow: 0 6px 14px rgba(115, 87, 168, 0.18);
+    transform:
+        translateY(-1px);
 }
 
 
@@ -205,24 +255,44 @@ a {
    ========================================================= */
 
 .vr-main {
-    min-height: calc(100vh - 86px);
 
-    padding: 55px 20px 70px;
+    min-height:
+        calc(100vh - 70px);
+
+    padding:
+        45px 20px 65px;
 }
 
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
 .vr-container {
-    width: 100%;
-    max-width: 900px;
 
-    margin: 0 auto;
-    padding: 45px;
+    width:
+        100%;
 
-    background: var(--white);
+    max-width:
+        900px;
 
-    border: 1px solid var(--border);
-    border-radius: 24px;
+    margin:
+        0 auto;
 
-    box-shadow: var(--shadow);
+    padding:
+        42px;
+
+    background:
+        var(--white);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        22px;
+
+    box-shadow:
+        0 10px 30px rgba(75, 63, 114, 0.08);
 }
 
 
@@ -231,43 +301,66 @@ a {
    ========================================================= */
 
 .vr-intro {
-    text-align: center;
-    margin-bottom: 45px;
+
+    text-align:
+        center;
+
+    margin-bottom:
+        40px;
 }
 
 .vr-label {
-    display: inline-block;
 
-    color: var(--primary);
+    display:
+        inline-block;
 
-    font-size: 10px;
-    font-weight: 700;
+    color:
+        var(--primary);
 
-    letter-spacing: 2px;
+    font-size:
+        9px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        1.8px;
 }
 
 .vr-intro h1 {
-    margin: 9px 0 12px;
 
-    color: var(--dark-purple);
+    margin:
+        8px 0 10px;
 
-    font-family: "Poppins", Arial, sans-serif;
-    font-size: 34px;
-    font-weight: 700;
+    color:
+        var(--heading);
 
-    line-height: 1.2;
-    letter-spacing: -0.5px;
+    font-size:
+        31px;
+
+    font-weight:
+        700;
+
+    line-height:
+        1.2;
 }
 
 .vr-intro p {
-    max-width: 620px;
 
-    margin: 0 auto;
+    max-width:
+        600px;
 
-    color: var(--muted);
+    margin:
+        0 auto;
 
-    font-size: 15px;
-    line-height: 1.7;
+    color:
+        var(--muted);
+
+    font-size:
+        13px;
+
+    line-height:
+        1.7;
 }
 
 
@@ -277,52 +370,82 @@ a {
 
 .environment-section h2,
 .vr-steps h2 {
-    color: var(--dark-purple);
 
-    font-size: 23px;
-    font-weight: 700;
+    color:
+        var(--heading);
 
-    line-height: 1.3;
+    font-size:
+        21px;
 
-    margin-bottom: 8px;
+    font-weight:
+        700;
+
+    margin-bottom:
+        7px;
 }
 
 .section-description {
-    color: var(--muted);
 
-    font-size: 14px;
+    color:
+        var(--muted);
 
-    line-height: 1.6;
+    font-size:
+        12px;
 
-    margin-bottom: 22px;
+    margin-bottom:
+        20px;
 }
 
 
 /* =========================================================
-   ENVIRONMENT CARDS
+   ENVIRONMENT GRID
    ========================================================= */
 
 .environment-grid {
-    display: grid;
 
-    grid-template-columns: repeat(2, 1fr);
+    display:
+        grid;
 
-    gap: 16px;
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap:
+        14px;
 }
 
+
+/* =========================================================
+   ENVIRONMENT CARD
+   ========================================================= */
+
 .environment-card {
-    display: flex;
-    align-items: flex-start;
 
-    gap: 15px;
+    display:
+        flex;
 
-    padding: 21px;
+    align-items:
+        flex-start;
 
-    background: var(--very-light-lavender);
+    gap:
+        14px;
 
-    border: 1px solid var(--border);
+    min-height:
+        150px;
 
-    border-radius: 17px;
+    padding:
+        18px;
+
+    background:
+        var(--very-soft);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        15px;
+
+    cursor:
+        pointer;
 
     transition:
         transform 0.2s ease,
@@ -331,174 +454,299 @@ a {
 }
 
 .environment-card:hover {
-    transform: translateY(-3px);
 
-    border-color: #CFC4DC;
+    transform:
+        translateY(-3px);
 
-    box-shadow: 0 8px 20px rgba(75, 63, 114, 0.07);
+    border-color:
+        var(--primary);
+
+    box-shadow:
+        0 9px 20px rgba(75, 63, 114, 0.10);
+}
+
+.environment-card:focus {
+
+    outline:
+        3px solid rgba(115, 87, 168, 0.20);
+
+    outline-offset:
+        2px;
 }
 
 
-/* -------------------- ENVIRONMENT ICON -------------------- */
+/* =========================================================
+   ENVIRONMENT ICON
+   ========================================================= */
 
 .environment-icon {
-    width: 50px;
-    height: 50px;
 
-    flex-shrink: 0;
+    width:
+        48px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height:
+        48px;
 
-    background: var(--soft-lavender);
+    flex-shrink:
+        0;
 
-    border-radius: 14px;
+    display:
+        flex;
 
-    font-size: 25px;
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    background:
+        var(--soft-bg);
+
+    border-radius:
+        13px;
+
+    font-size:
+        24px;
 }
 
 
-/* -------------------- ENVIRONMENT TEXT -------------------- */
+/* =========================================================
+   ENVIRONMENT CONTENT
+   ========================================================= */
+
+.environment-content {
+
+    flex:
+        1;
+}
 
 .environment-tag {
-    display: block;
 
-    color: var(--primary);
+    display:
+        block;
 
-    font-size: 9px;
-    font-weight: 700;
+    color:
+        var(--primary);
 
-    letter-spacing: 1.5px;
+    font-size:
+        8px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        1.4px;
 }
 
 .environment-card h3 {
-    margin: 4px 0 7px;
 
-    color: var(--dark-purple);
+    margin:
+        4px 0 6px;
 
-    font-size: 17px;
-    font-weight: 600;
+    color:
+        var(--heading);
 
-    line-height: 1.3;
+    font-size:
+        16px;
+
+    font-weight:
+        600;
 }
 
 .environment-card p {
-    color: var(--muted);
 
-    font-size: 13px;
+    color:
+        var(--muted);
 
-    line-height: 1.55;
+    font-size:
+        11px;
+
+    line-height:
+        1.55;
 }
 
 
 /* =========================================================
-   VR ACCESS SECTION
+   CARD ACTION
+   ========================================================= */
+
+.environment-action {
+
+    display:
+        inline-block;
+
+    margin-top:
+        9px;
+
+    color:
+        var(--primary);
+
+    font-size:
+        10px;
+
+    font-weight:
+        700;
+}
+
+.environment-card:hover
+.environment-action {
+
+    color:
+        var(--primary-hover);
+}
+
+
+/* =========================================================
+   VR ACCESS
    ========================================================= */
 
 .vr-access {
-    display: flex;
-    align-items: center;
 
-    gap: 22px;
+    display:
+        flex;
 
-    margin-top: 35px;
-    padding: 25px;
+    align-items:
+        center;
 
-    background: var(--soft-lavender);
+    gap:
+        20px;
 
-    border: 1px solid var(--border);
+    margin-top:
+        32px;
 
-    border-radius: 18px;
+    padding:
+        23px;
+
+    background:
+        var(--soft-bg);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        16px;
 }
-
-
-/* -------------------- ACCESS ICON -------------------- */
 
 .access-icon {
-    width: 62px;
-    height: 62px;
 
-    flex-shrink: 0;
+    width:
+        60px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height:
+        60px;
 
-    background: #EBE3F2;
+    flex-shrink:
+        0;
 
-    border-radius: 17px;
+    display:
+        flex;
 
-    font-size: 30px;
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    background:
+        #EBE3F2;
+
+    border-radius:
+        16px;
+
+    font-size:
+        29px;
 }
 
-
-/* -------------------- ACCESS CONTENT -------------------- */
-
 .access-content {
-    flex: 1;
+
+    flex:
+        1;
 }
 
 .access-content h2 {
-    margin: 5px 0 7px;
 
-    color: var(--dark-purple);
+    margin:
+        5px 0 6px;
 
-    font-size: 21px;
-    font-weight: 700;
+    color:
+        var(--heading);
 
-    line-height: 1.3;
+    font-size:
+        20px;
+
+    font-weight:
+        700;
 }
 
 .access-content p {
-    color: var(--muted);
 
-    font-size: 14px;
+    margin-bottom:
+        14px;
 
-    line-height: 1.6;
+    color:
+        var(--muted);
 
-    margin-bottom: 15px;
+    font-size:
+        12px;
+
+    line-height:
+        1.6;
 }
 
 
 /* =========================================================
-   VR BUTTON
+   BUTTON
    ========================================================= */
 
 .vr-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
 
-    min-height: 44px;
+    min-height:
+        42px;
 
-    padding: 11px 20px;
+    padding:
+        10px 18px;
 
-    background: var(--primary);
+    display:
+        inline-flex;
 
-    color: var(--white);
+    align-items:
+        center;
 
-    border-radius: 11px;
+    justify-content:
+        center;
 
-    text-decoration: none;
+    border:
+        none;
 
-    font-size: 14px;
-    font-weight: 600;
+    border-radius:
+        10px;
+
+    background:
+        var(--primary);
+
+    color:
+        var(--white);
+
+    font-size:
+        12px;
+
+    font-weight:
+        600;
+
+    cursor:
+        pointer;
 
     transition:
-        background 0.2s ease,
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
+        0.2s ease;
 }
 
 .vr-button:hover {
-    background: var(--primary-hover);
 
-    color: var(--white);
+    background:
+        var(--primary-hover);
 
-    transform: translateY(-1px);
-
-    box-shadow: 0 6px 14px rgba(115, 87, 168, 0.18);
+    transform:
+        translateY(-1px);
 }
 
 
@@ -507,123 +755,530 @@ a {
    ========================================================= */
 
 .vr-steps {
-    margin-top: 42px;
+
+    margin-top:
+        38px;
 }
 
 .steps-grid {
-    display: grid;
 
-    grid-template-columns: repeat(4, 1fr);
+    display:
+        grid;
 
-    gap: 13px;
+    grid-template-columns:
+        repeat(4, 1fr);
 
-    margin-top: 20px;
+    gap:
+        11px;
+
+    margin-top:
+        17px;
 }
 
 .step-card {
-    padding: 19px;
 
-    background: var(--very-light-lavender);
+    padding:
+        17px;
 
-    border: 1px solid var(--border);
+    background:
+        var(--very-soft);
 
-    border-radius: 15px;
+    border:
+        1px solid var(--border);
 
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
+    border-radius:
+        14px;
 }
-
-.step-card:hover {
-    transform: translateY(-2px);
-
-    box-shadow: 0 7px 18px rgba(75, 63, 114, 0.06);
-}
-
-
-/* -------------------- STEP NUMBER -------------------- */
 
 .step-number {
-    display: block;
 
-    color: var(--primary);
+    display:
+        block;
 
-    font-size: 10px;
-    font-weight: 700;
+    margin-bottom:
+        7px;
 
-    letter-spacing: 1.5px;
+    color:
+        var(--primary);
 
-    margin-bottom: 9px;
+    font-size:
+        9px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        1.3px;
 }
 
 .step-card h3 {
-    color: var(--dark-purple);
 
-    font-size: 15px;
-    font-weight: 600;
+    margin-bottom:
+        6px;
 
-    line-height: 1.3;
+    color:
+        var(--heading);
 
-    margin-bottom: 7px;
+    font-size:
+        13px;
+
+    font-weight:
+        600;
+
+    line-height:
+        1.35;
 }
 
 .step-card p {
-    color: var(--muted);
 
-    font-size: 12px;
+    color:
+        var(--muted);
 
-    line-height: 1.55;
+    font-size:
+        10px;
+
+    line-height:
+        1.55;
 }
 
 
 /* =========================================================
-   INFORMATION / NOTE
+   NOTE
    ========================================================= */
 
 .vr-note {
-    display: flex;
-    align-items: flex-start;
 
-    gap: 10px;
+    display:
+        flex;
 
-    margin-top: 30px;
-    padding: 15px 17px;
+    align-items:
+        flex-start;
 
-    background: #FAF8FF;
+    gap:
+        9px;
 
-    border: 1px solid var(--border);
+    margin-top:
+        25px;
 
-    border-radius: 12px;
+    padding:
+        14px 16px;
+
+    background:
+        #FAF8FF;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        11px;
 }
 
 .vr-note span {
-    flex-shrink: 0;
 
-    font-size: 17px;
+    flex-shrink:
+        0;
+
+    font-size:
+        16px;
 }
 
 .vr-note p {
-    color: var(--muted);
 
-    font-size: 12px;
+    color:
+        var(--muted);
 
-    line-height: 1.6;
+    font-size:
+        10px;
+
+    line-height:
+        1.6;
 }
 
 .vr-note strong {
-    color: var(--secondary-purple);
-    font-weight: 600;
+
+    color:
+        var(--supporting);
 }
 
 
 /* =========================================================
-   ACCESSIBILITY
+   MODAL OVERLAY
    ========================================================= */
 
-.vr-nav a:focus-visible,
-.vr-button:focus-visible {
-    outline: 3px solid rgba(115, 87, 168, 0.25);
-    outline-offset: 3px;
+.download-modal-overlay {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        1000;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        20px;
+
+    background:
+        rgba(75, 63, 114, 0.38);
+
+    backdrop-filter:
+        blur(4px);
+
+    opacity:
+        0;
+
+    visibility:
+        hidden;
+
+    transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease;
+}
+
+.download-modal-overlay.show {
+
+    opacity:
+        1;
+
+    visibility:
+        visible;
+}
+
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+
+.download-modal {
+
+    position:
+        relative;
+
+    width:
+        100%;
+
+    max-width:
+        490px;
+
+    padding:
+        35px;
+
+    background:
+        var(--white);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        21px;
+
+    box-shadow:
+        0 20px 60px rgba(75, 63, 114, 0.18);
+
+    text-align:
+        center;
+
+    transform:
+        translateY(15px);
+
+    transition:
+        transform 0.25s ease;
+}
+
+.download-modal-overlay.show
+.download-modal {
+
+    transform:
+        translateY(0);
+}
+
+
+/* =========================================================
+   CLOSE
+   ========================================================= */
+
+.modal-close {
+
+    position:
+        absolute;
+
+    top:
+        13px;
+
+    right:
+        15px;
+
+    width:
+        35px;
+
+    height:
+        35px;
+
+    border:
+        none;
+
+    border-radius:
+        50%;
+
+    background:
+        var(--soft-bg);
+
+    color:
+        var(--supporting);
+
+    font-size:
+        23px;
+
+    line-height:
+        1;
+
+    cursor:
+        pointer;
+}
+
+.modal-close:hover {
+
+    background:
+        var(--border);
+}
+
+
+/* =========================================================
+   MODAL ICON
+   ========================================================= */
+
+.modal-icon {
+
+    width:
+        68px;
+
+    height:
+        68px;
+
+    margin:
+        0 auto 16px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    background:
+        var(--soft-bg);
+
+    border-radius:
+        18px;
+
+    font-size:
+        34px;
+}
+
+
+/* =========================================================
+   MODAL TEXT
+   ========================================================= */
+
+.download-modal h2 {
+
+    margin:
+        8px 0 9px;
+
+    color:
+        var(--heading);
+
+    font-size:
+        24px;
+
+    font-weight:
+        700;
+}
+
+.download-description {
+
+    color:
+        var(--muted);
+
+    font-size:
+        13px;
+
+    line-height:
+        1.65;
+}
+
+
+/* =========================================================
+   DOWNLOAD INFO
+   ========================================================= */
+
+.download-info {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap:
+        8px;
+
+    margin:
+        22px 0;
+}
+
+.download-info div {
+
+    padding:
+        12px 8px;
+
+    background:
+        var(--very-soft);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        11px;
+}
+
+.download-info span {
+
+    display:
+        block;
+
+    margin-bottom:
+        4px;
+
+    color:
+        var(--primary);
+
+    font-size:
+        8px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        1px;
+}
+
+.download-info p {
+
+    color:
+        var(--supporting);
+
+    font-size:
+        9px;
+
+    line-height:
+        1.4;
+}
+
+
+/* =========================================================
+   DOWNLOAD BUTTON
+   ========================================================= */
+
+.download-button {
+
+    width:
+        100%;
+
+    min-height:
+        47px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        11px 18px;
+
+    background:
+        var(--primary);
+
+    color:
+        var(--white);
+
+    border-radius:
+        11px;
+
+    text-decoration:
+        none;
+
+    font-size:
+        13px;
+
+    font-weight:
+        600;
+
+    transition:
+        0.2s ease;
+}
+
+.download-button:hover {
+
+    background:
+        var(--primary-hover);
+
+    color:
+        var(--white);
+
+    transform:
+        translateY(-1px);
+}
+
+
+/* =========================================================
+   MODAL NOTE
+   ========================================================= */
+
+.download-note {
+
+    margin-top:
+        10px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        10px;
+}
+
+
+/* =========================================================
+   FOCUS
+   ========================================================= */
+
+.environment-card:focus-visible,
+.vr-button:focus-visible,
+.download-button:focus-visible,
+.modal-close:focus-visible,
+.profile-link:focus-visible {
+
+    outline:
+        3px solid rgba(115, 87, 168, 0.25);
+
+    outline-offset:
+        3px;
 }
 
 
@@ -634,19 +1289,23 @@ a {
 @media (max-width: 800px) {
 
     .vr-header {
-        padding: 0 20px;
+        padding:
+            0 20px;
     }
 
     .vr-container {
-        padding: 32px 25px;
+        padding:
+            32px 25px;
     }
 
     .environment-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
     }
 
     .steps-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+            repeat(2, 1fr);
     }
 }
 
@@ -658,130 +1317,94 @@ a {
 @media (max-width: 600px) {
 
     .vr-header {
-        min-height: auto;
 
-        padding: 13px 18px;
+        padding:
+            12px 16px;
 
-        flex-direction: column;
+        min-height:
+            auto;
 
-        gap: 12px;
+        flex-direction:
+            column;
+
+        gap:
+            11px;
     }
 
     .vr-brand {
-        width: 100%;
-        justify-content: center;
-    }
 
-    .vr-brand img {
-        width: 40px;
-        height: 40px;
-    }
+        width:
+            100%;
 
-    .vr-brand span {
-        font-size: 19px;
+        justify-content:
+            center;
     }
 
     .vr-nav {
-        width: 100%;
 
-        justify-content: center;
+        width:
+            100%;
 
-        gap: 12px;
-    }
-
-    .vr-nav .profile-link {
-        min-width: 135px;
-        height: 44px;
+        justify-content:
+            center;
     }
 
     .vr-main {
-        padding: 25px 14px 45px;
+
+        padding:
+            24px 12px 45px;
     }
 
     .vr-container {
-        padding: 28px 20px;
 
-        border-radius: 19px;
-    }
+        padding:
+            27px 18px;
 
-    .vr-intro {
-        margin-bottom: 32px;
+        border-radius:
+            18px;
     }
 
     .vr-intro h1 {
-        font-size: 28px;
+        font-size:
+            27px;
     }
 
     .vr-intro p {
-        font-size: 14px;
+        font-size:
+            12px;
     }
 
-    .environment-section h2,
-    .vr-steps h2 {
-        font-size: 21px;
+    .environment-grid {
+        grid-template-columns:
+            1fr;
     }
 
     .environment-card {
-        padding: 18px;
+        min-height:
+            130px;
     }
 
     .vr-access {
-        flex-direction: column;
 
-        text-align: center;
+        flex-direction:
+            column;
 
-        padding: 22px 18px;
-    }
-
-    .access-content p {
-        font-size: 13px;
+        text-align:
+            center;
     }
 
     .steps-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
     }
 
-    .step-card {
-        padding: 18px;
+    .download-modal {
+        padding:
+            31px 20px;
     }
 
-    .vr-note {
-        padding: 14px;
-    }
-}
-
-
-/* =========================================================
-   SMALL MOBILE
-   ========================================================= */
-
-@media (max-width: 380px) {
-
-    .vr-main {
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-
-    .vr-container {
-        padding: 24px 16px;
-    }
-
-    .vr-brand span {
-        font-size: 18px;
-    }
-
-    .vr-brand span::after {
-        font-size: 8px;
-        letter-spacing: 1.2px;
-    }
-
-    .vr-intro h1 {
-        font-size: 25px;
-    }
-
-    .vr-nav .profile-link {
-        min-width: 125px;
-        padding: 0 16px;
-        font-size: 13px;
+    .download-info {
+        grid-template-columns:
+            1fr;
     }
 }

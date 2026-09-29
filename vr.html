@@ -1,98 +1,634 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MindMirror AI - VR Relaxation</title>
-<link rel="stylesheet" href="CSS/vr.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MindMirror AI - VR Relaxation</title>
+
+    <link rel="stylesheet" href="CSS/vr.css">
 </head>
+
 <body>
 
-<header class="vr-header">
-    <div class="vr-brand">
-        <img src="Images/logo.png" alt="MindMirror AI Logo">
-        <span>MindMirror</span>
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="vr-header">
+
+        <a href="dashboard.html" class="vr-brand">
+
+            <img
+                src="Images/logo.png"
+                alt="MindMirror AI Logo"
+            >
+
+            <div class="brand-text">
+
+                <span class="brand-name">
+                    MindMirror
+                </span>
+
+                <span class="brand-subtitle">
+                    AI WELLNESS SPACE
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <nav class="vr-nav">
+
+            <a
+                href="dashboard.html"
+                class="profile-link"
+            >
+                ← Dashboard
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="vr-main">
+
+        <section class="vr-container">
+
+
+            <!-- =================================================
+                 INTRO
+            ================================================== -->
+
+            <div class="vr-intro">
+
+                <span class="vr-label">
+                    IMMERSIVE WELLNESS
+                </span>
+
+                <h1>
+                    🥽 VR Relaxation
+                </h1>
+
+                <p>
+                    Step into peaceful virtual environments
+                    designed for relaxation, mindfulness and
+                    quiet moments.
+                </p>
+
+            </div>
+
+
+            <!-- =================================================
+                 ENVIRONMENT SECTION
+            ================================================== -->
+
+            <section class="environment-section">
+
+                <h2>
+                    Choose Your Environment
+                </h2>
+
+                <p class="section-description">
+                    Explore calming nighttime environments
+                    through the MindMirror VR experience.
+                </p>
+
+
+                <div class="environment-grid">
+
+
+                    <!-- =================================================
+                         1. MOONLIT BEACH
+                    ================================================== -->
+
+                    <article
+                        class="environment-card"
+                        data-environment="Moonlit Beach"
+                        data-apk="downloads/CaveBeach.apk"
+                        data-icon="🌙"
+                        tabindex="0"
+                        role="button"
+                        aria-label="Download Moonlit Beach VR"
+                    >
+
+                        <div class="environment-icon">
+                            🌙
+                        </div>
+
+                        <div class="environment-content">
+
+                            <span class="environment-tag">
+                                CALM
+                            </span>
+
+                            <h3>
+                                Moonlit Beach
+                            </h3>
+
+                            <p>
+                                A peaceful nighttime beach with
+                                gentle surroundings for relaxation
+                                and mindful breathing.
+                            </p>
+
+                            <span class="environment-action">
+                                Download VR App →
+                            </span>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- =================================================
+                         2. MOONLIT FLOWER GARDEN
+                    ================================================== -->
+
+                    <article
+                        class="environment-card"
+                        data-environment="Moonlit Flower Garden"
+                        data-apk="downloads/FlowerField.apk"
+                        data-icon="🌸"
+                        tabindex="0"
+                        role="button"
+                        aria-label="Download Moonlit Flower Garden VR"
+                    >
+
+                        <div class="environment-icon">
+                            🌸
+                        </div>
+
+                        <div class="environment-content">
+
+                            <span class="environment-tag">
+                                NATURE
+                            </span>
+
+                            <h3>
+                                Moonlit Flower Garden
+                            </h3>
+
+                            <p>
+                                A quiet nighttime garden surrounded
+                                by flowers and soft peaceful lighting.
+                            </p>
+
+                            <span class="environment-action">
+                                Download VR App →
+                            </span>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- =================================================
+                         3. TWILIGHT FOREST
+                    ================================================== -->
+
+                    <article
+                        class="environment-card"
+                        data-environment="Twilight Forest"
+                        data-apk="downloads/ForestSunset.apk"
+                        data-icon="🌲"
+                        tabindex="0"
+                        role="button"
+                        aria-label="Download Twilight Forest VR"
+                    >
+
+                        <div class="environment-icon">
+                            🌲
+                        </div>
+
+                        <div class="environment-content">
+
+                            <span class="environment-tag">
+                                PEACEFUL
+                            </span>
+
+                            <h3>
+                                Twilight Forest
+                            </h3>
+
+                            <p>
+                                A serene forest atmosphere with
+                                soft evening light for quiet reflection.
+                            </p>
+
+                            <span class="environment-action">
+                                Download VR App →
+                            </span>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- =================================================
+                         4. MOONLIT VALLEY
+                    ================================================== -->
+
+                    <article
+                        class="environment-card"
+                        data-environment="Moonlit Valley"
+                        data-apk="downloads/Moon.apk"
+                        data-icon="🌕"
+                        tabindex="0"
+                        role="button"
+                        aria-label="Download Moonlit Valley VR"
+                    >
+
+                        <div class="environment-icon">
+                            🌕
+                        </div>
+
+                        <div class="environment-content">
+
+                            <span class="environment-tag">
+                                SCENIC
+                            </span>
+
+                            <h3>
+                                Moonlit Valley
+                            </h3>
+
+                            <p>
+                                A tranquil valley under the moonlight
+                                for peaceful observation and mindfulness.
+                            </p>
+
+                            <span class="environment-action">
+                                Download VR App →
+                            </span>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- =================================================
+                         5. MOONLIT BLUE BEACH
+                    ================================================== -->
+
+                    <article
+                        class="environment-card"
+                        data-environment="Moonlit Blue Beach"
+                        data-apk="downloads/NightBeach.apk"
+                        data-icon="🌊"
+                        tabindex="0"
+                        role="button"
+                        aria-label="Download Moonlit Blue Beach VR"
+                    >
+
+                        <div class="environment-icon">
+                            🌊
+                        </div>
+
+                        <div class="environment-content">
+
+                            <span class="environment-tag">
+                                NIGHT BEACH
+                            </span>
+
+                            <h3>
+                                Moonlit Blue Beach
+                            </h3>
+
+                            <p>
+                                A peaceful nighttime beach with
+                                a calm blue sea, designed for quiet
+                                relaxation and mindful breathing.
+                            </p>
+
+                            <span class="environment-action">
+                                Download VR App →
+                            </span>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 VR ACCESS
+            ================================================== -->
+
+            <section class="vr-access">
+
+                <div class="access-icon">
+                    🥽
+                </div>
+
+
+                <div class="access-content">
+
+                    <span class="vr-label">
+                        READY FOR VR?
+                    </span>
+
+                    <h2>
+                        Begin Your VR Experience
+                    </h2>
+
+                    <p>
+                        Select an environment above to download
+                        its MindMirror VR Android application.
+                        Install the APK and place your phone
+                        inside a compatible phone VR headset.
+                    </p>
+
+
+                    <button
+                        type="button"
+                        class="vr-button"
+                        id="downloadVRButton"
+                    >
+                        🥽 Choose VR Environment
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 HOW TO ACCESS VR
+            ================================================== -->
+
+            <section
+                class="vr-steps"
+                id="vr-steps"
+            >
+
+                <h2>
+                    How to Access VR
+                </h2>
+
+
+                <div class="steps-grid">
+
+
+                    <!-- STEP 01 -->
+
+                    <div class="step-card">
+
+                        <span class="step-number">
+                            01
+                        </span>
+
+                        <h3>
+                            Choose an Environment
+                        </h3>
+
+                        <p>
+                            Select a peaceful nighttime
+                            environment from the list above.
+                        </p>
+
+                    </div>
+
+
+                    <!-- STEP 02 -->
+
+                    <div class="step-card">
+
+                        <span class="step-number">
+                            02
+                        </span>
+
+                        <h3>
+                            Download the APK
+                        </h3>
+
+                        <p>
+                            Download the selected MindMirror
+                            VR application to your Android phone.
+                        </p>
+
+                    </div>
+
+
+                    <!-- STEP 03 -->
+
+                    <div class="step-card">
+
+                        <span class="step-number">
+                            03
+                        </span>
+
+                        <h3>
+                            Install and Open
+                        </h3>
+
+                        <p>
+                            Install the downloaded APK and
+                            launch the VR environment.
+                        </p>
+
+                    </div>
+
+
+                    <!-- STEP 04 -->
+
+                    <div class="step-card">
+
+                        <span class="step-number">
+                            04
+                        </span>
+
+                        <h3>
+                            Place Your Phone
+                        </h3>
+
+                        <p>
+                            Place your phone inside a compatible
+                            phone VR headset and begin your session.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 NOTE
+            ================================================== -->
+
+            <div class="vr-note">
+
+                <span>
+                    💡
+                </span>
+
+                <p>
+                    <strong>Note:</strong>
+                    MindMirror VR environments currently run
+                    inside Android applications. Select an
+                    environment above to download its APK.
+                </p>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         DOWNLOAD MODAL
+    ====================================================== -->
+
+    <div
+        class="download-modal-overlay"
+        id="downloadModal"
+        aria-hidden="true"
+    >
+
+        <div
+            class="download-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="downloadTitle"
+        >
+
+
+            <!-- CLOSE BUTTON -->
+
+            <button
+                type="button"
+                class="modal-close"
+                id="modalCloseButton"
+                aria-label="Close"
+            >
+                ×
+            </button>
+
+
+            <!-- ICON -->
+
+            <div
+                class="modal-icon"
+                id="modalIcon"
+            >
+                🌙
+            </div>
+
+
+            <span class="vr-label">
+                MINDMIRROR VR
+            </span>
+
+
+            <!-- TITLE -->
+
+            <h2 id="downloadTitle">
+                Moonlit Beach
+            </h2>
+
+
+            <!-- DESCRIPTION -->
+
+            <p
+                id="downloadDescription"
+                class="download-description"
+            >
+                Download this peaceful VR environment
+                for your Android phone.
+            </p>
+
+
+            <!-- DOWNLOAD STEPS -->
+
+            <div class="download-info">
+
+
+                <div>
+
+                    <span>
+                        01
+                    </span>
+
+                    <p>
+                        Download APK
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        02
+                    </span>
+
+                    <p>
+                        Install App
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        03
+                    </span>
+
+                    <p>
+                        Enter VR
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- APK DOWNLOAD -->
+
+            <a
+                href="#"
+                class="download-button"
+                id="apkDownloadButton"
+                download
+            >
+                ⬇ Download APK
+            </a>
+
+
+            <p class="download-note">
+                Android phone required.
+            </p>
+
+
+        </div>
+
     </div>
-    <nav class="vr-nav">
-        <a href="dashboard.html" class="profile-link">← Dashboard</a>
-    </nav>
-</header>
 
-<main class="vr-main">
-    <section class="vr-container">
 
-        <div class="vr-intro">
-            <span class="vr-label">IMMERSIVE WELLNESS</span>
-            <h1>🥽 VR Relaxation</h1>
-            <p>Step into a calming virtual environment and take a peaceful break from your daily routine.</p>
-        </div>
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
 
-        <section class="environment-section">
-            <h2>Choose Your Environment</h2>
-            <p class="section-description">Your MindMirror VR app includes five calming environments.</p>
+    <script src="JS/vr.js"></script>
 
-            <div class="environment-grid">
-
-                <article class="environment-card">
-                    <div class="environment-icon">🏖️</div>
-                    <div><span class="environment-tag">CALM</span><h3>Beach</h3>
-                    <p>A peaceful seaside environment for relaxation and mindful breathing.</p></div>
-                </article>
-
-                <article class="environment-card">
-                    <div class="environment-icon">🌸</div>
-                    <div><span class="environment-tag">NATURE</span><h3>Flower Field</h3>
-                    <p>A gentle natural setting designed to create a calm and pleasant atmosphere.</p></div>
-                </article>
-
-                <article class="environment-card">
-                    <div class="environment-icon">🌅</div>
-                    <div><span class="environment-tag">PEACEFUL</span><h3>Cave Sunset</h3>
-                    <p>A quiet sunset environment with soft lighting and relaxing background audio.</p></div>
-                </article>
-
-                <article class="environment-card">
-                    <div class="environment-icon">🏔️</div>
-                    <div><span class="environment-tag">SCENIC</span><h3>Mountain Valley</h3>
-                    <p>A scenic mountain environment for peaceful observation and mindfulness.</p></div>
-                </article>
-
-                <article class="environment-card">
-                    <div class="environment-icon">🌧️</div>
-                    <div><span class="environment-tag">MINDFULNESS</span><h3>Japanese Rain Village</h3>
-                    <p>A soothing rainy village environment for quiet reflection and relaxation.</p></div>
-                </article>
-
-            </div>
-        </section>
-
-        <section class="vr-access">
-            <div class="access-icon">🥽</div>
-            <div class="access-content">
-                <span class="vr-label">READY FOR VR?</span>
-                <h2>Open MindMirror VR</h2>
-                <p>The immersive environments are available inside the MindMirror VR Android application.</p>
-                <a href="#vr-steps" class="vr-button">🥽 Open VR Instructions</a>
-            </div>
-        </section>
-
-        <section class="vr-steps" id="vr-steps">
-            <h2>How to Access VR</h2>
-
-            <div class="steps-grid">
-                <div class="step-card"><span class="step-number">01</span><h3>Install the VR App</h3><p>Install the MindMirror VR APK on your Android phone.</p></div>
-                <div class="step-card"><span class="step-number">02</span><h3>Open MindMirror VR</h3><p>Launch the Unity-based MindMirror VR application.</p></div>
-                <div class="step-card"><span class="step-number">03</span><h3>Choose a Scene</h3><p>Select one of the available calming environments.</p></div>
-                <div class="step-card"><span class="step-number">04</span><h3>Place Your Phone</h3><p>Put your phone into a compatible phone VR headset and begin.</p></div>
-            </div>
-        </section>
-
-        <div class="vr-note">
-            <span>💡</span>
-            <p><strong>Note:</strong> The webpage provides access information for the VR feature. The actual 360° environments run inside the MindMirror VR Android application.</p>
-        </div>
-
-    </section>
-</main>
 </body>
+
 </html>
